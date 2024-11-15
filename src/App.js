@@ -1,17 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import * as React from 'react';
-import Button from '@mui/material/Button';
+import { ProductList } from './pages/ProductList';
 
 function App() {
   return (
-    
-    <div className="text-xl">AuraMart
 
-
-export default function ButtonUsage() {
-  <Button variant="contained">Hello world</Button>
-}</div>
+    <div className="">
+      <ProductList />
+    </div>
   );
 }
 
