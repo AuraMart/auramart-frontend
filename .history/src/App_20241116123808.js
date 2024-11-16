@@ -2,7 +2,7 @@ import './App.css';
 import * as React from 'react';
 import { ProductList } from './pages/ProductList';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import WomenCategory from './pages/KidsCategory';
+import WomenCategory from './pages/WomenCategory';
 
 function App() {
   return (

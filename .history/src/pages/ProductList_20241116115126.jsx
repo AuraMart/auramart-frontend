@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProductCard } from '../components/Product/ProductCard';
+import { ProductCard } from '../components/Product/ProductCard'
 import Masonry from "react-masonry-css";
 
 export const ProductList = () => {
