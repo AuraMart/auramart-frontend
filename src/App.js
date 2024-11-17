@@ -1,8 +1,8 @@
 import './App.css';
 import * as React from 'react';
-import { ProductList } from './pages/ProductList';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import WomenCategory from './pages/KidsCategory';
+import KidsCategory from './pages/KidsCategory';
+import ShoesCategory from './pages/ShoesCategory';
 
 function App() {
   return (
@@ -10,8 +10,9 @@ function App() {
     <div className="">
       <BrowserRouter>
         <Routes>
-          <Route path="/productList" element={<ProductList/>} />
-          <Route path="/kidsCategory" element={<WomenCategory/>} />
+          {/* <Route path="/productList" element={<ProductList/>} /> */}
+          <Route path="/kidsCategory" element={<KidsCategory/>} />
+          <Route path="/ShoesCategory" element={<ShoesCategory/>} />
         </Routes>
       </BrowserRouter>
     </div>

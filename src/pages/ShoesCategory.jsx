@@ -1,11 +1,10 @@
-
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import KidsSidebar from '../components/Product/KidsSidebar';
+import ShoesSidebar from '../components/Product/ShoesSidebar';
 import ProductList from '../components/Product/ProductList';
 import { Box, Grid} from '@mui/material';
 
-const KidsCategory = () => {
+const ShoesCategory = () => {
     const [products, setProducts] = useState([
         { id: 1, name: 'Black Sweatshirt', brand: 'Fashion Brand', price: 1200, image: 'image-url' },
         { id: 2, name: 'White T-Shirt', brand: 'Fashion Brand', price: 900, image: 'image-url' },
@@ -26,7 +25,7 @@ const KidsCategory = () => {
       <Navbar />
       <Grid container>
         <Grid item xs={3}>
-          <KidsSidebar filters={filters} onFilterChange={handleFilterChange} />
+          <ShoesSidebar filters={filters} onFilterChange={handleFilterChange} />
         </Grid>
         <Grid item xs={9}>
           <ProductList products={products} />
@@ -36,4 +35,4 @@ const KidsCategory = () => {
   );
 };
 
-export default KidsCategory;
+export default ShoesCategory;
