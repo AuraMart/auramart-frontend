@@ -4,6 +4,7 @@ import ShoesSidebar from '../components/Product/ShoesSidebar';
 import ProductList from '../components/Product/ProductList';
 import { Box, Grid} from '@mui/material';
 
+
 const ShoesCategory = () => {
     const [products, setProducts] = useState([
         { id: 1, name: 'Black Sweatshirt', brand: 'Fashion Brand', price: 1200, image: 'image-url' },

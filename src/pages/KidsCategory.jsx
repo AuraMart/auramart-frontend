@@ -4,13 +4,27 @@ import Navbar from '../components/Navbar';
 import KidsSidebar from '../components/Product/KidsSidebar';
 import ProductList from '../components/Product/ProductList';
 import { Box, Grid} from '@mui/material';
+import { getAllKidsProducts } from '../Services/KidsService';
+import { useEffect } from 'react';
+
 
 const KidsCategory = () => {
-    const [products, setProducts] = useState([
-        { id: 1, name: 'Black Sweatshirt', brand: 'Fashion Brand', price: 1200, image: 'image-url' },
-        { id: 2, name: 'White T-Shirt', brand: 'Fashion Brand', price: 900, image: 'image-url' },
-      ]);
+    const [products, setProducts] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedColors, setSelectedColors] = useState([]);
+
       
+      useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const data = await getAllKidsProducts();
+                setProducts(data);
+            } catch (error) {
+                console.error("Failed to fetch products", error);
+            }
+        };
+        fetchProducts();
+    }, []);
 
   const filters = {
     categories: ['Tops', 'T-Shirts', 'Pants', 'Skirts'],
@@ -18,6 +32,20 @@ const KidsCategory = () => {
   };
 
   const handleFilterChange = (e) => {
+    const { name, value, checked } = e.target;
+    if (name === "category") {
+      setSelectedCategories((prev) => {
+          return checked
+              ? [...prev, value] // Add category if checked
+              : prev.filter((category) => category !== value); // Remove if unchecked
+      });
+  } else if (name === "color") {
+      setSelectedColors((prev) => {
+          return checked
+              ? [...prev, value] // Add color if checked
+              : prev.filter((color) => color !== value); // Remove if unchecked
+      });
+  }
     
   };
 
