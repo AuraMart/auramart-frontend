@@ -4,6 +4,7 @@ import items from "../components/Carosel/carousel-items";
 import { Item } from "../components/Carosel/Item";
 import { Box } from "@mui/material";
 import { ProductList } from "../components/Product/ProductList";
+import { CategorySection } from "../components/Category/CategorySection";
 
 export const Home = () => {
   return (
@@ -13,30 +14,48 @@ export const Home = () => {
           <Item key={i} item={item} />
         ))}
       </Carousel>
-      {/* <Box
-      sx={{
-        height:"40vh",
-        width:"100%",
-        my: 2,
-        position: "relative",
-      }}
-    > */}
-      <h1
-        style={{
-          position: "absolute",
-          top: "0%",
-          left: "2%",
-          color: "black",
-          fontSize: "48px",
-          fontFamily: "",
+      {/* new arrival section */}
+      <Box
+        sx={{
+          width: "100%",
+          my:'10px',
         }}
       >
-        New Arrival
-      </h1>
-      <ProductList />
-      
-    {/* </Box> */}
-
+        <h1
+          style={{
+            textAlign: "center",
+            color: "black",
+            fontSize: "36px",
+            fontFamily: "",
+          }}
+        >
+          New Arrival
+        </h1>
+        <div style={{display:"flex",justifyItems:"center"}}>
+          <ProductList />
+        </div>
+      </Box>
+{/* category types */}
+      <Box
+        sx={{
+          width: "100%",
+          my:'10px',
+        }}
+      >
+        <h1
+          style={{
+            textAlign: "center",
+            color: "black",
+            fontSize: "36px",
+            fontFamily: "",
+          }}
+        >
+          Shop By Category
+        </h1>
+        <Box style={{display:"flex",justifyItems:"center"}}>
+          <CategorySection />
+        </Box>
+      </Box>
     </div>
   );
 };
