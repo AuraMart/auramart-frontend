@@ -20,15 +20,17 @@ export const Home = () => {
       <Box
         sx={{
           width: "100%",
-          marginTop: "2%",
+          marginTop: "3%",
         }}
       >
         <h1
           style={{
-            textAlign: "center",
+            textAlign: "left",
             color: "black",
             fontSize: "36px",
             fontFamily: "",
+            marginLeft: "4%",
+            marginBottom: "2%",
           }}
         >
           New Arrival
@@ -41,15 +43,17 @@ export const Home = () => {
       <Box
         sx={{
           width: "100%",
-          marginTop: "2%",
+          marginTop: "3%",
         }}
       >
         <h1
           style={{
-            textAlign: "center",
+            textAlign: "left",
             color: "black",
             fontSize: "36px",
             fontFamily: "",
+            marginLeft: "4%",
+            marginBottom: "2%",
           }}
         >
           Shop By Category
@@ -61,15 +65,17 @@ export const Home = () => {
       <Box
         sx={{
           width: "100%",
-          marginTop: "2%",
+          marginTop: "3%",
         }}
       >
         <h1
           style={{
-            textAlign: "center",
+            textAlign: "left",
             color: "black",
             fontSize: "36px",
             fontFamily: "",
+            marginLeft: "4%",
+            marginBottom: "2%",
           }}
         >
           Categories for Men
@@ -83,15 +89,18 @@ export const Home = () => {
       <Box
         sx={{
           width: "100%",
-          marginTop: "2%",
+          marginTop: "3%",
+          
         }}
       >
         <h1
           style={{
-            textAlign: "center",
+            textAlign: "left",
             color: "black",
-            fontSize: "36px",
+            fontSize: "32px",
             fontFamily: "",
+            marginLeft: "4%",
+            marginBottom: "2%",
           }}
         >
           Categories for Women
