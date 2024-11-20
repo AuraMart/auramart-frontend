@@ -17,7 +17,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 export const Categorycard = ({ title, image }) => {
   return (
     <Card sx={{ width: "280px", position: "relative", marginRight: "10px" }}>
-      <CardMedia sx={{ height: "310px" }} image={image} title="green iguana" />
+      <CardMedia sx={{ height: "310px" }} image={image} title={title}/>
       <CardContent sx={{ padding: "1px", paddingTop: "10px" }}>
         <Box
           sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}

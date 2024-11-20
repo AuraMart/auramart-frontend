@@ -24,7 +24,7 @@ export const ProductCard = ({ name, brand, price, url, availability }) => {
 
   return (
       <Card sx={{ width: "250px", position: "relative" }}>
-        <CardMedia sx={{ height: "300px" }} image={url} title="green iguana" />
+        <CardMedia sx={{ height: "300px" }} image={url}/>
         {availability === "In Stock" ? (
           <Badge
             sx={{

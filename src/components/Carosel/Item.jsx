@@ -8,25 +8,32 @@ export const Item = (props) => {
         alt={props.item.title}
         style={{ width: "100%", height: "90vh", position: "relative" , zIndex: "10"}}
       />
-      <div style={{width:'100%', height:"20vh", position:"absolute",zIndex:"20",backgroundColor:"black",opacity:"0.7",bottom:"0"}}> </div>
-      <h1
+      <Button
+        variant="contained"
         style={{
           position: "absolute",
-          top: "50%",
-          left: "35%",
-          color: "white",
-          fontSize: "96px",
-          fontFamily: "font-rusilla",
+          top: "70%",
+          left: "45%",
+          color: "black",
+          backgroundColor: "#f0c040",
           zIndex: "40",
+          padding: "10px",
+          fontSize: "20px",
+        }}
+         >Shop Now</Button>
+      {/* <h1
+        style={{
+          position:'absolute',
+          top: "50%",
+          color: "white",
+          zIndex: "40",
+          left: "5%",
+          fontSize: "80px",
         }}
       >
-        Aura Mart
-      </h1>
-      <h1
-        className="absolute top-[75%] left-[28%] text-white text-[80px] font-bold z-40"
-      >
-        New Collection
-      </h1>
+        {props.item.description}
+      </h1> */}
+      
      
     </Paper>
   );

@@ -8,13 +8,14 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 // import AppStoreIcon from "/path-to-your-icons/AppStoreIcon";
 
 const FooterSection = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <Box
-      className="bg-gray-900 text-white mt-[4%] "
-      px={{ xs: 3, sm: 10, l }}
+      className="bg-gray-900 text-white mt-[4%]"
+      px={{ xs: 3, sm: 10 }}
       py={{ xs: 5, sm: 10 }}
     >
-        <Stack direction="row" container spacing={5}>
+        <Stack direction="row" container spacing={5} className="px-[4%] gap-20">
           {/* Need Help Section */}
           <Stack item xs={12} sm={3}>
             <Typography variant="h6" className="font-bold">
@@ -119,7 +120,7 @@ const FooterSection = () => {
             </Typography>
             <Stack className="mt-4 space-y-4">
             <Typography variant="body2" className="mt-4">
-              support@euphoria.in
+              support.auramart@gmail.com
             </Typography>
             <Typography variant="body2" className="mt-2">
               No 27, Katubedda, Moratuwa
@@ -137,6 +138,7 @@ const FooterSection = () => {
         alignItems="center"
         className="mt-10"
         flexDirection={{ xs: "column", sm: "row" }}
+        px={{ xs: 3, sm: 10 }}
       >
         {/* Social Icons */}
         <Box>
@@ -164,7 +166,7 @@ const FooterSection = () => {
       {/* Footer Bottom */}
       <Box className="mt-10 text-center border-t border-gray-700 pt-4">
         <Typography variant="body2" className="text-gray-400">
-          Copyright © 2023 Euphoria Folks Pvt Ltd. All rights reserved.
+          Copyright © {currentYear} AuraMart Folks Pvt Ltd. All rights reserved.
         </Typography>
       </Box>
     </Box>
