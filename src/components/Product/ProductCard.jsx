@@ -23,7 +23,6 @@ export const ProductCard = ({ name, brand, price, url, availability }) => {
   };
 
   return (
-    <div className="">
       <Card sx={{ width: "250px", position: "relative" }}>
         <CardMedia sx={{ height: "300px" }} image={url} title="green iguana" />
         {availability === "In Stock" ? (
@@ -81,7 +80,7 @@ export const ProductCard = ({ name, brand, price, url, availability }) => {
               <Typography
                 sx={{ fontSize: 14 }}
                 style={{
-                  maxWidth: "100px",
+                  maxWidth: "130px",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
@@ -105,7 +104,6 @@ export const ProductCard = ({ name, brand, price, url, availability }) => {
           </Box>
         </CardContent>
       </Card>
-    </div>
   );
 };
 

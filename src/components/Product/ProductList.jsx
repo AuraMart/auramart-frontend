@@ -1,6 +1,5 @@
 import React from "react";
 import { ProductCard } from "./ProductCard";
-import Masonry from "react-masonry-css";
 import { Box } from "@mui/material";
 
 export const ProductList = () => {
@@ -37,30 +36,13 @@ export const ProductList = () => {
       price: "Rs. 2,790.00",
       url: "/assets/images/women 1.png",
       availability: "Out Stock",
-    },
-    {
-      id: 5,
+    },{
+      id: 4,
       name: "Long Sleeve White Rib Top",
       brand: "ZigZag brand",
       price: "Rs. 2,790.00",
       url: "/assets/images/women 1.png",
       availability: "Out Stock",
-    },
-    {
-      id: 6,
-      name: "Long Sleeve White Rib Top",
-      brand: "ZigZag brand",
-      price: "Rs. 2,790.00",
-      url: "/assets/images/women 1.png",
-      availability: "In Stock",
-    },
-    {
-      id: 7,
-      name: "Long Sleeve White Rib Top",
-      brand: "ZigZag brand",
-      price: "Rs. 2,790.00",
-      url: "/assets/images/women 1.png",
-      availability: "In Stock",
     },
   ];
   return (
@@ -69,8 +51,9 @@ export const ProductList = () => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          gap: "30px",
+          gap: "20px",
           justifyContent: "center",
+
         }}
       >
         {products.map((product) => (
