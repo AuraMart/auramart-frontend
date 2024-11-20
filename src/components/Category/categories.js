@@ -29,7 +29,7 @@ export const women = [
         image: "/assets/images/wshort.jpeg"
     },
     {id:8,
-        title: "DENIMS",
+        title: "DENIM TROUSERS",
         image: "/assets/images/wdenim trouser.jpeg"
     }
 

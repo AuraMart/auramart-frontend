@@ -23,16 +23,7 @@ export const Item = (props) => {
         Aura Mart
       </h1>
       <h1
-        style={{
-          position: "absolute",
-          top: "75%",
-          left: "28%",
-          color: "white",
-          fontSize: "96px",
-          // fontFamily: "Basic Commercial",
-          zIndex: "40",
-        }}
-        className="font-mogra"
+        className="absolute top-[75%] left-[28%] text-white text-[80px] font-bold z-40"
       >
         New Collection
       </h1>

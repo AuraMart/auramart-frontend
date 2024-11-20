@@ -17,7 +17,7 @@ export const CategorySection = () => {
       <Stack direction="row" spacing={2} sx={{ justifyContent: "center" }}>
         <Card
           sx={{
-            width: "500px",
+            width: "515px",
             textAlign: "center",
             position: "relative",
             height: "280px",
@@ -62,7 +62,7 @@ export const CategorySection = () => {
         {/* women category */}
         <Card
           sx={{
-            width: "500px",
+            width: "515px",
             textAlign: "center",
             position: "relative",
             height: "280px",
@@ -108,7 +108,7 @@ export const CategorySection = () => {
       <Stack direction="row" spacing={2}>
       <Card
           sx={{
-            width: "500px",
+            width: "515px",
             textAlign: "center",
             position: "relative",
             height: "280px",
@@ -152,7 +152,7 @@ export const CategorySection = () => {
         {/* kids section */}
         <Card
           sx={{
-            width: "500px",
+            width: "515px",
             textAlign: "center",
             position: "relative",
             height: "280px",
