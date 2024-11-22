@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useRef } from "react";
 import Carousel from "react-material-ui-carousel";
 import items from "../components/Carosel/carousel-items";
 import { Item } from "../components/Carosel/Item";
@@ -18,11 +18,13 @@ import { grey } from "@mui/material/colors";
 import { NewArrival } from "../components/NewArrival";
 
 export const Home = () => {
+  const targetRef = useRef(null);
+
   return (
     <div className="">
       <Carousel>
         {items.map((item, i) => (
-          <Item key={i} item={item} />
+          <Item key={i} item={item} scrollToRef={targetRef}/>
         ))}
       </Carousel>
       {/* new arrival section */}
@@ -45,6 +47,7 @@ export const Home = () => {
           width: "100%",
           marginTop: "3%",
         }}
+        ref={targetRef}
       >
         <h1 className="font-abril text-[36px] align-left text-gray-500 ml-[4%] mb-[2%]">
           Shop By Category

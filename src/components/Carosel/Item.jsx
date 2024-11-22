@@ -1,40 +1,48 @@
-import { Paper, Button } from "@mui/material";
-
 export const Item = (props) => {
+  const ScrollToSection = () => {
+    if (props.scrollToRef && props.scrollToRef.current) {
+      props.scrollToRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <Paper>
+    <div className="relative w-full h-[50vh] sm:h-[80vh] md:h-[90vh] overflow-hidden">
       <img
         src={props.item.image}
         alt={props.item.title}
-        style={{ width: "100%", height: "90vh", position: "relative" , zIndex: "10"}}
+        className="w-full h-full "
       />
-      <Button
-        variant="contained"
-        style={{
-          position: "absolute",
-          top: "70%",
-          left: "45%",
-          color: "black",
-          backgroundColor: "#f0c040",
-          zIndex: "40",
-          padding: "10px",
-          fontSize: "20px",
-        }}
-         >Shop Now</Button>
-      {/* <h1
-        style={{
-          position:'absolute',
-          top: "50%",
-          color: "white",
-          zIndex: "40",
-          left: "5%",
-          fontSize: "80px",
-        }}
+      <button
+        onClick={ScrollToSection}
+        className="
+          absolute 
+          top-[70%] 
+          left-[50%] 
+          -translate-x-1/2 
+          -translate-y-1/2 
+          bg-yellow-400 
+          text-black 
+          px-4 
+          py-2 
+          text-lg 
+          font-medium 
+          rounded-md 
+          shadow-lg 
+          hover:bg-yellow-500 
+          transition-all
+          md:text-base 
+          md:top-[75%] 
+          md:px-3 
+          md:py-2
+          sm:text-sm 
+          sm:top-[80%] 
+          sm:px-2 
+          sm:py-1"
       >
-        {props.item.description}
-      </h1> */}
-      
-     
-    </Paper>
+        Shop Now
+      </button>
+    </div>
   );
 };

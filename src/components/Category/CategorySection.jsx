@@ -10,8 +10,14 @@ import {
   styled,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
 export const CategorySection = () => {
+  const navigate = useNavigate();
+
+    const directToMensCategory = () => {
+        navigate("/menscategory");
+    }
   return (
     <Stack spacing={2} sx={{ alignItems: "center" }}>
       <Stack direction="row" spacing={2} sx={{ justifyContent: "center" }}>
@@ -52,6 +58,7 @@ export const CategorySection = () => {
                 size="small"
                 variant="outlined"
                 sx={{ position: "absolute", bottom: "10%", right: "15%" }}
+                onClick={directToMensCategory}
               >
                 Shop Now
               </AshButton>

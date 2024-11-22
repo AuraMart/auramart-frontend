@@ -1,9 +1,9 @@
 import './App.css';
 import * as React from 'react';
-import { ProductList } from './components/Product/ProductList';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
 import FooterSection from './components/Footer/FooterSection';
+import MensCategory from './pages/MensCategory';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/productList" element={<ProductList/>} />
+          <Route path="/menscategory" element={<MensCategory />} />
         </Routes>
       </BrowserRouter>
       <FooterSection />
