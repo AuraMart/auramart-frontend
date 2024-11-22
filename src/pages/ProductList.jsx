@@ -2,7 +2,7 @@ import React from 'react'
 import { ProductCard } from '../components/Product/ProductCard'
 import Masonry from "react-masonry-css";
 
-export const ProductList = () => {
+function  ProductList  () {
   const products = [
     {
       id: 1,
@@ -68,7 +68,7 @@ export const ProductList = () => {
           768: 3,
           640: 2,
         }}
-        className="flex gap-4 transition-transform  85ms ease-out"
+        className="flex gap-4 transition-transform ease-out 85ms"
       >
         {products.map((product) => 
           <ProductCard key={product.id} name={product.name} brand={product.brand} price={product.price} url={product.url}/>
@@ -77,3 +77,5 @@ export const ProductList = () => {
     </div>
   )
 }
+
+export default ProductList;
