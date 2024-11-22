@@ -1,12 +1,12 @@
 import './App.css';
 import * as React from 'react';
-import { ProductList } from './pages/ProductList';
+import Cart from './pages/Cart';
 
 function App() {
   return (
 
     <div className="">
-      <ProductList />
+     <Cart/>
     </div>
   );
 }
