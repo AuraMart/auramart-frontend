@@ -1,12 +1,10 @@
-import './App.css';
-import * as React from 'react';
-import { ProductList } from './pages/ProductList';
+
+import WebRoutes from './webRoutes/webRoutes';
 
 function App() {
   return (
-
-    <div className="">
-      <ProductList />
+    <div className="App">
+    <WebRoutes/>
     </div>
   );
 }
