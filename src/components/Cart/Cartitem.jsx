@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import women from '../../assets/women 1.png';
 
 const Cartitem = () => {
-  const cartItems = [
+  // State to manage cart items
+  const [cartItems, setCartItems] = useState([
     {
       id: 1,
       image: women,
@@ -33,7 +34,18 @@ const Cartitem = () => {
       quantity: 2,
       shipping: 'Rs 5.00',
     },
-  ];
+  ]);
+
+  // Function to update quantity
+  const updateQuantity = (id, delta) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id
+          ? { ...item, quantity: Math.max(1, item.quantity + delta) } // Prevent quantity from going below 1
+          : item
+      )
+    );
+  };
 
   return (
     <div className="max-w-6xl mx-auto mt-10 p-4">
@@ -88,11 +100,17 @@ const Cartitem = () => {
                 </td>
                 <td className="border border-gray-200 px-4 py-4 text-center">
                   <div className="flex items-center justify-center gap-2">
-                    <button className="px-2 py-1 bg-gray-200 hover:bg-gray-300 text-gray-600 rounded">
+                    <button
+                      onClick={() => updateQuantity(item.id, -1)}
+                      className="px-2 py-1 bg-gray-200 hover:bg-gray-300 text-gray-600 rounded"
+                    >
                       -
                     </button>
                     <span>{item.quantity}</span>
-                    <button className="px-2 py-1 bg-gray-200 hover:bg-gray-300 text-gray-600 rounded">
+                    <button
+                      onClick={() => updateQuantity(item.id, 1)}
+                      className="px-2 py-1 bg-gray-200 hover:bg-gray-300 text-gray-600 rounded"
+                    >
                       +
                     </button>
                   </div>
