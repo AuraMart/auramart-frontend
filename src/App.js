@@ -1,5 +1,5 @@
-
 import './App.css';
+import WebRoutes from './webRoutes/webRoutes';
 import * as React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
@@ -14,7 +14,8 @@ import ProductPage from "./pages/productDetailPage";
 
 function App() {
   return (
-    <div>
+    <div className="App">
+    <WebRoutes/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>} />
