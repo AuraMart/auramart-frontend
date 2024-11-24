@@ -3,6 +3,7 @@ import * as React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
 import FooterSection from './components/Footer/FooterSection';
+import MenCategory from './pages/MensCategory';
 import KidsCategory from './pages/KidsCategory';
 import ShoesCategory from './pages/ShoesCategory';
 import WomenCategory from './pages/WomenCategory';
