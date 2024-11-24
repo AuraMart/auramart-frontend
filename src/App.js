@@ -1,21 +1,24 @@
-import "./App.css";
-import * as React from "react";
+
+import './App.css';
+import * as React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Home } from './pages/Home';
+import FooterSection from './components/Footer/FooterSection';
+import MensCategory from './pages/MensCategory';
 import Button from "@mui/material/Button";
 import ProductPage from "./pages/productDetailPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ProductList } from "./pages/ProductList";
 
 function App() {
   return (
-    <div className="">
-      {/* <ProductList /> */}
+    <div>
       <BrowserRouter>
-        <div>
-          <Routes>
-            <Route path="/product" element={<ProductPage />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/menscategory" element={<MensCategory />} />
+          <Route path="/product" element={<ProductPage />} />
+        </Routes>
       </BrowserRouter>
+      <FooterSection />
     </div>
   );
 }
