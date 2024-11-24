@@ -1,3 +1,4 @@
+
 import './App.css';
 import * as React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -7,10 +8,12 @@ import KidsCategory from './pages/KidsCategory';
 import ShoesCategory from './pages/ShoesCategory';
 import WomenCategory from './pages/WomenCategory';
 import MenCategory from './pages/MenCategory';
+import Button from "@mui/material/Button";
+import ProductPage from "./pages/productDetailPage";
+
 
 function App() {
   return (
-
     <div>
       <BrowserRouter>
         <Routes>
@@ -19,6 +22,7 @@ function App() {
           <Route path="/ShoesCategory" element={<ShoesCategory/>} />
           <Route path="/WomenCategory" element={<WomenCategory/>} />
           <Route path="/MenCategory" element={<MenCategory/>} />
+          <Route path="/product" element={<ProductPage />} />
         </Routes>
       </BrowserRouter>
       <FooterSection />
