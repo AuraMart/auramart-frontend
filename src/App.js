@@ -1,7 +1,6 @@
 import './App.css';
 import WebRoutes from './webRoutes/webRoutes';
 import * as React from 'react';
-import Cart from './pages/Cart';
 import "aos/dist/aos.css";
 import Offers from "./components/OffersAndSales/Offers";
 import "slick-carousel/slick/slick.css";
@@ -36,7 +35,6 @@ function App() {
           <Route path="/product" element={<ProductPage />} />
           <Route path="/offers" element={<Offers/>} />
           <Route path="/payment" element={<Payment />} /> 
-          <Route path="/cart" element={<Cart/>} />
         </Routes>
       </BrowserRouter>
       <FooterSection />
