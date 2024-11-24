@@ -44,7 +44,7 @@ export const CategorySection = () => {
           <CardMedia
             component="img"
             height="150"
-            image="/assets/images/men.jpg"
+            image="/Assets/images/men.jpg"
             alt="Mens"
           />
           <CardContent>

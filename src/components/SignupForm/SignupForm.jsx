@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
-import illustrationImage from '../../assets/images/rb_64279.png';
+import illustrationImage from '../../Assets/images/rb_64279.png';
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {

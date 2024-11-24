@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
-import illustrationImage from '../../assets/images/rb_64279.png';
+import illustrationImage from '../../Assets/images/rb_64279.png';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
