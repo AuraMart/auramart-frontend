@@ -1,9 +1,14 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Ensure this scans all your source files
-  ],
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        mogra: ["Mogra", "system-ui"],
+        crimson: ["Crimson+Text", "serif"],
+        abril:["Abril Fatface", "serif"]
+      },
+    },
   },
-  plugins: [],
-};
+  plugins: [],
+}
