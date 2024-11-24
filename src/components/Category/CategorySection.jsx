@@ -16,8 +16,20 @@ export const CategorySection = () => {
   const navigate = useNavigate();
 
     const directToMensCategory = () => {
-        navigate("/menscategory");
+        navigate("/mencategory");
     }
+
+    const directToWomensCategory = () => {
+      navigate("/womencategory");
+  }
+
+  const directToShoeCategory = () => {
+    navigate("/shoescategory");
+  }
+
+  const directToKidsCategory = () => {
+    navigate("/kidscategory");
+  };
   return (
     <Stack spacing={2} sx={{ alignItems: "center" }}>
       <Stack direction="row" spacing={2} sx={{ justifyContent: "center" }}>
@@ -104,6 +116,7 @@ export const CategorySection = () => {
                 size="small"
                 variant="outlined"
                 sx={{ position: "absolute", bottom: "10%", right: "15%" }}
+                onClick={directToWomensCategory}
               >
                 Shop Now
               </AshButton>
@@ -150,6 +163,7 @@ export const CategorySection = () => {
                 size="small"
                 variant="outlined"
                 sx={{ position: "absolute", bottom: "10%", right: "15%" }}
+                onClick={directToShoeCategory}
               >
                 Shop Now
               </AshButton>
@@ -194,6 +208,7 @@ export const CategorySection = () => {
                 size="small"
                 variant="outlined"
                 sx={{ position: "absolute", bottom: "10%", right: "15%" }}
+                onClick={directToKidsCategory}
               >
                 Shop Now
               </AshButton>
