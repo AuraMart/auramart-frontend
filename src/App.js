@@ -18,7 +18,7 @@ function App() {
     <WebRoutes/>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/home" element={<Home/>} />
           <Route path="/kidsCategory" element={<KidsCategory/>} />
           <Route path="/ShoesCategory" element={<ShoesCategory/>} />
           <Route path="/WomenCategory" element={<WomenCategory/>} />
