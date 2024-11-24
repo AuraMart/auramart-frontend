@@ -1,22 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
+module.exports = {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}" 
+  ],
   theme: {
     extend: {
-      colors: {
-        primary: "#FF6347", 
-        secondary: "#4CAF50", 
-      },
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "1rem",
-          sm: "3rem",
-        },
+      fontFamily: {
+        mogra: ["Mogra", "system-ui"],
+        crimson: ["Crimson Text", "serif"],
+        abril: ["Abril Fatface", "serif"],
       },
     },
   },
   plugins: [],
-};
-
+}

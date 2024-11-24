@@ -1,6 +1,5 @@
 import './App.css';
 import * as React from 'react';
-import { ProductList } from './pages/ProductList';
 import Slide from './components/OffersAndSales/Slide';
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -26,7 +25,7 @@ function App() {
 
   return (
 
-    <div className="bg-white dark:bg-gray-900 dark:text-white duration-300">
+    <div className="bg-white duration-300">
       <Slide handleOrderPopup={handleOrderPopup} />
       <Offers/>
     </div>
