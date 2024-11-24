@@ -1,25 +1,22 @@
 import "./App.css";
 import * as React from "react";
 import Button from "@mui/material/Button";
-import ProductPage from "./pages/productPage";
+import ProductPage from "./pages/productDetailPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ProductList } from './pages/ProductList';
+import { ProductList } from "./pages/ProductList";
 
 function App() {
   return (
     <div className="">
-      <ProductList />
+      {/* <ProductList /> */}
       <BrowserRouter>
-      <div className="text-xl">
-        {/* <h1>AuraMart</h1>
-        <Button variant="contained">Hello world</Button> */}
-        <Routes>
-          <Route path="/product" element={<ProductPage />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+        <div>
+          <Routes>
+            <Route path="/product" element={<ProductPage />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
-    
   );
 }
 
