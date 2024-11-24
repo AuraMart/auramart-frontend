@@ -1,16 +1,16 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}" 
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
-      fontFamily: {
+      fontFamily:{
         mogra: ["Mogra", "system-ui"],
-        crimson: ["Crimson Text", "serif"],
-        abril: ["Abril Fatface", "serif"],
+        crimson: ["Crimson+Text", "serif"],
+        abril:["Abril Fatface", "serif"]
       },
     },
   },
   plugins: [],
 }
+
