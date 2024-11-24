@@ -1,5 +1,8 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { OfferSideBar } from "./offerSideBar";
+import Slide from './Slide';
+import AOS from "aos";
+
 const products = [
     {
       id: 1,
@@ -86,9 +89,29 @@ const products = [
       },
       
   ];
+
+
+ 
   
   const Offers = () => {
+  const [orderPopup, setOrderPopup] = useState(false);
+
+  const handleOrderPopup = () => {
+    setOrderPopup(!orderPopup);
+  };
+  useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 800,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
+
     return (
+      <>
+      <Slide handleOrderPopup={handleOrderPopup} />
         <div className="flex flex-col sm:flex-row p-4">
         {/* Sidebar Filters */}
         
@@ -133,6 +156,7 @@ const products = [
           </div>
         </main>
       </div>
+      </>
     );
   };
   
