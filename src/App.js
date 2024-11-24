@@ -14,7 +14,7 @@ import WomenCategory from './pages/WomenCategory';
 import MenCategory from './pages/MenCategory';
 import Button from "@mui/material/Button";
 import ProductPage from "./pages/productDetailPage";
-
+import Payment from './pages/Payment';
 
 function App() {
  
@@ -34,12 +34,11 @@ function App() {
           <Route path="/MenCategory" element={<MenCategory/>} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/offers" element={<Offers/>} />
+          <Route path="/payment" element={<Payment />} /> 
         </Routes>
       </BrowserRouter>
       <FooterSection />
     </div>
-
-    
   );
 }
 
