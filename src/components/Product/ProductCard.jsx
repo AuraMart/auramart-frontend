@@ -10,6 +10,8 @@ export const ProductCard = ({
   brand,
   price,
   url,
+
+  
 }) => {
   return (
     <div className="">

@@ -1,12 +1,43 @@
 import './App.css';
+import WebRoutes from './webRoutes/webRoutes';
 import * as React from 'react';
-import { ProductList } from './pages/ProductList';
+import "aos/dist/aos.css";
+import Offers from "./components/OffersAndSales/Offers";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Home } from './pages/Home';
+import FooterSection from './components/Footer/FooterSection';
+import KidsCategory from './pages/KidsCategory';
+import ShoesCategory from './pages/ShoesCategory';
+import WomenCategory from './pages/WomenCategory';
+import MenCategory from './pages/MenCategory';
+import Button from "@mui/material/Button";
+import ProductPage from "./pages/productDetailPage";
+import Payment from './pages/Payment';
 
 function App() {
-  return (
+ 
 
-    <div className="">
-      <ProductList />
+  return (
+      
+    <div className="App">
+      
+      
+    <WebRoutes/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/home" element={<Home/>} />
+          <Route path="/kidsCategory" element={<KidsCategory/>} />
+          <Route path="/ShoesCategory" element={<ShoesCategory/>} />
+          <Route path="/WomenCategory" element={<WomenCategory/>} />
+          <Route path="/MenCategory" element={<MenCategory/>} />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/offers" element={<Offers/>} />
+          <Route path="/payment" element={<Payment />} /> 
+        </Routes>
+      </BrowserRouter>
+      <FooterSection />
     </div>
   );
 }
