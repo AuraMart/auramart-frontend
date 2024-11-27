@@ -109,31 +109,31 @@ export const Home = () => {
           >
             <Card className="rounded-full">
               <CardMedia
-                image={"/assets/icons/polo.jpeg"}
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705692/AuraMart-images/brands/polo_offfh4.jpg"}
                 className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
-                image={"/assets/icons/HM.png"}
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705691/AuraMart-images/brands/HM_camlg4.png"}
                 className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
-                image={"/assets/icons/levis.png"}
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705692/AuraMart-images/brands/levis_aolpsn.png"}
                 className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
-                image={"/assets/icons/puma.png"}
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705692/AuraMart-images/brands/puma_kcnzk7.png"}
                 className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full h-20 w-40">
               <CardMedia
-                image={"/assets/icons/nike.png"}
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705691/AuraMart-images/brands/nike_aftllh.png"}
                 className="h-16 w-40 "
               />
             </Card>
