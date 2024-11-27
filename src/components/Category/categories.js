@@ -39,7 +39,7 @@ export const women = [
 export const men = [
     {id:1,
         title: "SHIRTS",
-        image: "/assets/images/shirt.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg"
     },
     {id:2,
         title: "T-SHIRTS",
