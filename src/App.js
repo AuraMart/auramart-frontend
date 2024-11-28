@@ -15,6 +15,7 @@ import MenCategory from './pages/MenCategory';
 import Button from "@mui/material/Button";
 import ProductPage from "./pages/productDetailPage";
 import Payment from './pages/Payment';
+import Admin from './pages/Admin';
 
 function App() {
  
@@ -35,6 +36,7 @@ function App() {
           <Route path="/product" element={<ProductPage />} />
           <Route path="/offers" element={<Offers/>} />
           <Route path="/payment" element={<Payment />} /> 
+          <Route path="/admin" element={<Admin />} /> 
         </Routes>
       </BrowserRouter>
       <FooterSection />
