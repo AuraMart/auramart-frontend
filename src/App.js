@@ -15,6 +15,7 @@ import MenCategory from './pages/MenCategory';
 import Button from "@mui/material/Button";
 import ProductPage from "./pages/productDetailPage";
 import Payment from './pages/Payment';
+import Navbar from './components/Navigation/Navbar';
 
 function App() {
  
@@ -25,6 +26,7 @@ function App() {
       
       
     <WebRoutes/>
+    <Navbar/>
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<Home/>} />
@@ -35,6 +37,7 @@ function App() {
           <Route path="/product" element={<ProductPage />} />
           <Route path="/offers" element={<Offers/>} />
           <Route path="/payment" element={<Payment />} /> 
+          
         </Routes>
       </BrowserRouter>
       <FooterSection />
