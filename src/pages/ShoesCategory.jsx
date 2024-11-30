@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
 import ShoesSidebar from '../components/Product/ShoesSidebar';
 import ProductList from '../components/Product/ProductList';
 import { Box, Grid } from '@mui/material';
@@ -66,7 +65,6 @@ const ShoesCategory = () => {
 
   return (
     <Box>
-      <Navbar />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4} md={3}>
           <ShoesSidebar filters={filters} onFilterChange={handleFilterChange} />

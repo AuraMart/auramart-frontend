@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
 import KidsSidebar from '../components/Product/KidsSidebar';
 import { Box, Grid} from '@mui/material';
 import { getAllKidsProducts } from '../Services/KidsService';
@@ -64,7 +63,6 @@ const KidsCategory = () => {
 
   return (
     <Box>
-      <Navbar />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4} md={3}>
           <KidsSidebar filters={filters} onFilterChange={handleFilterChange} />
