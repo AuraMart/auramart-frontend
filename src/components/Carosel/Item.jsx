@@ -1,3 +1,5 @@
+
+import React, { useRef,useEffect } from "react";
 export const Item = (props) => {
   const ScrollToSection = () => {
     if (props.scrollToRef && props.scrollToRef.current) {
@@ -6,6 +8,8 @@ export const Item = (props) => {
       });
     }
   };
+
+
 
   return (
     <div className="relative w-full h-[50vh] sm:h-[80vh] md:h-[90vh] overflow-hidden">

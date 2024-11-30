@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
 import WomenSidebar from '../components/Product/WomenSidebar';
 import { Box, Grid } from '@mui/material';
 import axios from 'axios';
@@ -74,7 +73,6 @@ const filteredProducts = products.filter(
 
   return (
     <Box>
-      <Navbar />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4} md={3}>
           <WomenSidebar filters={filters} onFilterChange={handleFilterChange} />
