@@ -157,3 +157,4 @@ const BlackBox = styled(Box)(({ theme }) => ({
   width: "75%",
   position: "relative",
 }));
+
