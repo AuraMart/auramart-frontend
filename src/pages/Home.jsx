@@ -1,8 +1,7 @@
-import React, { useRef,useEffect } from "react";
+import React,{ useRef } from "react";
 import Carousel from "react-material-ui-carousel";
 import items from "../components/Carosel/carousel-items";
 import { Item } from "../components/Carosel/Item";
-
 import {
   Box,
   Card,
@@ -21,13 +20,11 @@ import { NewArrival } from "../components/NewArrival";
 export const Home = () => {
   const targetRef = useRef(null);
 
-
-
   return (
     <div className="">
       <Carousel>
         {items.map((item, i) => (
-          <Item key={i} item={item} scrollToRef={targetRef} />
+          <Item key={i} item={item} scrollToRef={targetRef}/>
         ))}
       </Carousel>
       {/* new arrival section */}
@@ -98,11 +95,11 @@ export const Home = () => {
         }}
       >
         <BlackBox>
-          <h5 className="absolute text-5xl text-center text-white top-10 font-abril">
+          <h5 className="absolute top-10 text-center text-5xl text-white font-abril">
             Available Top Brands
           </h5>
-          <h3 className="absolute text-2xl text-center text-yellow-400 top-28 font-mogra">
-            - Discover Premium Fashion Labels -
+          <h3 className="absolute top-28 text-center text-2xl text-yellow-400 font-mogra">
+           - Discover Premium Fashion Labels -
           </h3>
           <Stack
             direction="row"
@@ -113,31 +110,31 @@ export const Home = () => {
             <Card className="rounded-full">
               <CardMedia
                 image={"/assets/icons/polo.jpeg"}
-                className="w-40 h-20 "
+                className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
                 image={"/assets/icons/HM.png"}
-                className="w-40 h-20 "
+                className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
                 image={"/assets/icons/levis.png"}
-                className="w-40 h-20 "
+                className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
                 image={"/assets/icons/puma.png"}
-                className="w-40 h-20 "
+                className="h-20 w-40 "
               />
             </Card>
-            <Card className="w-40 h-20 rounded-full">
+            <Card className="rounded-full h-20 w-40">
               <CardMedia
                 image={"/assets/icons/nike.png"}
-                className="w-40 h-16 "
+                className="h-16 w-40 "
               />
             </Card>
           </Stack>
@@ -160,3 +157,4 @@ const BlackBox = styled(Box)(({ theme }) => ({
   width: "75%",
   position: "relative",
 }));
+
