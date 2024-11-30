@@ -14,6 +14,7 @@ import WomenCategory from './pages/WomenCategory';
 import MenCategory from './pages/MenCategory';
 import ProductPage from "./pages/productDetailPage";
 import Payment from './pages/Payment';
+import Navbar from './components/Navigation/Navbar';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 
@@ -26,6 +27,7 @@ function App() {
       
       
     <WebRoutes/>
+    <Navbar/>
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<Home/>} />
