@@ -12,10 +12,11 @@ import KidsCategory from './pages/KidsCategory';
 import ShoesCategory from './pages/ShoesCategory';
 import WomenCategory from './pages/WomenCategory';
 import MenCategory from './pages/MenCategory';
-import Button from "@mui/material/Button";
 import ProductPage from "./pages/productDetailPage";
 import Payment from './pages/Payment';
 import Navbar from './components/Navigation/Navbar';
+import ContactUs from './pages/ContactUs';
+import AboutUs from './pages/AboutUs';
 
 function App() {
  
@@ -37,7 +38,8 @@ function App() {
           <Route path="/product" element={<ProductPage />} />
           <Route path="/offers" element={<Offers/>} />
           <Route path="/payment" element={<Payment />} /> 
-          
+          <Route path="/contact" element={<ContactUs />} /> 
+          <Route path="/aboutus" element={<AboutUs/>} />
         </Routes>
       </BrowserRouter>
       <FooterSection />

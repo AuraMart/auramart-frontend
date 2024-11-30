@@ -112,32 +112,32 @@ export const Home = () => {
           >
             <Card className="rounded-full">
               <CardMedia
-                image={"/assets/icons/polo.jpeg"}
-                className="w-40 h-20 "
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705692/AuraMart-images/brands/polo_offfh4.jpg"}
+                className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
-                image={"/assets/icons/HM.png"}
-                className="w-40 h-20 "
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705691/AuraMart-images/brands/HM_camlg4.png"}
+                className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
-                image={"/assets/icons/levis.png"}
-                className="w-40 h-20 "
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705692/AuraMart-images/brands/levis_aolpsn.png"}
+                className="h-20 w-40 "
               />
             </Card>
             <Card className="rounded-full">
               <CardMedia
-                image={"/assets/icons/puma.png"}
-                className="w-40 h-20 "
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705692/AuraMart-images/brands/puma_kcnzk7.png"}
+                className="h-20 w-40 "
               />
             </Card>
             <Card className="w-40 h-20 rounded-full">
               <CardMedia
-                image={"/assets/icons/nike.png"}
-                className="w-40 h-16 "
+                image={"https://res.cloudinary.com/dcn64hytu/image/upload/v1732705691/AuraMart-images/brands/nike_aftllh.png"}
+                className="h-16 w-40 "
               />
             </Card>
           </Stack>
