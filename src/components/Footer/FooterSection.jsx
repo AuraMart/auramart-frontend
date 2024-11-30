@@ -64,16 +64,6 @@ const FooterSection = () => {
             </li>
             <li>
               <Link href="#" underline="hover" color="inherit">
-                Euphoria Blog
-              </Link>
-            </li>
-            <li>
-              <Link href="#" underline="hover" color="inherit">
-                Euphoriastan
-              </Link>
-            </li>
-            <li>
-              <Link href="#" underline="hover" color="inherit">
                 Collaboration
               </Link>
             </li>
@@ -121,7 +111,7 @@ const FooterSection = () => {
           </Typography>
           <Stack className="mt-4 space-y-4">
             <Typography variant="body2" className="mt-4">
-              support.auramart@gmail.com
+            support@auramart.com
             </Typography>
             <Typography variant="body2" className="mt-2">
               No 27, Katubedda, Moratuwa
