@@ -8,28 +8,8 @@ export const NewArrival = () => {
 
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
-
-  // useEffect(() => {
-  //   // Fetch data from the backend
-  //   axios
-  //     .get("http://localhost:9191/api/v1/products/all") // Replace with your backend URL
-  //     .then((response) => {
-  //       console.log(response.data)
-  //       setProducts(response.data.data);
-  //       if (response.data.status === "success") {
-  //         setProducts(response.data); // Assuming your API response structure
-  //       } else {
-  //         setError("Failed to fetch products");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       setError("An error occurred while fetching products");
-  //     });
-  // }, []);
-
+  
   useEffect(() => {
-    // Fetch products from the backend
     const fetchProducts = async () => {
       try {
         const data = await getProductsNew();
@@ -50,7 +30,7 @@ export const NewArrival = () => {
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
-          // justifyContent: "center",
+          justifyContent: "center",
         }}
       >
         {products.map((product) => (

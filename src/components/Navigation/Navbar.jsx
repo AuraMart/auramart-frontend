@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className="">
       {/* Navigation Bar */}
       <header className="fixed top-0 z-50 flex items-center justify-between w-full py-4 pl-32 pr-32 bg-gray-100 border-b border-gray-300 shadow-md">
-        <div className="text-2xl font-bold ">Online Store</div>
+        <div className="text-2xl font-bold ">Aura Mart</div>
         <nav>
           <ul className="flex space-x-6">
             <li><a href="/home" className="text-gray-700 hover:text-gray-900">Shop</a></li>
@@ -30,7 +30,7 @@ const Navbar = () => {
       </header>
 
       {/* Breadcrumb */}
-      <div className="px-6 py-2 text-sm bg-gray-50">
+      <div className="px-6 py-2 text-sm bg-gray-50 mt-28">
         <a href="/" className="text-gray-600 hover:underline">Home</a> &gt; 
         <a href="/account" className="text-gray-600 hover:underline"> My Account</a> &gt; 
         <span className="text-gray-900"> Check Out</span>
