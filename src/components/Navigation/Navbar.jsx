@@ -28,15 +28,7 @@ const Navbar = () => {
           <button className="text-lg text-purple-600">🛒</button>
         </div>
       </header>
-
-      {/* Breadcrumb */}
-      <div className="px-6 py-2 text-sm bg-gray-50 mt-28">
-        <a href="/" className="text-gray-600 hover:underline">Home</a> &gt; 
-        <a href="/account" className="text-gray-600 hover:underline"> My Account</a> &gt; 
-        <span className="text-gray-900"> Check Out</span>
-      </div>
-
-    
+ 
     </div>
   );
 };
