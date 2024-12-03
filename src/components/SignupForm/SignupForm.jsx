@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
-import illustrationImage from '../../assets/images/rb_64279.png';
+import illustrationImage from '../../assets/images/rb_20156.png';
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
@@ -60,9 +60,9 @@ const SignupForm = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl bg-gradient-to-b from-indigo-900 via-blue-800 to-blue-600 rounded-xl shadow-lg overflow-hidden flex">
+      <div className="w-full max-w-4xl bg-gradient-to-b from-green-900 via-green-800 to-green-600 rounded-xl shadow-lg overflow-hidden flex">
         {/* Left Panel */}
-        <div className="w-2/5 bg-gradient-to-b from-indigo-900 via-blue-800 to-blue-600 p-8 flex flex-col hidden md:block">
+        <div className="w-2/5 bg-gradient-to-b from-green-900 via-green-800 to-green-600 p-8 flex flex-col hidden md:block">
           <div className="text-white">
             <div className="mb-2">Hello!</div>
             <h1 className="text-4xl font-bold mb-8">HAVE A<br />NICE DAY</h1>
@@ -141,7 +141,7 @@ const SignupForm = () => {
                 </button>
               </div>
 
-              <button type="submit" className="w-full bg-indigo-900 text-white py-3 rounded-lg hover:bg-indigo-800 transition-colors font-medium">
+              <button type="submit" className="w-full bg-green-900 text-white py-3 rounded-lg hover:bg-indigo-800 transition-colors font-medium">
                 Create Account
               </button>
 
