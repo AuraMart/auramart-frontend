@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import MenSidebar from '../components/Product/MenSidebar';
-import { Box, Grid} from '@mui/material';
+import { Box, Grid2} from '@mui/material';
 import { useEffect } from 'react';
-import axios from 'axios';
-import ProductCard2 from '../components/Product/ProductCard2';
-
-const getAllMenItems = async () => {
-  const response = await axios.get('http://localhost:8080/api/men');
-  return response.data;
-};
+import {ProductCard} from '../components/Product/ProductCard';
+import { getAllMenProducts } from '../Services/mainCategoryServices';
 
 const MenCategory = () => {
     const [products, setProducts] = useState([]);
@@ -16,16 +11,17 @@ const MenCategory = () => {
     const [selectedColors, setSelectedColors] = useState([]);
     const [wishlist, setWishlist] = useState([]);
       
-      useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const data = await getAllMenItems();
-                setProducts(data);
-            } catch (error) {
-                console.error("Failed to fetch items", error);
-            }
-        };
-        fetchProducts();
+    useEffect(() => {
+      const fetchMenProducts = async () => {
+        try {
+          const response = await getAllMenProducts();
+          setProducts(Array.isArray(response.data) ? response.data : []);
+        } catch (error) {
+          console.error("Failed to fetch men cloths", error);
+        }
+      };
+      fetchMenProducts();
+      console.log("men cloths", products);
     }, []);
 
   const filters = {
@@ -70,28 +66,22 @@ const filteredProducts = products.filter(
 
   return (
     <Box>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={4} md={3}>
+      <Grid2 container spacing={8}>
+        <Grid2 item xs={12} sm={4} md={3}>
           <MenSidebar filters={filters} onFilterChange={handleFilterChange} />
-        </Grid>
-        <Grid item xs={12} sm={8} md={9}>
-          <Grid container spacing={2}>
-            {products.map((product) => (
-              <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-                <ProductCard2
-                  product={product}
-                  name={product.name}
+        </Grid2>
+          <Grid2 container spacing={2} className="mt-4">
+          {Array.isArray(products) &&
+              products.map((product) => (
+                <ProductCard
+                  name={product.name} // Match field from API
                   brand={product.brand}
                   price={product.price}
-                  url={product.url}
-                  availability={product.availability}
-                  onWishlistClick={handleWishlist}
+                  url={product.imgUrls}
                 />
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
-      </Grid>
+              ))}
+          </Grid2>
+      </Grid2>
     </Box>
   );
 };
