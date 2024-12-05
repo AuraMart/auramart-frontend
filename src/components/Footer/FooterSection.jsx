@@ -24,7 +24,7 @@ const FooterSection = () => {
           </Typography>
           <ul className="mt-4 space-y-2">
             <li>
-              <Link href="#" underline="hover" color="inherit">
+              <Link href="/contact" underline="hover" color="inherit">
                 Contact Us
               </Link>
             </li>
@@ -58,7 +58,7 @@ const FooterSection = () => {
           </Typography>
           <ul className="mt-4 space-y-2">
             <li>
-              <Link href="#" underline="hover" color="inherit">
+              <Link href="about-us" underline="hover" color="inherit">
                 About Us
               </Link>
             </li>
