@@ -17,6 +17,13 @@ import Payment from './pages/Payment';
 import Navbar from './components/Navigation/Navbar';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
+import AddProduct from './components/Admin/AddProduct';
+import AdminDashboard from './components/Admin/AdminDashboard';
+import Analytics from './components/Admin/Analytics';
+import Banner from './components/Admin/Banner';
+import Profile from './components/Admin/Profile';
+import ViewOrders from './components/Admin/ViewOrders';
+import AdminLayout from './pages/layout/AdminLayout';
 
 function App() {
  
@@ -40,6 +47,16 @@ function App() {
           <Route path="/payment" element={<Payment />} /> 
           <Route path="/contact" element={<ContactUs />} /> 
           <Route path="/aboutus" element={<AboutUs/>} />
+
+          
+          <Route path="/admin" element={<AdminLayout/>}>
+          <Route path="add-product" element={<AddProduct/>}/>
+          <Route path="" element={<AdminDashboard/>}/>
+          <Route path="analytics" element={<Analytics/>}/>
+          <Route path="profile" element={<Profile/>}/>
+          <Route path="view-orders" element={<ViewOrders/>}/>
+          </Route>
+          
         </Routes>
       </BrowserRouter>
       <FooterSection />
