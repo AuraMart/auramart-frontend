@@ -14,7 +14,7 @@ export const NewArrival = () => {
         const data = await getProductsNew();
         setProducts(data);
       } catch (error) {
-        setError("Failed to fetch products.");
+        setError("No New Arrivals");
       } finally {
         setLoading(false);
       }
