@@ -186,7 +186,7 @@ const AdminRoutes = () => {
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-gray-100">
+      <div className="flex flex-col min-h-screen bg-gray-100 mt-[2%]">
         <Navbar />
         <Routes>
              <Route path="/" element={<Home/>} />
@@ -198,6 +198,8 @@ function App() {
              {/* <Route path="/login" element={<AddProduct />} /> */}
              {/* <Route path="/login" element={<ProductPage />} /> */}
              <Route path="payment" element={<Payment />} />
+             <Route path="/contact" element={<ContactUs />} />
+             <Route path="/about-us" element={<AboutUs />} />
              
         </Routes>
         <FooterSection />

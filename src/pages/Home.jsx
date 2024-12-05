@@ -24,7 +24,7 @@ export const Home = () => {
 
 
   return (
-    <div className="mt-[2%]">
+    <div className="">
       <Carousel>
         {items.map((item, i) => (
           <Item key={i} item={item} scrollToRef={targetRef} />
