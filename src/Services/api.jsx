@@ -24,7 +24,21 @@ async function getProductsMen() {
     }
   }
 
+  async function createProduct(productData) {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/products/add`, productData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error adding product:", error.response ? error.response.data : error.message);
+      throw error;
+    }
+  }
 
 
 
-export { getProductsNew,getProductsMen };
+
+export { getProductsNew,getProductsMen,createProduct };
