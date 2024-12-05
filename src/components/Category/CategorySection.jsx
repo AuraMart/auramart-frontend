@@ -16,19 +16,19 @@ export const CategorySection = () => {
   const navigate = useNavigate();
 
     const directToMensCategory = () => {
-        navigate("/mencategory");
+        navigate("/mens");
     }
 
     const directToWomensCategory = () => {
-      navigate("/womencategory");
+      navigate("/women");
   }
 
   const directToShoeCategory = () => {
-    navigate("/shoescategory");
+    navigate("/shoes");
   }
 
   const directToKidsCategory = () => {
-    navigate("/kidscategory");
+    navigate("/kids");
   };
   return (
     <Stack spacing={2} sx={{ alignItems: "center" }}>

@@ -83,7 +83,7 @@
 // // Cuatomer Routes Component
 // const CustomerRoutes = () => {
 //   return (
-    
+
 //       <Routes>
 //         <Route path="dashboard" element={<Home />} />
 //         <Route path="mens" element={<MenCategory />} />
@@ -114,7 +114,7 @@
 // function App() {
 //   return (
 
-      
+
 //         <div className="flex flex-col min-h-screen bg-gray-100">
 //           <Routes>
 //             <Route path="/" element={<Home/>} />
@@ -125,7 +125,7 @@
 //             <Route path="whishlist" element={<WishlistPage/>} />
 //           </Routes>
 //         </div>
-      
+
 //   );
 // }
 
@@ -154,6 +154,8 @@ import WishlistPage from './pages/WishListPage/WishListPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import AddProduct from './pages/Admin/AddProduct';
+import ScrollToTop from './components/ScrollToTop';
+import Offers from './components/OffersAndSales/Offers';
 
 // Customer Routes Component
 const CustomerRoutes = () => {
@@ -163,6 +165,7 @@ const CustomerRoutes = () => {
       <Route path="mens" element={<MenCategory />} />
       <Route path="women" element={<WomenCategory />} />
       <Route path="kids" element={<KidsCategory />} />
+      <Route path="shoes" element={<ShoesCategory />} />
       <Route path="payment" element={<Payment />} />
       <Route path="cart" element={<CartPage />} />
       <Route path="wishlist" element={<WishlistPage />} />
@@ -186,21 +189,27 @@ const AdminRoutes = () => {
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-gray-100 mt-[2%]">
+      <div className="flex flex-col min-h-screen bg-gray-100 mt-[5%]">
         <Navbar />
+        <ScrollToTop />
         <Routes>
-             <Route path="/" element={<Home/>} />
-             <Route path="/login" element={<LoginPage/>} />
-             <Route path="/customer/*" element={<CustomerRoutes />} />
-             <Route path="/admin/*" element={<AdminRoutes />} />
-             <Route path="/cart" element={<CartPage />} />
-             <Route path="/wishlist" element={<WishlistPage/>} />
-             {/* <Route path="/login" element={<AddProduct />} /> */}
-             {/* <Route path="/login" element={<ProductPage />} /> */}
-             <Route path="payment" element={<Payment />} />
-             <Route path="/contact" element={<ContactUs />} />
-             <Route path="/about-us" element={<AboutUs />} />
-             
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/customer/*" element={<CustomerRoutes />} />
+          <Route path="/admin/*" element={<AdminRoutes />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
+          {/* <Route path="/login" element={<AddProduct />} /> */}
+          {/* <Route path="/login" element={<ProductPage />} /> */}
+          <Route path="payment" element={<Payment />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/mens" element={<MenCategory />} />
+          <Route path="/women" element={<WomenCategory />} />
+          <Route path="/kids" element={<KidsCategory />} />
+          <Route path="/shoes" element={<ShoesCategory />} />
+          <Route path="/offers" element={<Offers />} />
         </Routes>
         <FooterSection />
       </div>
