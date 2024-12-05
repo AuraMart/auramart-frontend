@@ -24,7 +24,7 @@ import SignupPage from './pages/SignupPage/SignupPage';
 
 function App() {
   return (
-    <div className="mt-10">
+    <div className="mt-12">
       <Navbar />
       <BrowserRouter>
         <Routes>
