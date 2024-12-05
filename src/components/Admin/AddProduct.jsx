@@ -40,7 +40,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen flex justify-center items-center">
+    <div className="p-6  min-h-screen flex justify-center items-center">
       <div className="bg-white shadow-lg border rounded-lg w-full max-w-4xl p-6">
         <div className="bg-blue-500 text-white text-center py-2 rounded-t-lg">
           <h1 className="text-2xl font-bold">Add New Product</h1>
