@@ -20,7 +20,6 @@ const WomenCategory = () => {
       }
     };
     fetchWomenProducts();
-    console.log("women cloths", products);
   }, []);
 
   const filters = {
@@ -67,17 +66,18 @@ const WomenCategory = () => {
         <Grid2 item xs={12} sm={4} md={3}>
           <WomenSidebar filters={filters} onFilterChange={handleFilterChange} />
         </Grid2>
-          <Grid2 container spacing={3} className="mt-4" >
-            {Array.isArray(products) &&
-              products.map((product) => (
-                <ProductCard
-                  name={product.name} // Match field from API
-                  brand={product.brand}
-                  price={product.price}
-                  url={product.imgUrls}
-                />
-              ))}
-          </Grid2>
+        <Grid2 container spacing={3} className="mt-4">
+          {Array.isArray(products) &&
+            products.map((product) => (
+              <ProductCard
+                key={product.id}
+                name={product.name} // Match field from API
+                brand={product.brand}
+                price={product.price}
+                url={product.imgUrls}
+              />
+            ))}
+        </Grid2>
       </Grid2>
     </Box>
   );

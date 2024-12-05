@@ -13,7 +13,6 @@ export const MenCategoryList = () => {
       try {
         const data = await getProductsMen();
         console.log(data.url);
-        console.log("hgdhkig");
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);

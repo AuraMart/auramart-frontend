@@ -1,11 +1,10 @@
 import axios from 'axios';
 
 const API_BASE_URL= 'http://localhost:9191/api/v1'; 
-
 // Function to get New products
 async function getProductsNew() {
   try {
-    const response = await axios.get(`${API_BASE_URL}/products/all`);
+    const response = await axios.get(`${API_BASE_URL}/products/new-arrivals`);
     return response.data.data;
   } catch (error) {
     console.error("Error fetching products:", error.response ? error.response.data : error.message);
