@@ -25,6 +25,7 @@ import {
 const ClothingCat = ({product}) => {
   const navigate = useNavigate();
 
+
   const productColors = [
     { color_id: 1, product_id: 1, color_name: "Black", color_value: "black", image:"https://res.cloudinary.com/dymz9yfzv/image/upload/v1707279632/samples/two-ladies.jpg" },
     { color_id: 2, product_id: 1, color_name: "Red", color_value: "red", image:"https://res.cloudinary.com/dymz9yfzv/image/upload/v1715838920/mmbcbmhwn1d8wc2zzbhr.jpg" },
@@ -89,16 +90,25 @@ const ClothingCat = ({product}) => {
     }
   };
 
-  const handleBuyNow = () => {
-    navigate("/payment", {
-      state: {
-        productId: product.id,
-        colorId: selectedColorID,
-        sizeId: selectedSizeID,
-        quantity: quantity,
-      },
-    });
-  };
+// const handleBuyNow = () => {
+//     console.log("Product Details:", {
+//         id: product.id,
+//         colorId: selectedColorID,
+//         sizeId: selectedSizeID,
+//         quantity: quantity,
+//     });
+// }
+
+const handleBuyNow = () => {
+  navigate("/payment", {
+    // state: {
+    //   id: product.id,
+    //   colorId: selectedColorID,
+    //   sizeId: selectedSizeID,
+    //   quantity: quantity,
+    // },
+  });
+};
 
 const handleWishList = () => {
   console.log("Product added to wishlist:", {
