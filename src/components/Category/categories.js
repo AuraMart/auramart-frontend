@@ -2,35 +2,35 @@
 export const women = [
     {id:1,
         title: "DRESSES",
-        image: "/assets/images/dress.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704856/AuraMart-images/dress_dn2ixi.jpg"
     },
     {id:2,
         title: "T-SHIRTS",
-        image: "/assets/images/wtshirt.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704863/AuraMart-images/wtshirt_xmhafk.jpg"
     },
     {id:3,
         title: "TOPS",
-        image: "/assets/images/wtop.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704863/AuraMart-images/wtop_xgze25.jpg"
     },
     {id:4,
         title: "HOODIES",
-        image: "/assets/images/whoodie.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704862/AuraMart-images/whoodie_yyrwfe.jpg"
     },
     {id:5,
         title: "JACKETS",
-        image: "/assets/images/wjacket.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704863/AuraMart-images/wjacket_ljwvxj.jpg"
     },
     {id:6,
         title: "SKIRTS",
-        image: "/assets/images/skirt.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704861/AuraMart-images/skirt_tpxl4k.jpg"
     },
     {id:7,
         title: "SHORTS",
-        image: "/assets/images/wshort.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704863/AuraMart-images/wshort_gkts6v.jpg"
     },
     {id:8,
         title: "DENIM TROUSERS",
-        image: "/assets/images/wdenim trouser.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704862/AuraMart-images/wdenim_trouser_z9w7ve.jpg"
     }
 
 
@@ -39,34 +39,34 @@ export const women = [
 export const men = [
     {id:1,
         title: "SHIRTS",
-        image: "/assets/images/shirt.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg"
     },
     {id:2,
         title: "T-SHIRTS",
-        image: "/assets/images/tshirt.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704862/AuraMart-images/tshirt_ovzmln.jpg"
     },
     {id:3,
         title: "TANKS",
-        image: "/assets/images/tank.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704862/AuraMart-images/tank_isyrhk.jpg"
     },
     {id:4,
         title: "HOODIES",
-        image: "/assets/images/hoodie.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704856/AuraMart-images/hoodie_q0vjsh.jpg"
     },
     {id:5,
         title: "JACKETS",
-        image: "/assets/images/jacket.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/jacket_izbdls.jpg"
     },
     {id:6,
         title: "JOGGERS",
-        image: "/assets/images/jogger.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704858/AuraMart-images/jogger_owbx8k.jpg"
     },
     {id:7,
         title: "SHORTS",
-        image: "/assets/images/short.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704860/AuraMart-images/short_fwmuqu.jpg"
     },
     {id:8,
         title: "DENIM TROUSERS",
-        image: "/assets/images/denim.jpeg"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704856/AuraMart-images/denim_rcmmcz.jpg"
     }
 ]

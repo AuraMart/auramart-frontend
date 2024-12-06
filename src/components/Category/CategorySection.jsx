@@ -16,19 +16,19 @@ export const CategorySection = () => {
   const navigate = useNavigate();
 
     const directToMensCategory = () => {
-        navigate("/mencategory");
+        navigate("/mens");
     }
 
     const directToWomensCategory = () => {
-      navigate("/womencategory");
+      navigate("/women");
   }
 
   const directToShoeCategory = () => {
-    navigate("/shoescategory");
+    navigate("/shoes");
   }
 
   const directToKidsCategory = () => {
-    navigate("/kidscategory");
+    navigate("/kids");
   };
   return (
     <Stack spacing={2} sx={{ alignItems: "center" }}>
@@ -44,7 +44,7 @@ export const CategorySection = () => {
           <CardMedia
             component="img"
             height="150"
-            image="/Assets/images/men.jpg"
+            image="https://res.cloudinary.com/dcn64hytu/image/upload/v1732704862/AuraMart-images/men_osield.jpg"
             alt="Mens"
           />
           <CardContent>
@@ -90,7 +90,7 @@ export const CategorySection = () => {
           <CardMedia
             component="img"
             height="150"
-            image="/assets/images/women.png"
+            image="https://res.cloudinary.com/dcn64hytu/image/upload/v1732704870/AuraMart-images/women_iuiwwg.png"
             alt="Mens"
           />
           <CardContent>
@@ -137,7 +137,7 @@ export const CategorySection = () => {
           <CardMedia
             component="img"
             height="150"
-            image="/assets/images/shoes.jpg"
+            image="https://res.cloudinary.com/dcn64hytu/image/upload/v1732704861/AuraMart-images/shoes_rrd3k7.jpg"
             alt="Mens"
           />
           <CardContent>
@@ -182,7 +182,7 @@ export const CategorySection = () => {
           <CardMedia
             component="img"
             height="150"
-            image="/assets/images/kids.jpg"
+            image="https://res.cloudinary.com/dcn64hytu/image/upload/v1732704875/AuraMart-images/kids_tkxvtu.jpg"
             alt="Kids"
           />
           <CardContent>
