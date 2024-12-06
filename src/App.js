@@ -144,7 +144,7 @@ import KidsCategory from './pages/KidsCategory';
 import ShoesCategory from './pages/ShoesCategory';
 import WomenCategory from './pages/WomenCategory';
 import MenCategory from './pages/MenCategory';
-import ProductPage from "./pages/productDetailPage";
+import ProductPage from "./pages/productDetailPage/ProductPage";
 import Payment from './pages/Payment';
 import Navbar from './components/Navigation/Navbar';
 import ContactUs from './pages/ContactUs';
@@ -210,6 +210,7 @@ function App() {
           <Route path="/kids" element={<KidsCategory />} />
           <Route path="/shoes" element={<ShoesCategory />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
         </Routes>
         <FooterSection />
       </div>
