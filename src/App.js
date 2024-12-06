@@ -193,7 +193,7 @@ function App() {
         <Navbar />
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/customer/*" element={<CustomerRoutes />} />
           <Route path="/admin/*" element={<AdminRoutes />} />
@@ -210,7 +210,7 @@ function App() {
           <Route path="/kids" element={<KidsCategory />} />
           <Route path="/shoes" element={<ShoesCategory />} />
           <Route path="/offers" element={<Offers />} />
-          <Route path="/product/:productId" element={<ProductPage />} />
+          <Route path="/product/:productId" element={<ProductPage />} />       
         </Routes>
         <FooterSection />
       </div>

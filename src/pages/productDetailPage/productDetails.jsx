@@ -31,6 +31,7 @@ const ProductDetails = () => {
   const [cartId, setCartId] = useState(0);
   const [wishListId, setWishListId] = useState({ id: 0, productIds: [] });
   const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const userId = 1; // Hardcoded user ID for now
 
   useEffect(() => {
@@ -173,18 +174,47 @@ const ProductDetails = () => {
     }
   };
 
+  const handleImageClick = (index) => {
+    setSelectedImageIndex(index);
+  };
+
   return (
     <div className="px-4 py-4 mx-auto max-w-7xl mt-12">
       <div className="flex flex-col gap-8 md:flex-row md:gap-x-16">
         <div className="md:w-1/2">
-          <Card className="overflow-hidden">
-            <CardMedia
-              component="img"
-              image={product.imageUrls[0]}
-              alt="Main product view"
-              className="w-full h-full object-cover"
-            />
-          </Card>
+          <div className="flex flex-col gap-8 md:flex-row md:gap-4">
+            <div className="flex flex-col gap-2">
+              {product.imageUrls.map((img, index) => (
+                <Card
+                  key={index}
+                  onClick={() => handleImageClick(index)}
+                  className={`w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 transition-all ${selectedImageIndex === index
+                      ? "border-slate-500"
+                      : "border-transparent"
+                    }`}
+                >
+                  <CardMedia
+                    component="img"
+                    image={img}
+                    height="80"
+                    alt={`Thumbnail ${index + 1}`}
+                    className="object-cover w-full h-full"
+                  />
+                </Card>
+              ))}
+            </div>
+            <div className="flex-grow">
+              <Card className="overflow-hidden">
+                <CardMedia
+                  component="img"
+                  height="80"
+                  image={product.imageUrls[selectedImageIndex]}
+                  alt={`Product image ${selectedImageIndex + 1}`}
+                  className="w-full h-full object-cover aspect-[3/4]"
+                />
+              </Card>
+            </div>
+          </div>
         </div>
 
         <div className="md:w-1/2 md:space-y-4">
