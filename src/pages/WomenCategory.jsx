@@ -4,7 +4,6 @@ import { Box, Grid } from '@mui/material';
 import axios from 'axios';
 import ProductCard2 from '../components/Product/ProductCard2';
 
-
 const getAllWomenItems = async () => {
   const response = await axios.get('http://localhost:9191/api/v1/products/category/2');
   return response.data?.data || [];
@@ -19,15 +18,15 @@ const WomenCategory = () => {
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchWomenProducts = async () => {
       try {
         const data = await getAllWomenItems(); 
         setProducts(data);
       } catch (error) {
-        console.error("Failed to fetch products", error);
+        console.error("Failed to fetch women cloths", error);
       }
     };
-    fetchProducts();
+    fetchWomenProducts();
   }, []);
 
   const filters = {
@@ -45,6 +44,7 @@ const WomenCategory = () => {
       "UCB",
       "HRX",
     ],
+
   };
 
   const handleFilterChange = (e) => {
@@ -90,11 +90,11 @@ const WomenCategory = () => {
 
   const handleWishlist = (product) => {
     setWishlist((prevWishlist) => {
-        if (prevWishlist.some((item) => item.id === product.id)) {
-            return prevWishlist; 
-        } else {
-            return [...prevWishlist, product]; 
-        }
+      if (prevWishlist.some((item) => item.id === product.id)) {
+        return prevWishlist;
+      } else {
+        return [...prevWishlist, product];
+      }
     });
 };
 
@@ -124,9 +124,8 @@ const WomenCategory = () => {
                 />
               </Grid>
             ))}
-          </Grid>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </Box>
   );
 };

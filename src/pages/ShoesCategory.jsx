@@ -5,6 +5,7 @@ import { Box, Grid } from '@mui/material';
 import axios from 'axios';
 import ProductCard2 from '../components/Product/ProductCard2';
 
+
 const ShoesCategory = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -14,7 +15,7 @@ const ShoesCategory = () => {
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchShoes = async () => {
       try {
         const response = await axios.get(
           "http://localhost:9191/api/v1/products/category/4"
@@ -25,8 +26,9 @@ const ShoesCategory = () => {
         console.error("Error fetching products:", error);
       }
     };
-    fetchProducts();
+    fetchShoes();
   }, []);
+
 
   const filters = {
     categories: ['Sneakers', 'Casual Shoes', 'Formal Shoes', 'School Shoes'],
@@ -112,9 +114,8 @@ const ShoesCategory = () => {
                 />
               </Grid>
             ))}
-          </Grid>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </Box>
   );
 };

@@ -4,6 +4,7 @@ import { Box, Grid } from "@mui/material";
 import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
 
+
 const KidsCategory = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -50,6 +51,7 @@ const KidsCategory = () => {
       "UCB",
       "HRX",
     ],
+
   };
 
   const handleFilterChange = (e) => {
@@ -129,9 +131,8 @@ const KidsCategory = () => {
                 />
               </Grid>
             ))}
-          </Grid>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </Box>
   );
 };

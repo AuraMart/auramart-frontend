@@ -2,15 +2,15 @@
 var items = [
     {
         title: "shopping",
-        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704858/AuraMart-images/carosel1_hujvfe.png"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1733390783/AuraMart-images/1_n6kuq9.png"
     },
     {
-        title: "hand bags",
-        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704858/AuraMart-images/carosel2_ojmoat.png"
+        title: "shoes",
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1733390782/AuraMart-images/2_f0ztte.png"
     },
     {
         title: "women clothes",
-        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/carosel3_iwlpjw.png"
+        image: "https://res.cloudinary.com/dcn64hytu/image/upload/v1733390783/AuraMart-images/3_ffeann.png"
     }
 
 

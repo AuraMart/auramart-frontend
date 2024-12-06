@@ -52,6 +52,7 @@ const MenCategory = () => {
       "UCB",
       "HRX",
     ],
+
   };
 
   const handleFilterChange = (e) => {
@@ -131,9 +132,8 @@ const MenCategory = () => {
                 />
               </Grid>
             ))}
-          </Grid>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </Box>
   );
 };
