@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import md5 from "md5";
 
-const PayHere = () => {
+const PayHere = ({formData}) => {
   const [selectedMethod, setSelectedMethod] = useState("creditCard");
 
   const handleMethodChange = (method) => {
@@ -10,7 +10,8 @@ const PayHere = () => {
 
   const orderId = "123456";
   const name = "Iphone16";
-  const amount = 1000;
+  const amount = localStorage.getItem("subTotal")
+  const orderItems = JSON.parse(localStorage.getItem("cart")) || [];
   const merchantId = "1228662";
   const merchantSecret = "NTAzMjg2MjQyMjg1NjI5NjI1NTI5MTM0MTQwNzI0MTY5Mzg5Mzg=";
 
@@ -33,7 +34,7 @@ const PayHere = () => {
     cancel_url: "http://sample.com/cancel",
     notify_url: "http://sample.com/notify",
     order_id: orderId,
-    items: name,
+    items: orderItems.map((item) => item.name).join(", "),
     amount: amount,
     currency: currency,
     first_name: "kanishka",
@@ -47,18 +48,27 @@ const PayHere = () => {
   };
 
   useEffect(() => {
-    window.payhere.onCompleted = function onCompleted(paymentId) {
-      console.log("Payment completed. Payment Id:" + paymentId);
-    };
-
-    window.payhere.onDismissed = function onDismissed() {
-      console.log("Payment dismissed");
-    };
-
-    window.payhere.onError = function onError(error) {
-      console.log("Error:" + error);
-    };
+    console.log(formData)
+    console.log(orderItems.map((item) => item.name).join(", "),)
+    if (window.payhere) {
+      window.payhere.onCompleted = function onCompleted(paymentId) {
+        
+        console.log("Payment completed. Payment Id:" + paymentId);
+      };
+  
+      window.payhere.onDismissed = function onDismissed() {
+        console.log("Payment dismissed");
+      };
+  
+      window.payhere.onError = function onError(error) {
+        console.log("Error:" + error);
+      };
+    } else {
+      alert("PayHere library is not loaded.")
+      console.warn("PayHere library is not loaded.");
+    }
   }, []);
+  
 
   const paymentDone = () => {
     console.log("paymentDone");
@@ -73,15 +83,15 @@ const PayHere = () => {
   return (
     //max-w-lg mx-auto p-6 border border-gray-300 rounded-lg shadow-md bg-white
     <div className="">
-      <h2 className="mb-2 text-2xl font-semibold text-gray-800">
+      {/* <h2 className="mb-2 text-2xl font-semibold text-gray-800">
         Payment Method
       </h2>
       <p className="mb-6 text-sm text-gray-500">
         All transactions are secure and encrypted.
-      </p>
+      </p> */}
 
       {/* Credit Card Section */}
-      <div
+      {/* <div
         className={`p-4 rounded-lg border ${
           selectedMethod === "creditCard"
             ? "border-purple-600"
@@ -138,10 +148,10 @@ const PayHere = () => {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* Cash on Delivery Section */}
-      <div
+      {/* <div
         className={`p-4 rounded-lg border ${
           selectedMethod === "cashOnDelivery"
             ? "border-purple-600"
@@ -165,10 +175,10 @@ const PayHere = () => {
             Pay with cash upon delivery.
           </p>
         )}
-      </div>
+      </div> */}
 
       {/* PayPal Section */}
-      <div
+      {/* <div
         className={`p-4 rounded-lg border ${
           selectedMethod === "paypal" ? "border-purple-600" : "border-gray-300"
         }`}
@@ -183,7 +193,7 @@ const PayHere = () => {
           />
           <span className="text-lg font-medium text-gray-700">Paypal</span>
         </label>
-      </div>
+      </div> */}
 
       {/* Submit Button */}
       <div className="flex justify-center mt-6">

@@ -9,7 +9,7 @@ function Payment() {
         {/* Main Content */}
         <div className="flex-1">
           <CheckoutForm/>
-        </div>
+        </div> 
 
         {/* Fixed Order Summary */}
         <div className="w-1/3 ml-6">
