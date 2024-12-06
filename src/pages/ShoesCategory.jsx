@@ -5,24 +5,24 @@ import { Box, Grid } from '@mui/material';
 import axios from 'axios';
 import ProductCard2 from '../components/Product/ProductCard2';
 
-const getAllShoes = async () => {
-  const response = await axios.get('http://localhost:8080/api/shoes');
-  return response.data;
-};
-
 const ShoesCategory = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [priceRange, setPriceRange] = useState([500, 10000]);
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getAllShoes();
-        setProducts(data);
+        const response = await axios.get(
+          "http://localhost:9191/api/v1/products/category/4"
+        );
+        console.log("response", response.data?.data);
+        setProducts(response.data?.data || []);
       } catch (error) {
-        console.error('Failed to fetch products', error);
+        console.error("Error fetching products:", error);
       }
     };
     fetchProducts();
@@ -30,21 +30,55 @@ const ShoesCategory = () => {
 
   const filters = {
     categories: ['Sneakers', 'Casual Shoes', 'Formal Shoes', 'School Shoes'],
-    colors: ['#ff0000', '#0000ff', '#00ff00', '#000000', '#ffffff', '#ff69b4'],
+    colors: ['Black', 'White', 'Brown'],
+    brands: [
+      "Nike",
+      "Adidas",
+      "Puma",
+      "Reebok",
+      "Under Armour",
+      "New Balance",
+      "Asics",
+      "Saucony",
+      "Brooks",
+    ],
   };
 
   const handleFilterChange = (e) => {
     const { name, value, checked } = e.target;
-    if (name === 'category') {
+    console.log("name", name, value, checked);
+    if (name === "category") {
       setSelectedCategories((prev) =>
-        checked ? [...prev, value] : prev.filter((category) => category !== value)
+        checked ? [...prev, value] : prev.filter((cat) => cat !== value)
       );
-    } else if (name === 'color') {
+    } else if (name === "color") {
       setSelectedColors((prev) =>
-        checked ? [...prev, value] : prev.filter((color) => color !== value)
+        prev.includes(value) ? prev.filter((col) => col !== value) : [...prev, value]
+      );
+    } else if (name === "brand") {
+      setSelectedBrands((prev) =>
+        checked ? [...prev, value] : prev.filter((br) => br !== value)
       );
     }
   };
+
+  const handlePriceChange = (newValue) => setPriceRange(newValue);
+
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory =
+      selectedCategories.length === 0 || selectedCategories.includes(product.name);
+    const matchesColor =
+      selectedColors.length === 0 || selectedColors.includes(product.color);
+    const matchesBrand =
+      selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+    const matchesPrice =
+      product.price >= priceRange[0] && product.price <= priceRange[1];
+
+    return (
+      matchesCategory && matchesColor && matchesBrand && matchesPrice
+    );
+  });
+
 
   const handleWishlist = (product) => {
     setWishlist((prevWishlist) => {
@@ -56,15 +90,8 @@ const ShoesCategory = () => {
     });
 };
 
-  
-  const filteredProducts = products.filter(
-    (product) =>
-      (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
-      (selectedColors.length === 0 || selectedColors.includes(product.color))
-  );
-
   return (
-    <Box>
+    <Box sx={{ paddingTop: "50px" }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4} md={3}>
           <ShoesSidebar filters={filters} onFilterChange={handleFilterChange} />
@@ -78,8 +105,9 @@ const ShoesCategory = () => {
                   name={product.name}
                   brand={product.brand}
                   price={product.price}
-                  image={product.image} 
-                  availability={product.availability}
+                  color={product.color}
+                  size={product.size}
+                  url={product.imageUrls[0]}
                   onWishlistClick={handleWishlist}
                 />
               </Grid>

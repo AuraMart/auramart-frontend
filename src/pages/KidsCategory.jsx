@@ -1,83 +1,130 @@
-import React, { useState } from 'react';
-import KidsSidebar from '../components/Product/KidsSidebar';
-import { Box, Grid} from '@mui/material';
-import { getAllKidsProducts } from '../Services/KidsService';
-import { useEffect } from 'react';
-// import axios from 'axios';
-import ProductCard2 from '../components/Product/ProductCard2';
-
+import React, { useState, useEffect } from "react";
+import MenSidebar from "../components/Product/MenSidebar";
+import { Box, Grid } from "@mui/material";
+import axios from "axios";
+import ProductCard2 from "../components/Product/ProductCard2";
 
 const KidsCategory = () => {
-    const [products, setProducts] = useState([]);
-    const [selectedCategories, setSelectedCategories] = useState([]);
-    const [selectedColors, setSelectedColors] = useState([]);
-    const [wishlist, setWishlist] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [priceRange, setPriceRange] = useState([500, 10000]);
+  const [wishlist, setWishlist] = useState([]);
 
-
-      
-      useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const data = await getAllKidsProducts();
-                setProducts(data);
-            } catch (error) {
-                console.error("Failed to fetch products", error);
-            }
-        };
-        fetchProducts();
-    }, []);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:9191/api/v1/products/category/3"
+        );
+        console.log("response", response.data?.data);
+        setProducts(response.data?.data || []);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const filters = {
-    categories: ['Tops', 'T-Shirts', 'Pants', 'Skirts'],
-    colors: ['#ff0000', '#0000ff', '#00ff00', '#000000', '#ffffff', '#ff69b4'],
+    categories: [
+      "Tops",
+      "T-Shirts",
+      "Pants",
+      "Skirts",
+      "Dresses",
+      
+    ],
+    colors: ["Black", "White", "Yellow", "Green", "Red", "Blue"],
+    sizes: ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL'],
+    brands: [
+      "Nike",
+      "Adidas",
+      "Puma",
+      "Reebok",
+      "Levis",
+      "Wrangler",
+      "Pepe Jeans",
+      "UCB",
+      "HRX",
+    ],
   };
 
   const handleFilterChange = (e) => {
     const { name, value, checked } = e.target;
+    console.log("name", name, value, checked);
     if (name === "category") {
-      setSelectedCategories((prev) => {
-          return checked
-              ? [...prev, value] 
-              : prev.filter((category) => category !== value);
-      });
-  } else if (name === "color") {
-      setSelectedColors((prev) => {
-          return checked
-              ? [...prev, value] 
-              : prev.filter((color) => color !== value); 
-      });
-  }
-    
+      setSelectedCategories((prev) =>
+        checked ? [...prev, value] : prev.filter((cat) => cat !== value)
+      );
+    } else if (name === "color") {
+      setSelectedColors((prev) =>
+        prev.includes(value) ? prev.filter((col) => col !== value) : [...prev, value]
+      );
+    } else if (name === "size") {
+      setSelectedSizes((prev) =>
+        prev.includes(value) ? prev.filter((sz) => sz !== value) : [...prev, value]
+      );
+    } else if (name === "brand") {
+      setSelectedBrands((prev) =>
+        checked ? [...prev, value] : prev.filter((br) => br !== value)
+      );
+    }
   };
+
+  const handlePriceChange = (newValue) => setPriceRange(newValue);
+
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory =
+      selectedCategories.length === 0 || selectedCategories.includes(product.name);
+    const matchesColor =
+      selectedColors.length === 0 || selectedColors.includes(product.color);
+    const matchesSize =
+      selectedSizes.length === 0 || selectedSizes.includes(product.size);
+    const matchesBrand =
+      selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+    const matchesPrice =
+      product.price >= priceRange[0] && product.price <= priceRange[1];
+
+    return (
+      matchesCategory && matchesColor && matchesSize && matchesBrand && matchesPrice
+    );
+  });
 
   const handleWishlist = (product) => {
     setWishlist((prevWishlist) => {
-        if (prevWishlist.some((item) => item.id === product.id)) {
-            return prevWishlist; 
-        } else {
-            return [...prevWishlist, product]; 
-        }
+      if (prevWishlist.some((item) => item.id === product.id)) {
+        return prevWishlist;
+      } else {
+        return [...prevWishlist, product];
+      }
     });
-};
-
+  };
 
   return (
-    <Box>
+    <Box sx={{ paddingTop: "50px" }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4} md={3}>
-          <KidsSidebar filters={filters} onFilterChange={handleFilterChange} />
+          <MenSidebar
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            onPriceChange={handlePriceChange}
+          />
         </Grid>
         <Grid item xs={12} sm={8} md={9}>
           <Grid container spacing={2}>
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
                 <ProductCard2
                   product={product}
                   name={product.name}
                   brand={product.brand}
                   price={product.price}
-                  url={product.url}
-                  availability={product.availability}
+                  color={product.color}
+                  size={product.size}
+                  url={product.imageUrls[0]}
                   onWishlistClick={handleWishlist}
                 />
               </Grid>

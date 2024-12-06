@@ -18,6 +18,7 @@ import Navbar from './components/Navigation/Navbar';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 
+
 function App() {
  
 
@@ -31,7 +32,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<Home/>} />
-          <Route path="/kidsCategory" element={<KidsCategory/>} />
+          <Route path="/kidsCategory" element={<KidsCategory />} />
           <Route path="/ShoesCategory" element={<ShoesCategory/>} />
           <Route path="/WomenCategory" element={<WomenCategory/>} />
           <Route path="/MenCategory" element={<MenCategory/>} />
