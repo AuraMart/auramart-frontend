@@ -22,9 +22,15 @@ const LoginForm = () => {
 
       if (response.status === 200) {
 
+        if(response.data.data === "ADMIN") {
+          navigate('/admin');
+        }
+
+        else {        
         const userId = response.data.data; 
         localStorage.setItem('userId', userId);
-        navigate('/');  
+        navigate('/');  }
+
       } else {
         setErrorMessage('Invalid login credentials. Please try again.');
       }
