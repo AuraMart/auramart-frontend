@@ -144,7 +144,7 @@ import KidsCategory from './pages/KidsCategory';
 import ShoesCategory from './pages/ShoesCategory';
 import WomenCategory from './pages/WomenCategory';
 import MenCategory from './pages/MenCategory';
-import ProductPage from "./pages/productDetailPage";
+import ProductPage from "./pages/productDetailPage/ProductPage";
 import Payment from './pages/Payment';
 import Navbar from './components/Navigation/Navbar';
 import ContactUs from './pages/ContactUs';
@@ -196,7 +196,7 @@ function App() {
              <Route path="/cart" element={<CartPage />} />
              <Route path="/wishlist" element={<WishlistPage/>} />
              {/* <Route path="/login" element={<AddProduct />} /> */}
-             {/* <Route path="/login" element={<ProductPage />} /> */}
+             <Route path="/product/:productId" element={<ProductPage />} />
              <Route path="payment" element={<Payment />} />
              <Route path="/contact" element={<ContactUs />} />
              <Route path="/about-us" element={<AboutUs />} />
