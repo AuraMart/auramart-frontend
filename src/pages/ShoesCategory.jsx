@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import ShoesSidebar from '../components/Product/ShoesSidebar';
-import ProductList from '../components/Product/ProductList';
-import { Box, Grid } from '@mui/material';
-import axios from 'axios';
-import ProductCard2 from '../components/Product/ProductCard2';
-
+import React, { useEffect, useState } from "react";
+import ShoesSidebar from "../components/Product/ShoesSidebar";
+import ProductList from "../components/Product/ProductList";
+import { Box, Grid2 } from "@mui/material";
+import axios from "axios";
+import ProductCard2 from "../components/Product/ProductCard2";
 
 const ShoesCategory = () => {
   const [products, setProducts] = useState([]);
@@ -29,10 +28,9 @@ const ShoesCategory = () => {
     fetchShoes();
   }, []);
 
-
   const filters = {
-    categories: ['Sneakers', 'Casual Shoes', 'Formal Shoes', 'School Shoes'],
-    colors: ['Black', 'White', 'Brown'],
+    categories: ["Sneakers", "Casual Shoes", "Formal Shoes", "School Shoes"],
+    colors: ["Black", "White", "Brown"],
     brands: [
       "Nike",
       "Adidas",
@@ -55,7 +53,9 @@ const ShoesCategory = () => {
       );
     } else if (name === "color") {
       setSelectedColors((prev) =>
-        prev.includes(value) ? prev.filter((col) => col !== value) : [...prev, value]
+        prev.includes(value)
+          ? prev.filter((col) => col !== value)
+          : [...prev, value]
       );
     } else if (name === "brand") {
       setSelectedBrands((prev) =>
@@ -68,7 +68,8 @@ const ShoesCategory = () => {
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
-      selectedCategories.length === 0 || selectedCategories.includes(product.name);
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(product.name);
     const matchesColor =
       selectedColors.length === 0 || selectedColors.includes(product.color);
     const matchesBrand =
@@ -76,32 +77,29 @@ const ShoesCategory = () => {
     const matchesPrice =
       product.price >= priceRange[0] && product.price <= priceRange[1];
 
-    return (
-      matchesCategory && matchesColor && matchesBrand && matchesPrice
-    );
+    return matchesCategory && matchesColor && matchesBrand && matchesPrice;
   });
-
 
   const handleWishlist = (product) => {
     setWishlist((prevWishlist) => {
-        if (prevWishlist.some((item) => item.id === product.id)) {
-            return prevWishlist; 
-        } else {
-            return [...prevWishlist, product]; 
-        }
+      if (prevWishlist.some((item) => item.id === product.id)) {
+        return prevWishlist;
+      } else {
+        return [...prevWishlist, product];
+      }
     });
-};
+  };
 
   return (
     <Box sx={{ paddingTop: "50px" }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={4} md={3}>
+      <Grid2 container spacing={2}>
+        <Grid2 item xs={12} sm={4} md={3}>
           <ShoesSidebar filters={filters} onFilterChange={handleFilterChange} />
-        </Grid>
-        <Grid item xs={12} sm={8} md={9}>
-          <Grid container spacing={2}>
+        </Grid2>
+        <Grid2 item xs={12} sm={8} md={9}>
+          <Grid2 container spacing={2}>
             {filteredProducts.map((product) => (
-              <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+              <Grid2 item key={product.id} xs={12} sm={6} md={4} lg={3}>
                 <ProductCard2
                   product={product}
                   name={product.name}
@@ -112,8 +110,9 @@ const ShoesCategory = () => {
                   url={product.imageUrls[0]}
                   onWishlistClick={handleWishlist}
                 />
-              </Grid>
+              </Grid2>
             ))}
+          </Grid2>
         </Grid2>
       </Grid2>
     </Box>

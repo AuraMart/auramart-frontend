@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MenSidebar from "../components/Product/MenSidebar";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid2 } from "@mui/material";
 import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
+import { getAllMenProducts } from "../Services/mainCategoryServices";
 
 const MenCategory = () => {
   const [products, setProducts] = useState([]);
@@ -40,7 +41,7 @@ const MenCategory = () => {
       "Denim Trousers",
     ],
     colors: ["Black", "White", "Yellow", "Green", "Red", "Blue"],
-    sizes: ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL'],
+    sizes: ["XXS", "XS", "S", "M", "L", "XL", "XXL", "3XL", "4XL"],
     brands: [
       "Nike",
       "Adidas",
@@ -52,7 +53,6 @@ const MenCategory = () => {
       "UCB",
       "HRX",
     ],
-
   };
 
   const handleFilterChange = (e) => {
@@ -64,11 +64,15 @@ const MenCategory = () => {
       );
     } else if (name === "color") {
       setSelectedColors((prev) =>
-        prev.includes(value) ? prev.filter((col) => col !== value) : [...prev, value]
+        prev.includes(value)
+          ? prev.filter((col) => col !== value)
+          : [...prev, value]
       );
     } else if (name === "size") {
       setSelectedSizes((prev) =>
-        prev.includes(value) ? prev.filter((sz) => sz !== value) : [...prev, value]
+        prev.includes(value)
+          ? prev.filter((sz) => sz !== value)
+          : [...prev, value]
       );
     } else if (name === "brand") {
       setSelectedBrands((prev) =>
@@ -81,7 +85,8 @@ const MenCategory = () => {
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
-      selectedCategories.length === 0 || selectedCategories.includes(product.name);
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(product.name);
     const matchesColor =
       selectedColors.length === 0 || selectedColors.includes(product.color);
     const matchesSize =
@@ -92,7 +97,11 @@ const MenCategory = () => {
       product.price >= priceRange[0] && product.price <= priceRange[1];
 
     return (
-      matchesCategory && matchesColor && matchesSize && matchesBrand && matchesPrice
+      matchesCategory &&
+      matchesColor &&
+      matchesSize &&
+      matchesBrand &&
+      matchesPrice
     );
   });
 
@@ -108,18 +117,18 @@ const MenCategory = () => {
 
   return (
     <Box sx={{ paddingTop: "50px" }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={4} md={3}>
+      <Grid2 container spacing={2}>
+        <Grid2 item xs={12} sm={4} md={3}>
           <MenSidebar
             filters={filters}
             onFilterChange={handleFilterChange}
             onPriceChange={handlePriceChange}
           />
-        </Grid>
-        <Grid item xs={12} sm={8} md={9}>
-          <Grid container spacing={2}>
+        </Grid2>
+        <Grid2 item xs={12} sm={8} md={9}>
+          <Grid2 container spacing={2}>
             {filteredProducts.map((product) => (
-              <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+              <Grid2 item key={product.id} xs={12} sm={6} md={4} lg={3}>
                 <ProductCard2
                   product={product}
                   name={product.name}
@@ -130,8 +139,9 @@ const MenCategory = () => {
                   url={product.imageUrls[0]}
                   onWishlistClick={handleWishlist}
                 />
-              </Grid>
+              </Grid2>
             ))}
+          </Grid2>
         </Grid2>
       </Grid2>
     </Box>
