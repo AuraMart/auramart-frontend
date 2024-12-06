@@ -52,11 +52,26 @@ const ClothingCat = ({product}) => {
   const [selectedSizeID, setSelectedSizeID] = useState(1);
   const [quantity, setQuantity] = useState(1);
 
+  const [productSelection, setProductSelection] = useState({
+    color: productColors[0].color_value,
+    colorID: productColors[0].color_id,
+    size: "",
+    sizeID: null,
+    quantity: 1,
+    image: productColors[0].image,
+  });
+  
   const availableSizes = productSizes.filter(
     (size) =>
       productColors.find((color) => color.color_value === selectedColor)
         ?.color_id === size.color_id && size.quantity > 0
   );
+
+  const handleAddToCart = () => {
+    console.log("Clicked");
+    console.log("Adding to Cart:", productSelection);
+    // Proceed to add productSelection to the cart
+  };
 
   const handleColorChange = (colorId, colorValue) => {
     setSelectedColor(colorValue);
@@ -100,14 +115,16 @@ const ClothingCat = ({product}) => {
 // }
 
 const handleBuyNow = () => {
-  navigate("/payment", {
-    // state: {
-    //   id: product.id,
-    //   colorId: selectedColorID,
-    //   sizeId: selectedSizeID,
-    //   quantity: quantity,
-    // },
-  });
+  alert("Add to cart")
+
+  // navigate("/payment", {
+  //   // state: {
+  //   //   id: product.id,
+  //   //   colorId: selectedColorID,
+  //   //   sizeId: selectedSizeID,
+  //   //   quantity: quantity,
+  //   // },
+  // });
 };
 
 const handleWishList = () => {
@@ -123,12 +140,14 @@ const handleWishList = () => {
       <div className="flex flex-col gap-8 md:flex-row md:gap-x-16">
         <div className="flex gap-4 md:w-1/2 md:items-center">
           <div className="flex flex-col items-center w-20 gap-4">
-            {productColors.map((img, index) => (
+          {productColors.map((color, index) => (
               <Card
                 key={index}
-                onClick={() => setSelectedImage(index)}
+                onClick={() =>
+                  handleColorChange(color.color_id, color.color_value, color.image)
+                }
                 className={`w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 transition-all ${
-                  selectedImage === index
+                  productSelection.color === color.color_value
                     ? "border-slate-500"
                     : "border-transparent"
                 }`}
@@ -136,8 +155,8 @@ const handleWishList = () => {
                 <CardMedia
                   component="img"
                   height="80"
-                  image={img.image || productColors[0].image}
-                  alt={`Product thumbnail ${index + 1}`}
+                  image={color.image}
+                  alt={`Color ${color.color_name}`}
                   className="object-cover w-full h-full"
                 />
               </Card>
@@ -196,7 +215,7 @@ const handleWishList = () => {
           <Card className="flex-1 overflow-hidden">
             <CardMedia
               component="img"
-              image={productColors[selectedImage].image || productColors[0].image}
+              image={productSelection.image}
               alt="Main product view"
               className="w-full h-full object-cover aspect-[3/4]"
             />
@@ -327,6 +346,9 @@ const handleWishList = () => {
                 variant="contained"
                 className="flex items-center justify-center flex-1 gap-2 py-3 text-white rounded-lg hover:bg-purple-700"
                 startIcon={<ShoppingCart className="w-5 h-5" />}
+                
+                onClick={handleAddToCart}
+                
               >
                 Add to cart
               </Button>

@@ -154,6 +154,7 @@ import WishlistPage from './pages/WishListPage/WishListPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import AddProduct from './pages/Admin/AddProduct';
+import Checkpage from './pages/Checkpage';
 
 // Customer Routes Component
 const CustomerRoutes = () => {
@@ -195,9 +196,12 @@ function App() {
              <Route path="/admin/*" element={<AdminRoutes />} />
              <Route path="/cart" element={<CartPage />} />
              <Route path="/wishlist" element={<WishlistPage/>} />
-             {/* <Route path="/login" element={<AddProduct />} /> */}
-             {/* <Route path="/login" element={<ProductPage />} /> */}
-             <Route path="payment" element={<Payment />} />
+             <Route path="/add" element={<AddProduct />} />
+             <Route path="/product" element={<ProductPage />} />
+             {/* <Route path="product" element={<ProductPage />} /> */}
+             <Route path="/payment" element={<Payment />} />
+             <Route path="/SignUp" element={<SignupPage />} />
+             <Route path="/check" element={<Checkpage/>} />
              
         </Routes>
         <FooterSection />
