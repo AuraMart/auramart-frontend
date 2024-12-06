@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import ShoesSidebar from '../components/Product/ShoesSidebar';
-import { Box, Grid2 } from '@mui/material';
-import { getAllShoes } from '../Services/mainCategoryServices';
-import { ProductCard } from '../components/Product/ProductCard';
+import ProductList from '../components/Product/ProductList';
+import { Box, Grid } from '@mui/material';
+import axios from 'axios';
+import ProductCard2 from '../components/Product/ProductCard2';
+
 
 const ShoesCategory = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [priceRange, setPriceRange] = useState([500, 10000]);
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
     const fetchShoes = async () => {
       try {
-        const response = await getAllShoes();
-        setProducts(Array.isArray(response.data) ? response.data : []);
+        const response = await axios.get(
+          "http://localhost:9191/api/v1/products/category/4"
+        );
+        console.log("response", response.data?.data);
+        setProducts(response.data?.data || []);
       } catch (error) {
-        console.error("Failed to fetch shoes", error);
+        console.error("Error fetching products:", error);
       }
     };
     fetchShoes();
@@ -25,21 +32,55 @@ const ShoesCategory = () => {
 
   const filters = {
     categories: ['Sneakers', 'Casual Shoes', 'Formal Shoes', 'School Shoes'],
-    colors: ['#ff0000', '#0000ff', '#00ff00', '#000000', '#ffffff', '#ff69b4'],
+    colors: ['Black', 'White', 'Brown'],
+    brands: [
+      "Nike",
+      "Adidas",
+      "Puma",
+      "Reebok",
+      "Under Armour",
+      "New Balance",
+      "Asics",
+      "Saucony",
+      "Brooks",
+    ],
   };
 
   const handleFilterChange = (e) => {
     const { name, value, checked } = e.target;
-    if (name === 'category') {
+    console.log("name", name, value, checked);
+    if (name === "category") {
       setSelectedCategories((prev) =>
-        checked ? [...prev, value] : prev.filter((category) => category !== value)
+        checked ? [...prev, value] : prev.filter((cat) => cat !== value)
       );
-    } else if (name === 'color') {
+    } else if (name === "color") {
       setSelectedColors((prev) =>
-        checked ? [...prev, value] : prev.filter((color) => color !== value)
+        prev.includes(value) ? prev.filter((col) => col !== value) : [...prev, value]
+      );
+    } else if (name === "brand") {
+      setSelectedBrands((prev) =>
+        checked ? [...prev, value] : prev.filter((br) => br !== value)
       );
     }
   };
+
+  const handlePriceChange = (newValue) => setPriceRange(newValue);
+
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory =
+      selectedCategories.length === 0 || selectedCategories.includes(product.name);
+    const matchesColor =
+      selectedColors.length === 0 || selectedColors.includes(product.color);
+    const matchesBrand =
+      selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+    const matchesPrice =
+      product.price >= priceRange[0] && product.price <= priceRange[1];
+
+    return (
+      matchesCategory && matchesColor && matchesBrand && matchesPrice
+    );
+  });
+
 
   const handleWishlist = (product) => {
     setWishlist((prevWishlist) => {
@@ -51,29 +92,27 @@ const ShoesCategory = () => {
     });
 };
 
-  
-  const filteredProducts = products.filter(
-    (product) =>
-      (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
-      (selectedColors.length === 0 || selectedColors.includes(product.color))
-  );
-
   return (
-    <Box>
-      <Grid2 container spacing={8}>
-        <Grid2 item xs={12} sm={4} md={3}>
+    <Box sx={{ paddingTop: "50px" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={4} md={3}>
           <ShoesSidebar filters={filters} onFilterChange={handleFilterChange} />
-        </Grid2>
-        <Grid2 container spacing={3} className="mt-4">
-          {Array.isArray(products) &&
-            products.map((product) => (
-              <ProductCard
-                key={product.id}
-                name={product.name} // Match field from API
-                brand={product.brand}
-                price={product.price}
-                url={product.imgUrls}
-              />
+        </Grid>
+        <Grid item xs={12} sm={8} md={9}>
+          <Grid container spacing={2}>
+            {filteredProducts.map((product) => (
+              <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+                <ProductCard2
+                  product={product}
+                  name={product.name}
+                  brand={product.brand}
+                  price={product.price}
+                  color={product.color}
+                  size={product.size}
+                  url={product.imageUrls[0]}
+                  onWishlistClick={handleWishlist}
+                />
+              </Grid>
             ))}
         </Grid2>
       </Grid2>
