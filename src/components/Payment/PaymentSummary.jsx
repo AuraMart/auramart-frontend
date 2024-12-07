@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const CartSummary = ({ subtotal, shippingTotal, total }) => {
+const PaymentSummary = ({ subtotal, shippingTotal, total }) => {
 
   const handleNavigation = () => {
     navigate('/payment');
@@ -54,7 +54,7 @@ const CartSummary = ({ subtotal, shippingTotal, total }) => {
           <span>Rs {total.toFixed(2)}</span>
         </div>
       </div>
-      <button
+      {/* <button
         className="w-full py-2 mt-4 text-white bg-purple-600 rounded"
         onClick={() => {
           handleNavigation()
@@ -64,9 +64,9 @@ const CartSummary = ({ subtotal, shippingTotal, total }) => {
       </button>
       <button className="w-full py-2 mt-2 border border-gray-300 rounded">
         Continue Shopping
-      </button>
+      </button> */}
     </div>
   );
 };
 
-export default CartSummary;
+export default PaymentSummary;

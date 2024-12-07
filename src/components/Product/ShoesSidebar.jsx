@@ -23,12 +23,13 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-const ShoesSidebar = ({ filters, onFilterChange }) => {
+const ShoesSidebar = ({ filters, onFilterChange, onPriceChange }) => {
 
   const [value, setValue] = React.useState([500, 10000]);
 
-  const handleChange = (event, newValue) => {
+  const handlePriceChange = (event, newValue) => {
     setValue(newValue);
+    onPriceChange(newValue);
   };
   return (
     <Box sx={{ width: 250, padding: 2 }}>
@@ -41,83 +42,93 @@ const ShoesSidebar = ({ filters, onFilterChange }) => {
         </MenuItem>
         <Divider />
 
+        {/* Brands */}
         <MenuItem>
-          <ListItemText>
-          <Typography gutterBottom>Categories</Typography>
-          <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 1,
-      }}
-    >
-      <Button variant="outlined">Men</Button>
-      <Button variant="outlined">Women</Button>
-      <Button variant="outlined">Kids</Button>
-    </Box>
-          </ListItemText>
-        </MenuItem>
-        <Divider />
-        
-        <MenuItem>
-        <Typography gutterBottom>Style</Typography>
-        </MenuItem>
-        <MenuItem>
-          <ListItemText inset>Sneakers</ListItemText>
-        </MenuItem>
-        <MenuItem>
-          <ListItemText inset>Casual Shoes</ListItemText>
-        </MenuItem>
-        <MenuItem>
-          <ListItemText inset>Formal Shoes</ListItemText>
-        </MenuItem>
-        <MenuItem>
-          <ListItemText inset>School shoes</ListItemText>
-        </MenuItem>
-        <Divider />
-        
-        <MenuItem>
-          <ListItemText>
-          <Typography gutterBottom>Price</Typography>
-        {/* <Slider
-          defaultValue={500}
-          aria-labelledby="price-slider"
-          valueLabelDisplay="auto"
-          min={500}
-          max={10000}
-        /> */}
-        <Slider
-        getAriaLabel={() => 'Temperature range'}
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        getAriaValueText={valuetext}
-        min={500}
-          max={10000}
-      />
-          </ListItemText>
-        </MenuItem>
-        <Divider />
+            <FormControl component="fieldset">
+              <Typography variant="subtitle1">Brands</Typography>
+              <FormGroup>
+                {(filters?.brands || []).map((brand, index) => (
+                  <FormControlLabel
+                    key={index}
+                    control={
+                      <Checkbox
+                        onChange={onFilterChange}
+                        name="brand"
+                        value={brand}
+                      />
+                    }
+                    label={brand}
+                  />
+                ))}
+              </FormGroup>
+            </FormControl>
+          </MenuItem>
+          <Divider />
 
-        <MenuItem>
-          <ListItemText>
-          <Typography gutterBottom>Colors</Typography>
-        <Box sx={{ display: 'flex', gap: 1 }}>
-          {filters.colors.map((color, index) => (
-            <Button
-              key={index}
-              sx={{
-                backgroundColor: color,
-                minWidth: 30,
-                height: 30,
-                borderRadius: '50%',
-              }}
-            />
-          ))}
-        </Box>
-          </ListItemText>
-        </MenuItem>
-        <Divider />
+          {/* Price Slider */}
+          <MenuItem>
+            <ListItemText>
+              <Typography gutterBottom>Price Range</Typography>
+              <Slider
+                value={value}
+                onChange={handlePriceChange}
+                valueLabelDisplay="auto"
+                min={500}
+                max={10000}
+              />
+            </ListItemText>
+          </MenuItem>
+          <Divider />
+
+          {/* Colors */}
+          <MenuItem>
+            <ListItemText>
+              <Typography gutterBottom>Colors</Typography>
+              <Box sx={{ display: "flex", gap: 1 }}>
+                {filters.colors.map((color, index) => (
+                  <Button
+                    key={index}
+                    sx={{
+                      backgroundColor: color,
+                      minWidth: 30,
+                      height: 30,
+                      borderRadius: "50%",
+                    }}
+                    onClick={() =>
+                      onFilterChange({
+                        target: { name: 'color', value: color, checked: true },
+                      })
+                    }
+                    name="color"
+                    value={color}
+                  />
+                ))}
+              </Box>
+            </ListItemText>
+          </MenuItem>
+          <Divider />
+
+          {/* Categories */}
+          <MenuItem>
+            <FormControl component="fieldset">
+              <Typography variant="subtitle1">Categories</Typography>
+              <FormGroup>
+                {filters.categories.map((category, index) => (
+                  <FormControlLabel
+                    key={index}
+                    control={
+                      <Checkbox
+                        onChange={onFilterChange}
+                        name="category"
+                        value={category}
+                      />
+                    }
+                    label={category}
+                  />
+                ))}
+              </FormGroup>
+            </FormControl>
+          </MenuItem>
 
       </MenuList>
     </Paper>
