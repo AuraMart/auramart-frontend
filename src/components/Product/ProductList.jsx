@@ -1,18 +1,18 @@
 
 import React from 'react';
-import { Grid } from '@mui/material';
-import ProductCard2 from './ProductCard2';
+import { Grid2 } from '@mui/material';
+import ProductCard from './ProductCard';
 
 
 const ProductList = ({ products }) => {
   return (
-    <Grid container spacing={2}>
+    <Grid2 container spacing={2}>
       {products.map((product) => (
-        <Grid item key={product.id} xs={12} sm={6} md={4}>
-          <ProductCard2 product={product} />
-        </Grid>
+        <Grid2 item key={product.id} xs={12} sm={6} md={4}>
+          <ProductCard product={product} />
+        </Grid2>
       ))}
-    </Grid>
+    </Grid2>
   );
 };
 

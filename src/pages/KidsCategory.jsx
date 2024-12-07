@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import KidsSidebar from "../components/Product/KidsSidebar";
 import { Box, Grid2 } from "@mui/material";
-import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
+import { getAllKidsProducts } from "../Services/mainCategoryServices";
 
 const KidsCategory = () => {
   const [products, setProducts] = useState([]);
@@ -16,9 +16,7 @@ const KidsCategory = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:9191/api/v1/products/category/3"
-        );
+        const response = await getAllKidsProducts();
         console.log("response", response.data?.data);
         setProducts(response.data?.data || []);
       } catch (error) {
@@ -115,7 +113,7 @@ const KidsCategory = () => {
             onPriceChange={handlePriceChange}
           />
         </Grid2>
-        <Grid2 item xs={12} sm={8} md={9}>
+        <Grid2 item xs={12} sm={8} md={9} >
           <Grid2 container spacing={2}>
             {filteredProducts.map((product) => (
               <Grid2 item key={product.id} xs={12} sm={6} md={4} lg={3}>

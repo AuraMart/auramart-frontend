@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MenSidebar from "../components/Product/MenSidebar";
 import { Box, Grid2 } from "@mui/material";
-import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
 import { getAllMenProducts } from "../Services/mainCategoryServices";
 
@@ -17,9 +16,7 @@ const MenCategory = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:9191/api/v1/products/category/1"
-        );
+        const response = await getAllMenProducts();
         console.log("response", response.data?.data);
         setProducts(response.data?.data || []);
       } catch (error) {
