@@ -12,7 +12,7 @@ function Payment() {
         </div> 
 
         {/* Fixed Order Summary */}
-        <div className="w-1/3 ml-6">
+        <div className="w-1/2 ml-6">
           <div className="sticky top-12">
             <OrderSummary/>
           </div>

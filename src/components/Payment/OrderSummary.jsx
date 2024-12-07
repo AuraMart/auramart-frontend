@@ -93,6 +93,7 @@ import CartTableHeader from '../../components/Cart/CartTableHeader';
 import CartItem from '../../components/Cart/CartItem';
 import CartDiscount from '../../components/Cart/CartDiscount';
 import CartSummary from '../../components/Cart/CartSummary';
+import PaymentSummary from './PaymentSummary';
 
 const OrderSummary = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -166,12 +167,15 @@ const OrderSummary = () => {
       </div>
 
       <div className="flex items-start justify-between mt-6">
-        <CartSummary
-          subtotal={subtotal}
-          shippingTotal={shippingTotal}
-          total={total}
-        />
-      </div>
+  <div className="ml-auto">
+    <PaymentSummary
+      subtotal={subtotal}
+      shippingTotal={shippingTotal}
+      total={total}
+    />
+  </div>
+</div>
+
     </div>
   );
 };
