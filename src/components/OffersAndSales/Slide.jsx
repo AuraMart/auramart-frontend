@@ -1,27 +1,24 @@
 import React from "react";
-import Image1 from "../../assets/Slider/men.jpg";
-import Image2 from "../../assets/Slider/women.jpeg";
-import Image3 from "../../assets/Slider/sale.jpg";
 import Slider from "react-slick";
 
 const ImageList = [
   {
     id: 1,
-    img: Image1,
+    img: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg",
     title: "Upto 50% off on all Men's Wear",
     description:
       "Upgrade your wardrobe with the latest men's fashion at unbeatable prices. Get up to 50% off on top-quality shirts, office ware, and more. Don't miss out on stylish essentials that bring comfort and class.",
   },
   {
     id: 2,
-    img: Image2,
+    img: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg",
     title: "Upto 60% off on all Women's Wear",
     description:
       "Step into the season with fabulous women's wear! Enjoy up to 60% off on a wide range of dresses, tops, and accessories. Find your perfect fit and make every day a fashionable one.",
   },
   {
     id: 3,
-    img: Image3,
+    img: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg",
     title: "70% off on all Products Sale",
     description:
       "Everything must go! Shop our massive sale with up to 70% off on all products. From trendy clothing to accessories, grab the best deals before they're gone. Hurry, limited stock available!",

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
-import illustrationImage from '../../assets/images/rb_64279.png';
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
@@ -69,7 +68,7 @@ const SignupForm = () => {
           </div>
           <div className="mt-auto">
             <img 
-              src={illustrationImage} 
+              src="https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg"
               alt="Person working" 
               className="w-full h-auto"
             />
