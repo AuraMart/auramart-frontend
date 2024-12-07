@@ -156,6 +156,15 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import AddProduct from './pages/Admin/AddProduct';
 import ScrollToTop from './components/ScrollToTop';
 import Offers from './components/OffersAndSales/Offers';
+import AdminLayout from './pages/Admin/AdminLayout';
+import Products from './pages/Admin/Products';
+import AdminProfile from './pages/Admin/AdminProfile';
+import AdminAnalytics from './pages/Admin/AdminAnalytics';
+import AdminSettings from './pages/Admin/AdminSettings';
+import AdminHelp from './pages/Admin/AdminHelp';
+import AdminOrders from './pages/Admin/AdminOrders';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+
 
 // Customer Routes Component
 const CustomerRoutes = () => {
@@ -175,13 +184,23 @@ const CustomerRoutes = () => {
   );
 };
 
+
+
 // Admin Routes Component
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="dashboard" element={<Home />} />
-      <Route path="addproduct" element={<AddProduct />} />
-      <Route path="*" element={<Navigate to="dashboard" replace />} />
+      <Route path="" element={<AdminLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="profile" element={<AdminProfile />} />
+        <Route path="add-product" element={<Products />} />
+        <Route path="orders" element={<AdminOrders />} />
+        <Route path="analytics" element={<AdminAnalytics />} />
+        <Route path="settings" element={<AdminSettings />} />
+        <Route path="help" element={<AdminHelp />} />
+        <Route path="*" element={<Navigate to="dashboard" replace />} />
+      </Route>
     </Routes>
   );
 };
