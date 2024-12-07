@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ShoesSidebar from '../../components/Product/ShoesSidebar';
-import ProductList from '../../components/Product/ProductList';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid2 } from '@mui/material';
 import axios from 'axios';
 import ProductCard2 from '../../components/Product/ProductCard2';
 
@@ -65,14 +64,14 @@ const ShoesCategory = () => {
 
   return (
     <Box>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={4} md={3}>
+      <Grid2 container spacing={2}>
+        <Grid2 item xs={12} sm={4} md={3}>
           <ShoesSidebar filters={filters} onFilterChange={handleFilterChange} />
-        </Grid>
-        <Grid item xs={12} sm={8} md={9}>
-          <Grid container spacing={2}>
+        </Grid2>
+        <Grid2 item xs={12} sm={8} md={9}>
+          <Grid2 container spacing={2}>
             {filteredProducts.map((product) => (
-              <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+              <Grid2 item key={product.id} xs={12} sm={6} md={4} lg={3}>
                 <ProductCard2
                   product={product}
                   name={product.name}
@@ -82,11 +81,11 @@ const ShoesCategory = () => {
                   availability={product.availability}
                   onWishlistClick={handleWishlist}
                 />
-              </Grid>
+              </Grid2>
             ))}
-          </Grid>
-        </Grid>
-      </Grid>
+          </Grid2>
+        </Grid2>
+      </Grid2>
     </Box>
   );
 };

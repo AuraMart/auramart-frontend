@@ -14,6 +14,7 @@ import { grey } from "@mui/material/colors";
 import Fab from "@mui/material/Fab";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard2 = ({
   product,
@@ -25,6 +26,8 @@ const ProductCard2 = ({
   image,
   onWishlistClick, // Add this prop to handle wishlist action
 }) => {
+  const navigate = useNavigate();
+
   const [like, setLike] = React.useState(false);
 
   const handleClick = () => {
@@ -32,9 +35,13 @@ const ProductCard2 = ({
     onWishlistClick(product); // Trigger wishlist function on click
   };
 
+  const handleProductClick = () => {
+    console.log("id", product.id);
+    navigate(`/product/${product.id}`);
+  }
+
   return (
-    <div className="">
-      <Card sx={{ width: "220px", position: "relative" }}>
+      <Card sx={{ width: "220px", position: "relative" }} onClick={handleProductClick}>
         <CardMedia sx={{ height: "260px" }} image={url} title="product" />
         {availability === "In Stock" ? (
           <Badge
@@ -116,7 +123,6 @@ const ProductCard2 = ({
           </Box>
         </CardContent>
       </Card>
-    </div>
   );
 };
 

@@ -149,11 +149,18 @@ import Payment from './pages/Payment';
 import Navbar from './components/Navigation/Navbar';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
+import AddProduct from './components/Admin/AddProduct';
+import AdminDashboard from './components/Admin/AdminDashboard';
+import Analytics from './components/Admin/Analytics';
+import Banner from './components/Admin/Banner';
+import Profile from './components/Admin/Profile';
+import ViewOrders from './components/Admin/ViewOrders';
+import AdminLayout from './pages/layout/AdminLayout';
 import CartPage from './pages/CartPage/CartPage';
 import WishlistPage from './pages/WishListPage/WishListPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignupPage from './pages/SignupPage/SignupPage';
-import AddProduct from './pages/Admin/AddProduct';
+// import AddProduct from './pages/Admin/AddProduct';
 import ScrollToTop from './components/ScrollToTop';
 import Offers from './components/OffersAndSales/Offers';
 
@@ -190,7 +197,7 @@ const AdminRoutes = () => {
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-gray-100 mt-[5%]">
+      <div className="flex flex-col min-h-screen bg-gray-100 mt-[2%]">
         <Navbar />
         <ScrollToTop />
         <Routes>
@@ -206,6 +213,12 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/product" element={<ProductPage />} />
+          <Route path="/admin" element={<AdminLayout/>} /> 
+          <Route path="add-product" element={<AddProduct/>}/>
+          <Route path="/dashboard" element={<AdminDashboard/>}/>
+          <Route path="analytics" element={<Analytics/>}/>
+          <Route path="profile" element={<Profile/>}/>
+          <Route path="view-orders" element={<ViewOrders/>}/>
           <Route path="/mens" element={<MenCategory />} />
           <Route path="/women" element={<WomenCategory />} />
           <Route path="/kids" element={<KidsCategory />} />

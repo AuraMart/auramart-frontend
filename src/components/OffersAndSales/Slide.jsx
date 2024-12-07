@@ -1,27 +1,24 @@
 import React from "react";
-import Image1 from "../../Assets/Slider/men.jpg";
-import Image2 from "../../Assets/Slider/women.jpeg";
-import Image3 from "../../Assets/Slider/sale.jpg";
 import Slider from "react-slick";
 
 const ImageList = [
   {
     id: 1,
-    img: Image1,
+    img: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg",
     title: "Upto 50% off on all Men's Wear",
     description:
       "Upgrade your wardrobe with the latest men's fashion at unbeatable prices. Get up to 50% off on top-quality shirts, office ware, and more. Don't miss out on stylish essentials that bring comfort and class.",
   },
   {
     id: 2,
-    img: Image2,
+    img: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg",
     title: "Upto 60% off on all Women's Wear",
     description:
       "Step into the season with fabulous women's wear! Enjoy up to 60% off on a wide range of dresses, tops, and accessories. Find your perfect fit and make every day a fashionable one.",
   },
   {
     id: 3,
-    img: Image3,
+    img: "https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg",
     title: "70% off on all Products Sale",
     description:
       "Everything must go! Shop our massive sale with up to 70% off on all products. From trendy clothing to accessories, grab the best deals before they're gone. Hurry, limited stock available!",
@@ -53,12 +50,12 @@ const Slide = ({ handleOrderPopup }) => {
             <div>
               <div className="grid grid-cols-1 sm:grid-cols-2">
                 {/* text content section */}
-                <div className="flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10">
+                <div className="relative z-10 flex flex-col justify-center order-2 gap-4 pt-12 text-center sm:pt-0 sm:text-left sm:order-1">
                   <h1
                     data-aos="zoom-out"
                     data-aos-duration="500"
                     data-aos-once="true"
-                    className="text-5xl sm:text-6xl lg:text-7xl font-bold"
+                    className="text-5xl font-bold sm:text-6xl lg:text-7xl"
                   >
                     {data.title}
                   </h1>

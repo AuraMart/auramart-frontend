@@ -3,13 +3,8 @@ import WomenSidebar from "../components/Product/WomenSidebar";
 import { Box, Grid } from "@mui/material";
 import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
+import { getAllWomenProducts } from "../Services/mainCategoryServices";
 
-const getAllWomenItems = async () => {
-  const response = await axios.get(
-    "http://localhost:9191/api/v1/products/category/2"
-  );
-  return response.data?.data || [];
-};
 const WomenCategory = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -22,8 +17,8 @@ const WomenCategory = () => {
   useEffect(() => {
     const fetchWomenProducts = async () => {
       try {
-        const data = await getAllWomenItems();
-        setProducts(data);
+        const response = await getAllWomenProducts();
+        setProducts(response.data?.data || []);
       } catch (error) {
         console.error("Failed to fetch women cloths", error);
       }
