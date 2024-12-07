@@ -23,7 +23,7 @@ const CartPage = () => {
   }, []); // Empty dependency array means this runs once on component mount
 
 
-  const updateQuantity = (id, delta) => {
+  const updateQuantity = (id, delta) => { 
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.productId === id

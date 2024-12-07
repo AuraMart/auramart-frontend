@@ -54,11 +54,11 @@ const Navbar = () => {
         </div>
         <nav>
           <ul className="flex space-x-6">
-            <li><a href="/home" className="text-gray-700 hover:text-gray-900">Shop</a></li>
-            <li><a href="/MenCategory" className="text-gray-700 hover:text-gray-900">Men</a></li>
-            <li><a href="/WomenCategory" className="text-gray-700 hover:text-gray-900">Women</a></li>
-            <li><a href="/kidsCategory" className="text-gray-700 hover:text-gray-900">Kids</a></li>
-            <li><a href="/ShoesCategory" className="text-gray-700 hover:text-gray-900">Shoes</a></li>
+            <li><a href="/" className="text-gray-700 hover:text-gray-900">Shop</a></li>
+            <li><a href="/mens" className="text-gray-700 hover:text-gray-900">Men</a></li>
+            <li><a href="/women" className="text-gray-700 hover:text-gray-900">Women</a></li>
+            <li><a href="/kids" className="text-gray-700 hover:text-gray-900">Kids</a></li>
+            <li><a href="/shoes" className="text-gray-700 hover:text-gray-900">Shoes</a></li>
             <li><a href="/offers" className="text-gray-700 hover:text-gray-900">Sales & Offers</a></li>
           </ul>
         </nav>

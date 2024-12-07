@@ -5,7 +5,7 @@ const API_BASE_URL = "http://localhost:9191/api/v1";
 export const getAllWomenProducts = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:9191/api/v1/products/women"
+      `${API_BASE_URL}/products/women`
     );
     return response.data;
   } catch (error) {
@@ -16,7 +16,7 @@ export const getAllWomenProducts = async () => {
 export const getAllMenProducts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:9191/api/v1/products/men"
+        `${API_BASE_URL}/products/men`
       );
       return response.data;
     } catch (error) {
@@ -27,7 +27,7 @@ export const getAllMenProducts = async () => {
   export const getAllKidsProducts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:9191/api/v1/products/kids"
+       `${API_BASE_URL}/products/kids`
       );
       return response.data;
     } catch (error) {
@@ -38,7 +38,7 @@ export const getAllMenProducts = async () => {
   export const getAllShoes = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:9191/api/v1/products/shoes"
+       `${API_BASE_URL}/products/shoes`
       );
       return response.data;
     } catch (error) {

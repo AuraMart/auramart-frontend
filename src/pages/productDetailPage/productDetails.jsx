@@ -388,6 +388,7 @@ const ProductDetails = () => {
   const [cartId, setCartId] = useState(0);
   const [wishListId, setWishListId] = useState({ id: 0, productIds: [] });
   const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const userId = 1; // Hardcoded user ID for now
   const [productSelection, setProductSelection] = useState({
     productId: productId,
@@ -561,7 +562,25 @@ const ProductDetails = () => {
     return <div>Loading...</div>;
   }
 
-  const isProductInWishlist = wishListId.productIds && wishListId.productIds.includes(product.id);
+  // const isProductInWishlist = wishListId.productIds && wishListId.productIds.includes(product.id);
+
+  // const handleImageClick = (index) => {
+  //   setSelectedImageIndex(index);
+  // };
+
+  // const handleImageClick = (index) => {
+  //   setSelectedImageIndex(index);
+  // };
+
+  // if (error) {
+  //   return <div>{error}</div>;
+  // }
+
+  // if (!product) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // const isProductInWishlist = wishListId.productIds && wishListId.productIds.includes(product.id);
 
   return (
     <div className="px-4 py-4 mx-auto mt-12 max-w-7xl">
@@ -663,10 +682,10 @@ const ProductDetails = () => {
             <IconButton
               onClick={handleWishList}
             >
-              <Heart
+              {/* <Heart
                 fill={isProductInWishlist ? '#f44336' : 'none'}
                 stroke={isProductInWishlist ? '#f44336' : 'currentColor'}
-              />
+              /> */}
             </IconButton>
           </div>
 
