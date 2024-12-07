@@ -62,7 +62,7 @@ const CartPage = () => {
   // If cart is empty, show a message
   if (!Array.isArray(cartItems) || cartItems.length === 0) {
     return (
-      <div className="max-w-6xl p-6 mx-auto text-center">
+      <div className="max-w-6xl p-6 mx-auto text-center mt-[5%]">
         <h2 className="text-2xl font-bold">Your cart is empty</h2>
         <p>Looks like you haven't added any items to your cart yet.</p>
       </div>
