@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ShoesSidebar from "../components/Product/ShoesSidebar";
-import ProductList from "../components/Product/ProductList";
 import { Box, Grid2 } from "@mui/material";
 import ProductCard2 from "../components/Product/ProductCard2";
 import { getAllShoes } from "../Services/mainCategoryServices";

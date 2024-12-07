@@ -11,7 +11,6 @@ import {
   Stack,
   styled,
 } from "@mui/material";
-import { ProductList } from "../components/Product/ProductList";
 import { CategorySection } from "../components/Category/CategorySection";
 import { MenCategoryList } from "../components/Category/menCategoryList";
 import { WomenCategoryList } from "../components/Category/womenCategoryList";

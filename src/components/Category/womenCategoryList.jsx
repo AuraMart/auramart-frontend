@@ -5,7 +5,7 @@ import { Categorycard } from "./CategoryCard";
 
 export const WomenCategoryList = () => {
   return (
-    <div style={{display:'flex',justifyContent:"stretch",alignContent:'center'}}>
+    <div style={{display:'flex',justifyContent:"stretch",alignContent:'center',marginLeft:"65px"}}>
     <Box
       sx={{
         display:"flex",

@@ -15,9 +15,9 @@ export const ProductCard = ({
 }) => {
   return (
     <div className="">
-      <Card sx={{ width: "220px" }}>
+      <Card sx={{ width: "300px" }}>
         <CardMedia
-          sx={{ height: "260px" }}
+          sx={{ height: "290px" }}
           image={url}
           title="green iguana"
         />

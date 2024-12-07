@@ -11,7 +11,6 @@ import {
   Stack,
   styled,
 } from "@mui/material";
-import { ProductList } from "../../components/Product/ProductList";
 import { CategorySection } from "../../components/Category/CategorySection";
 import { MenCategoryList } from "../../components/Category/menCategoryList";
 import { WomenCategoryList } from "../../components/Category/womenCategoryList";
@@ -70,24 +69,19 @@ export const Home = () => {
         <h1 className="font-abril text-[36px] align-left text-gray-500 ml-[4%] mb-[2%]">
           Categories for Men
         </h1>
-        <div style={{ display: "flex", justifyItems: "center" }}>
           <MenCategoryList />
-        </div>
       </Box>
 
       {/* categories for woman */}
       <Box
         sx={{
-          width: "100%",
           marginTop: "3%",
         }}
       >
         <h1 className="font-abril text-[36px] align-left text-gray-500 ml-[4%] mb-[2%]">
           Categories for Women
         </h1>
-        <div style={{ display: "flex", justifyItems: "center" }}>
           <WomenCategoryList />
-        </div>
       </Box>
 
       {/* top brands */}
