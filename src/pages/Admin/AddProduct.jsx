@@ -9,13 +9,6 @@ import ImageCropper from "../../components/ImageCropper";
 import axios from "axios";
 
 const AddProduct=()=> {
-  // const [productName, setProductName] = useState("");
-  // const [sku, setSku] = useState("");
-  // const [rentalPrice, setRentalPrice] = useState("");
-  // const [material, setMaterial] = useState("");
-  // const [typeOfWear, setTypeOfWear] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [colors, setColors] = useState([]);
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [price, setPrice] = useState("");
@@ -86,20 +79,6 @@ const AddProduct=()=> {
     // }
 
     const productData = {
-      // productName: productName,
-      // sku: sku,
-      // rentalPrice: rentalPrice,
-      // material: material,
-      // typeOfWear: typeOfWear,
-      // description: description,
-      // imageUrls: cloudinaryUrls,
-      // colors: colors.map((color) => ({
-      //   colorName: color.color,
-      //   stocks: color.quantities.map((quantity, index) => ({
-      //     size: index + 3,
-      //     quantity: parseInt(quantity),
-      //   })),
-      // })),
       name: name,
       brand: brand,
       price: price,
@@ -111,15 +90,17 @@ const AddProduct=()=> {
       inventory:quentity,
       date:date,
     };
-
     try {
-      await createProduct(productData);
-      // resetForm();
+      // await createProduct(productData);
+      const res= await axios.post("http://localhost:9191/api/v1/products/add",productData)
+
+        console.log(res);
+     resetForm();
       alert("Product added successfully!");
     } catch (error) {
       console.error("Failed to add product:", error);
       alert("Failed to add product.");
-    }
+    }
   }
   function resetForm() {
     setName("");
