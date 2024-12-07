@@ -1,7 +1,7 @@
 import React from "react";
-import Image1 from "../../Assets/Slider/men.jpg";
-import Image2 from "../../Assets/Slider/women.jpeg";
-import Image3 from "../../Assets/Slider/sale.jpg";
+import Image1 from "../../assets/Slider/men.jpg";
+import Image2 from "../../assets/Slider/women.jpeg";
+import Image3 from "../../assets/Slider/sale.jpg";
 import Slider from "react-slick";
 
 const ImageList = [
@@ -53,12 +53,12 @@ const Slide = ({ handleOrderPopup }) => {
             <div>
               <div className="grid grid-cols-1 sm:grid-cols-2">
                 {/* text content section */}
-                <div className="flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10">
+                <div className="relative z-10 flex flex-col justify-center order-2 gap-4 pt-12 text-center sm:pt-0 sm:text-left sm:order-1">
                   <h1
                     data-aos="zoom-out"
                     data-aos-duration="500"
                     data-aos-once="true"
-                    className="text-5xl sm:text-6xl lg:text-7xl font-bold"
+                    className="text-5xl font-bold sm:text-6xl lg:text-7xl"
                   >
                     {data.title}
                   </h1>
