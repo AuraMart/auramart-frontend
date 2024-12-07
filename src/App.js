@@ -186,7 +186,7 @@ const CustomerRoutes = () => {
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="dashboard" element={<Home />} />
+      <Route path="dashboard" element={<AdminLayout/>} />
       <Route path="addproduct" element={<AddProduct />} />
       <Route path="*" element={<Navigate to="dashboard" replace />} />
     </Routes>
@@ -198,7 +198,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen bg-gray-100 mt-[2%]">
-        <Navbar />
         <ScrollToTop />
         <Routes>
         <Route path="/" element={<Home />} />
@@ -209,6 +208,12 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/addproduct" element={<AddProduct />} />
+          <Route path="/mens" element={<MenCategory />} />
+          <Route path="/women" element={<WomenCategory />} />
+          <Route path="/kids" element={<KidsCategory />} />
+          <Route path="/shoes" element={<ShoesCategory />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/product/:productId" element={<ProductPage />} />  
           {/* <Route path="/login" element={<ProductPage />} /> */}
           {/* <Route path="payment" element={<Payment />} />
           <Route path="/contact" element={<ContactUs />} />
@@ -228,7 +233,6 @@ function App() {
           <Route path="/product/:productId" element={<ProductPage />} />       
           <Route path="/offers" element={<Offers />} /> */}
         </Routes>
-        <FooterSection />
         
       </div>
     </BrowserRouter>
