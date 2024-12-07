@@ -202,7 +202,7 @@ function App() {
           <Route path="/wishlist" element={<WishlistPage />} />
           {/* <Route path="/login" element={<AddProduct />} /> */}
           {/* <Route path="/login" element={<ProductPage />} /> */}
-          <Route path="payment" element={<Payment />} />
+          {/* <Route path="payment" element={<Payment />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/product" element={<ProductPage />} />
@@ -210,7 +210,7 @@ function App() {
           <Route path="/women" element={<WomenCategory />} />
           <Route path="/kids" element={<KidsCategory />} />
           <Route path="/shoes" element={<ShoesCategory />} />
-          <Route path="/offers" element={<Offers />} />
+          <Route path="/offers" element={<Offers />} /> */}
         </Routes>
         <FooterSection />
         

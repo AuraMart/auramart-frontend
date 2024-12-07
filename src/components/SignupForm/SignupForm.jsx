@@ -5,7 +5,9 @@ import illustrationImage from '../../Assets/images/rb_64279.png';
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
-  const [fullName, setFullName] = useState('');
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -36,7 +38,8 @@ const SignupForm = () => {
 
     try {
       const response = await axios.post('http://localhost:9191/auth/sign-up', {
-        fullName,
+        firstName,
+        lastName,
         email,
         password,
       });
@@ -44,7 +47,8 @@ const SignupForm = () => {
       if (response.status === 200) {
         setSuccessMessage("Signup successful!");
         setErrorMessage('');
-        setFullName('');
+        setFirstName('');
+        setLastName('');
         setEmail('');
         setPassword('');
         setConfirmPassword('');
@@ -98,10 +102,20 @@ const SignupForm = () => {
               <div>
                 <input
                   type="text"
-                  placeholder="Full Name"
+                  placeholder="First Name"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   required
                 />
               </div>
