@@ -22,8 +22,8 @@ export const ProductCard = ({
           title="green iguana"
         />
         <CardContent sx={{ padding: "1px", paddingTop:'10px' }}>
-          <Box sx={{ display: "flex", flexDirection: "row",alignItems: 'center'}}>
-            <Box sx={{ display: 'flex',flexDirection:"column" , pl: 1, pb: 1 }}>
+          <Box sx={{ display: "flex", flexDirection: "row",alignItems: 'center',position:"relative"}}>
+            <Box sx={{ display: 'flex',flexDirection:"column" , pl: 1, pb: 1}}>
               <Typography
                 sx={{ fontSize: 14 }}
                 style={{
@@ -41,8 +41,8 @@ export const ProductCard = ({
                 {brand}
               </Typography>
             </Box>
-            <CardActions>
-              <AshButton variant="contained" size="small" sx={{fontSize:'11px'}}>
+            <CardActions className=" absolute right-2">
+              <AshButton variant="contained" size="small" className="text-[11px]">
                 {price}
               </AshButton>
             </CardActions>
