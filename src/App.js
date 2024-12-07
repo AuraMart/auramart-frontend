@@ -149,7 +149,7 @@ import Payment from './pages/Payment';
 import Navbar from './components/Navigation/Navbar';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
-import AddProduct from './components/Admin/AddProduct';
+// import AddProduct from './components/Admin/AddProduct';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import Analytics from './components/Admin/Analytics';
 import Banner from './components/Admin/Banner';
@@ -160,7 +160,7 @@ import CartPage from './pages/CartPage/CartPage';
 import WishlistPage from './pages/WishListPage/WishListPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignupPage from './pages/SignupPage/SignupPage';
-// import AddProduct from './pages/Admin/AddProduct';
+import AddProduct from './pages/Admin/AddProduct';
 import ScrollToTop from './components/ScrollToTop';
 import Offers from './components/OffersAndSales/Offers';
 
