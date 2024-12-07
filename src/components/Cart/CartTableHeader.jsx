@@ -1,6 +1,6 @@
 const CartTableHeader = () => {
     return (
-      <div className="grid grid-cols-12 bg-gray-800 text-white p-4 text-sm">
+      <div className="grid grid-cols-12 p-4 text-sm text-white bg-gray-800">
         <div className="col-span-4">PRODUCT DETAILS</div>
         <div className="col-span-2 text-center">PRICE</div>
         <div className="col-span-2 text-center">QUANTITY</div>
