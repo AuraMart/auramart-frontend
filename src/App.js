@@ -213,9 +213,9 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/product" element={<ProductPage />} />
-          <Route path="/admin" element={<AdminLayout/>}>
+          <Route path="/admin" element={<AdminLayout/>} /> 
           <Route path="add-product" element={<AddProduct/>}/>
-          <Route path="" element={<AdminDashboard/>}/>
+          <Route path="/dashboard" element={<AdminDashboard/>}/>
           <Route path="analytics" element={<Analytics/>}/>
           <Route path="profile" element={<Profile/>}/>
           <Route path="view-orders" element={<ViewOrders/>}/>
