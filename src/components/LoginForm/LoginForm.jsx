@@ -28,7 +28,7 @@ const LoginForm = () => {
         else {        
         const userId = response.data.data; 
         localStorage.setItem('userId', userId);
-        navigate('/');  }
+        navigate('/customer');  }
 
       } else {
         setErrorMessage('Invalid login credentials. Please try again.');
