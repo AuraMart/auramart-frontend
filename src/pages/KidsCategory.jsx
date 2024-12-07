@@ -113,7 +113,7 @@ const KidsCategory = () => {
             onPriceChange={handlePriceChange}
           />
         </Grid2>
-        <Grid2 item xs={12} sm={8} md={9}>
+        <Grid2 item xs={12} sm={8} md={9} >
           <Grid2 container spacing={2}>
             {filteredProducts.map((product) => (
               <Grid2 item key={product.id} xs={12} sm={6} md={4} lg={3}>

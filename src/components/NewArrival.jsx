@@ -42,6 +42,7 @@ export const NewArrival = () => {
           brand={product.brand}
           price={product.price}
           url={product.url} // First image URL
+          id={product.id}
         />
       ))}
     </Box>
