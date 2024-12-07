@@ -34,7 +34,7 @@ const SignupForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/admin/sign-up', {
+      const response = await axios.post('http://localhost:9191/auth/sign-up', {
         fullName,
         email,
         password,
@@ -48,7 +48,10 @@ const SignupForm = () => {
         setPassword('');
         setConfirmPassword('');
 
-        navigate('/dashboard');
+        const userId = response.data.data; 
+        localStorage.setItem('userId', userId);
+
+        navigate('/');
       } else {
         setErrorMessage("Signup failed. Please try again.");
       }

@@ -203,6 +203,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="/customer/*" element={<CustomerRoutes />} />
           <Route path="/admin/*" element={<AdminRoutes />} />
           <Route path="/cart" element={<CartPage />} />
@@ -227,6 +228,7 @@ function App() {
           <Route path="/product/:productId" element={<ProductPage />} />       
         </Routes>
         <FooterSection />
+        
       </div>
     </BrowserRouter>
   );

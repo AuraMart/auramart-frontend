@@ -14,14 +14,22 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/admin/sign-in', {
+      const response = await axios.post('http://localhost:9191/auth/sign-in', {
         email,
         password,
       });
 
-      if (response.data === 'Admin signed in successfully') {
-       
-        navigate('/dashboard');  
+      if (response.status === 200) {
+
+        if(response.data.data === "ADMIN") {
+          navigate('/admin');
+        }
+
+        else {        
+        const userId = response.data.data; 
+        localStorage.setItem('userId', userId);
+        navigate('/');  }
+
       } else {
         setErrorMessage('Invalid login credentials. Please try again.');
       }
