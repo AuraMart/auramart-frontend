@@ -207,7 +207,7 @@ function App() {
           <Route path="/admin/*" element={<AdminRoutes />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
-          {/* <Route path="/login" element={<AddProduct />} /> */}
+          <Route path="/addproduct" element={<AddProduct />} />
           {/* <Route path="/login" element={<ProductPage />} /> */}
           <Route path="payment" element={<Payment />} />
           <Route path="/contact" element={<ContactUs />} />
