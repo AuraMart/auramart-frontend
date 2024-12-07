@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import ShoesSidebar from "../components/Product/ShoesSidebar";
 import ProductList from "../components/Product/ProductList";
 import { Box, Grid2 } from "@mui/material";
-import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
+import { getAllShoes } from "../Services/mainCategoryServices";
 
 const ShoesCategory = () => {
   const [products, setProducts] = useState([]);
@@ -16,9 +16,7 @@ const ShoesCategory = () => {
   useEffect(() => {
     const fetchShoes = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:9191/api/v1/products/category/4"
-        );
+        const response = await getAllShoes();
         console.log("response", response.data?.data);
         setProducts(response.data?.data || []);
       } catch (error) {
