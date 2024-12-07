@@ -1,35 +1,35 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
-import KidsSidebar from '../components/Product/KidsSidebar';
+import MenSidebar from '../../components/Product/MenSidebar';
 import { Box, Grid} from '@mui/material';
-import { getAllKidsProducts } from '../Services/KidsService';
 import { useEffect } from 'react';
-// import axios from 'axios';
-import ProductCard2 from '../components/Product/ProductCard2';
+import axios from 'axios';
+import ProductCard2 from '../../components/Product/ProductCard2';
 
+const getAllMenItems = async () => {
+  const response = await axios.get('http://localhost:8080/api/men');
+  return response.data;
+};
 
-const KidsCategory = () => {
+const MenCategory = () => {
     const [products, setProducts] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedColors, setSelectedColors] = useState([]);
     const [wishlist, setWishlist] = useState([]);
-
-
       
       useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const data = await getAllKidsProducts();
+                const data = await getAllMenItems();
                 setProducts(data);
             } catch (error) {
-                console.error("Failed to fetch products", error);
+                console.error("Failed to fetch items", error);
             }
         };
         fetchProducts();
     }, []);
 
   const filters = {
-    categories: ['Tops', 'T-Shirts', 'Pants', 'Skirts'],
+    categories: ['Shirts', 'T-Shirts', 'Trousers', 'Denim trousers'],
     colors: ['#ff0000', '#0000ff', '#00ff00', '#000000', '#ffffff', '#ff69b4'],
   };
 
@@ -61,13 +61,18 @@ const KidsCategory = () => {
     });
 };
 
+const filteredProducts = products.filter(
+  (product) =>
+    (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
+    (selectedColors.length === 0 || selectedColors.includes(product.color))
+);
+
 
   return (
     <Box>
-      <Navbar />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4} md={3}>
-          <KidsSidebar filters={filters} onFilterChange={handleFilterChange} />
+          <MenSidebar filters={filters} onFilterChange={handleFilterChange} />
         </Grid>
         <Grid item xs={12} sm={8} md={9}>
           <Grid container spacing={2}>
@@ -91,4 +96,4 @@ const KidsCategory = () => {
   );
 };
 
-export default KidsCategory;
+export default MenCategory;

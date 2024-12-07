@@ -1,8 +1,11 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 import ProductDetails from './productDetails'
 import CommentSection from './commentSection'
 
 const ProductPage = () => {
+
+  
   const product = {
     id: 1,
     name: "Raven Hoodie with Black Color Design",

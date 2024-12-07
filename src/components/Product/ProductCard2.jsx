@@ -129,3 +129,6 @@ const AshButton = styled(Button)(({ theme }) => ({
 }));
 
 export default ProductCard2;
+
+
+

@@ -1,7 +1,13 @@
 import React from "react";
 import { TextField, Button } from "@mui/material";
+import { useForm, ValidationError } from "@formspree/react";
 
 const ContactUs = () => {
+  const [state, handleSubmit] = useForm("movqbvqz");
+  if (state.succeeded) {
+    alert("Thanks for your message! We'll get back to you soon.");
+  }
+
   return (
     <div className="bg-gray-50 py-10 px-4 sm:px-8 md:px-16">
       {/* Header Section */}
@@ -48,26 +54,52 @@ const ContactUs = () => {
           <h2 className="text-2xl font-semibold text-gray-700">
             Send Us a Message
           </h2>
-          <form className="mt-4 space-y-4">
+          <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
             <TextField
               label="Your Name"
+              id="name"
+              type="name"
+              name="name"
               fullWidth
               variant="outlined"
               className="bg-gray-50"
             />
+            <ValidationError
+              prefix="Name"
+              field="name"
+              errors={state.errors}
+              className="text-red-500 text-sm" />
+
             <TextField
               label="Your Email"
+              id="email"
+              type="email"
+              name="email"
               fullWidth
               variant="outlined"
-              type="email"
               className="bg-gray-50"
             />
+             <ValidationError
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+              className="text-red-500 text-sm" />
+
             <TextField
               label="Subject"
+              id="subject"
+              type="subject"
+              name="subject"
               fullWidth
               variant="outlined"
               className="bg-gray-50"
             />
+            <ValidationError
+              prefix="Subject"
+              field="subject"
+              errors={state.errors}
+              className="text-red-500 text-sm" />
+
             <TextField
               label="Message"
               fullWidth
@@ -76,10 +108,17 @@ const ContactUs = () => {
               rows={4}
               className="bg-gray-50"
             />
+            <ValidationError
+              prefix="Message"
+              field="message"
+              errors={state.errors}
+              className="text-red-500 text-sm" />
+
             <Button
               type="submit"
               variant="contained"
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3"
+              disabled={state.submitting}
             >
               Submit
             </Button>
@@ -93,22 +132,7 @@ const ContactUs = () => {
           Find Us Here
         </h2>
         <div className="w-full h-64 bg-gray-300 rounded-lg">
-          {/* Replace this div with a Google Maps iframe or Map component */}
           <p className="flex items-center justify-center h-full text-gray-600">
-            {/* Map Section */}
-            {/* <div className="mt-10"> */}
-              {/* <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">
-                Find Us Here
-              </h2> */}
-              {/* <div
-                style={{
-                  overflow: "hidden",
-                  maxWidth: "100%",
-                  width: "500px",
-                  height: "500px",
-                  margin: "0 auto",
-                }}
-              > */}
                 <div
                   id="embed-ded-map-canvas"
                   style={{ height: "100%", width: "100%", maxWidth: "100%" }}
@@ -119,9 +143,6 @@ const ContactUs = () => {
                     allowFullScreen
                   ></iframe>
                 </div>
-                
-              {/* </div> */}
-            {/* </div> */}
           </p>
         </div>
       </div>
