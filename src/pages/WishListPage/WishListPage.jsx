@@ -14,7 +14,7 @@ const WishlistPage = () => {
       {
         image: "https://img.faballey.com/images/Product/ITP00975Z/3.jpg",
         title: "Yellow Flower Print Dress",
-        color: "Yellow",
+        color: "green",
         quantity: 1,
         price: "775.00"
       },
