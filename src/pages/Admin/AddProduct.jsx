@@ -113,8 +113,11 @@ const AddProduct=()=> {
     };
 
     try {
-      await createProduct(productData);
-      // resetForm();
+      // await createProduct(productData);
+      const res= await axios.post("http://localhost:9191/api/v1/products/add",productData)
+
+        console.log(res);
+     resetForm();
       alert("Product added successfully!");
     } catch (error) {
       console.error("Failed to add product:", error);
@@ -367,7 +370,7 @@ const AddProduct=()=> {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1 font-medium text-center text-white rounded-lg bg-custom-pink hover:bg-pink-400 f xl:py-2 xl:px-10 lg:py-2 lg:px-10 md:py-1 md:px-6 sm:py-1 sm:px-4"
+                  className="px-4 py-1 font-medium text-center text-white bg-pink-300 rounded-lg hover:bg-pink-500 f xl:py-2 xl:px-10 lg:py-2 lg:px-10 md:py-1 md:px-6 sm:py-1 sm:px-4"
                 >
                   Add Product
                 </button>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import KidsSidebar from "../components/Product/KidsSidebar";
+import MenSidebar from "../components/Product/MenSidebar";
 import { Box, Grid } from "@mui/material";
+import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
-import { getAllKidsProducts } from "../Services/mainCategoryServices";
 
-const KidsCategory = () => {
+const MenCategory = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
@@ -16,8 +16,9 @@ const KidsCategory = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await getAllKidsProducts();
-        console.log("response", response.data?.data);
+        const response = await axios.get(
+          "http://localhost:9191/api/v1/products/category/1"
+        );
         setProducts(response.data?.data || []);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -27,7 +28,16 @@ const KidsCategory = () => {
   }, []);
 
   const filters = {
-    categories: ["Tops", "T-Shirts", "Pants", "Skirts", "Dresses"],
+    categories: [
+      "T-shirts",
+      "Shorts",
+      "Shirt",
+      "Hoodies",
+      "Pajamas",
+      "Jackets",
+      "Joggers",
+      "Denim Trousers",
+    ],
     colors: ["Black", "White", "Yellow", "Green", "Red", "Blue"],
     sizes: ["XXS", "XS", "S", "M", "L", "XL", "XXL", "3XL", "4XL"],
     brands: [
@@ -45,7 +55,6 @@ const KidsCategory = () => {
 
   const handleFilterChange = (e) => {
     const { name, value, checked } = e.target;
-    console.log("name", name, value, checked);
     if (name === "category") {
       setSelectedCategories((prev) =>
         checked ? [...prev, value] : prev.filter((cat) => cat !== value)
@@ -104,16 +113,17 @@ const KidsCategory = () => {
   };
 
   return (
-    <Box sx={{ paddingTop: "50px" }}>
+    <Box sx={{ paddingTop: "50px", paddingX: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4} md={3}>
-          <KidsSidebar
+          <MenSidebar
             filters={filters}
             onFilterChange={handleFilterChange}
             onPriceChange={handlePriceChange}
           />
         </Grid>
-        <Grid item xs={12} sm={8} md={9} >
+  
+        <Grid item xs={12} sm={8} md={9}>
           <Grid container spacing={2}>
             {filteredProducts.map((product) => (
               <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
@@ -136,4 +146,4 @@ const KidsCategory = () => {
   );
 };
 
-export default KidsCategory;
+export default MenCategory;

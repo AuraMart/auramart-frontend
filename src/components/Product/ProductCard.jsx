@@ -1,29 +1,33 @@
 import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { CardMedia, Typography, CardActions, Button,Box } from "@mui/material";
+import { CardMedia, Typography, CardActions, Button, Box } from "@mui/material";
 import { styled } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
-export const ProductCard = ({
-  name,
-  brand,
-  price,
-  url,
+export const ProductCard = ({ key, name, brand, price, url,id }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    console.log("id", id);
+    navigate(`/product/${id}`);
+  };
 
-  
-}) => {
   return (
-    <div className="">
-      <Card sx={{ width: "220px" }}>
-        <CardMedia
-          sx={{ height: "260px" }}
-          image={url}
-          title="green iguana"
-        />
-        <CardContent sx={{ padding: "1px", paddingTop:'10px' }}>
-          <Box sx={{ display: "flex", flexDirection: "row",alignItems: 'center'}}>
-            <Box sx={{ display: 'flex',flexDirection:"column" , pl: 1, pb: 1 }}>
+      <Card sx={{ width: "300px" }} onClick={handleClick}>
+        <CardMedia sx={{ height: "290px" }} image={url} title="green iguana" />
+        <CardContent sx={{ padding: "1px", paddingTop: "10px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              position: "relative",
+            }}
+          >
+            <Box
+              sx={{ display: "flex", flexDirection: "column", pl: 1, pb: 1 }}
+            >
               <Typography
                 sx={{ fontSize: 14 }}
                 style={{
@@ -35,28 +39,29 @@ export const ProductCard = ({
               >
                 {name}
               </Typography>
-              <Typography
-                sx={{ fontSize: 12, color: "text.secondary" }}
-              >
+              <Typography sx={{ fontSize: 12, color: "text.secondary" }}>
                 {brand}
               </Typography>
             </Box>
-            <CardActions>
-              <AshButton variant="contained" size="small" sx={{fontSize:'11px'}}>
+            <CardActions className=" absolute right-2">
+              <AshButton
+                variant="contained"
+                size="small"
+                className="text-[11px]"
+              >
                 {price}
               </AshButton>
             </CardActions>
           </Box>
         </CardContent>
       </Card>
-    </div>
   );
 };
 
 const AshButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[300]),
   backgroundColor: grey[300],
-  '&:hover': {
+  "&:hover": {
     backgroundColor: grey[400],
   },
 }));
