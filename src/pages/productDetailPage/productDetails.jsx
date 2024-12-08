@@ -389,7 +389,7 @@ const ProductDetails = () => {
   const [wishListId, setWishListId] = useState({ id: 0, productIds: [] });
   const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const userId = 1; // Hardcoded user ID for now
+  const userId = 2; // Hardcoded user ID for now
   const [productSelection, setProductSelection] = useState({
     productId: productId,
     color: "",
@@ -404,14 +404,14 @@ const ProductDetails = () => {
         const [productResponse, commentsResponse, cartIdResponse, wishListIdResponse] = await Promise.all([
           axios.get(`${API_BASE_URL}/products/product/${productId}/product`),
           axios.get(`${API_BASE_URL}/comments/product/${productId}`),
-          axios.get(`${API_BASE_URL}/carts/user/${userId}`),
-          axios.get(`${API_BASE_URL}/wishlist-items/user/${userId}`),
+          // axios.get(`${API_BASE_URL}/carts/user/${userId}`),
+          // axios.get(`${API_BASE_URL}/wishlist-items/user/${userId}`),
         ]);
 
         setComments(commentsResponse.data);
         setProduct(productResponse.data.data);
-        setCartId(cartIdResponse.data.id);
-        setWishListId(wishListIdResponse.data);
+        // setCartId(cartIdResponse.data.id);
+        // setWishListId(wishListIdResponse.data);
 
         const totalRating = commentsResponse.data.reduce((acc, comment) => acc + comment.rating, 0);
         const avgRating = totalRating / commentsResponse.data.length;
