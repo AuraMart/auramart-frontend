@@ -404,14 +404,14 @@ const ProductDetails = () => {
         const [productResponse, commentsResponse, cartIdResponse, wishListIdResponse] = await Promise.all([
           axios.get(`${API_BASE_URL}/products/product/${productId}/product`),
           axios.get(`${API_BASE_URL}/comments/product/${productId}`),
-          axios.get(`${API_BASE_URL}/carts/user/${userId}`),
-          axios.get(`${API_BASE_URL}/wishlist-items/user/${userId}`),
+          // axios.get(`${API_BASE_URL}/carts/user/${userId}`),
+          // axios.get(`${API_BASE_URL}/wishlist-items/user/${userId}`),
         ]);
-
+        console.log(productResponse.data?.data);
         setComments(commentsResponse.data);
-        setProduct(productResponse.data.data);
-        setCartId(cartIdResponse.data.id);
-        setWishListId(wishListIdResponse.data);
+        setProduct(productResponse?.data.data);
+        // setCartId(cartIdResponse.data.id);
+        // setWishListId(wishListIdResponse.data);
 
         const totalRating = commentsResponse.data.reduce((acc, comment) => acc + comment.rating, 0);
         const avgRating = totalRating / commentsResponse.data.length;
