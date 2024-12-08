@@ -163,6 +163,9 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import AddProduct from './pages/Admin/AddProduct';
 import ScrollToTop from './components/ScrollToTop';
 import Offers from './components/OffersAndSales/Offers';
+import MetricsCard from './components/Admin/MetricsCard';
+import ProductList from './components/Admin/ProductList';
+import Sidebar from './components/Admin/SideBar';
 
 // Customer Routes Component
 const CustomerRoutes = () => {
@@ -186,8 +189,15 @@ const CustomerRoutes = () => {
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="dashboard" element={<AdminLayout/>} />
+      <Route path="dashboard" element={<AdminDashboard/>} />
       <Route path="addproduct" element={<AddProduct />} />
+      <Route path="addprodu" element={<Analytics />} />
+      <Route path="addproduct" element={<Banner />} />
+      <Route path="addproduct" element={<MetricsCard />} />
+      <Route path="addproduct" element={<Profile />} />
+      <Route path="addproduct" element={<Sidebar />} />
+      <Route path="addproduct" element={<ViewOrders />} />
+      <Route path="addproduct" element={<ProductList/>} />
       <Route path="*" element={<Navigate to="dashboard" replace />} />
     </Routes>
   );
@@ -213,6 +223,7 @@ function App() {
           <Route path="/kids" element={<KidsCategory />} />
           <Route path="/shoes" element={<ShoesCategory />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="payment" element={<Payment />}/>
           <Route path="/product/:productId" element={<ProductPage />} />  
           {/* <Route path="/login" element={<ProductPage />} /> */}
           {/* <Route path="payment" element={<Payment />} />

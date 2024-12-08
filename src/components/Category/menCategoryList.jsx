@@ -39,7 +39,7 @@ export const MenCategoryList = () => {
         name={product.name}
         brand={product.brand}
         price={product.price}
-        url={product.url} // First image URL
+        url={product.imageUrls[0]} // First image URL
         id={product.id}
       />
       ))}

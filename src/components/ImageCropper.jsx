@@ -93,7 +93,7 @@ const ImageCropper = ({ image, onCropDone, onCropCancel }) => {
           </button>
           <button
             onClick={handleCropDone}
-            className="w-full px-4 py-2 font-medium text-white rounded-md bg-custom-pink hover:bg-pink-400"
+            className="w-full px-4 py-2 font-medium text-white bg-pink-300 rounded-md hover:bg-pink-500"
           >
             Crop
           </button>

@@ -36,12 +36,13 @@ export const NewArrival = () => {
       }}
     >
       {products.map((product) => (
+        
         <ProductCard
           key={product.id}
           name={product.name}
           brand={product.brand}
           price={product.price}
-          url={product.url} // First image URL
+          url={product.imageUrl} // Get second image or fallback
           id={product.id}
         />
       ))}
