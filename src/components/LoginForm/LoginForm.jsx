@@ -14,27 +14,31 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:9191/auth/sign-in', {
+      const response = await axios.post('http://localhost:9191/api/v1/users/signin', {
         email,
         password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
 
       if (response.status === 200) {
-
-        if(response.data.data === "ADMIN") {
+        // Assuming the response structure might be different
+        // Adjust the navigation logic based on actual API response
+        if(response.data.role === "ADMIN") {
           navigate('/admin');
+        } else {        
+          const userId = response.data.userId; 
+          localStorage.setItem('userId', userId);
+          navigate('/customer');  
         }
-
-        else {        
-        const userId = response.data.data; 
-        localStorage.setItem('userId', userId);
-        navigate('/customer');  }
-
       } else {
         setErrorMessage('Invalid login credentials. Please try again.');
       }
     } catch (error) {
       setErrorMessage('Login failed. Please check your credentials or try again later.');
+      console.error('Login error:', error);
     }
   };
 
@@ -60,8 +64,8 @@ const LoginForm = () => {
         <div className="flex-1 p-8">
           <div className="flex justify-end mb-4">
             <select className="text-white bg-transparent border-none focus:ring-0">
-              <option className = "text-black">English(UK)</option>
-              <option className = "text-black">English(US)</option>
+              <option className="text-black">English(UK)</option>
+              <option className="text-black">English(US)</option>
             </select>
           </div>
 
@@ -108,7 +112,7 @@ const LoginForm = () => {
               </button>
 
               <div className="text-sm text-center">
-                <span className="text-white"> Do you havn&apos;t account? </span>
+                <span className="text-white">Don&apos;t have an account? </span>
                 <a href="/signup" className="text-white hover:underline">Signup here</a>
               </div>
             </form>
