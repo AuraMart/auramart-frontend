@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MenSidebar from "../components/Product/MenSidebar";
-import { Box, Grid2 } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import ProductCard2 from "../components/Product/ProductCard2";
 import { getAllMenProducts } from "../Services/mainCategoryServices";
 
@@ -113,19 +113,19 @@ const MenCategory = () => {
 
   return (
     <Box sx={{ paddingTop: "50px", paddingX: 1 }}>
-      <Grid2 container spacing={2}>
-        <Grid2 item xs={12} sm={4} md={3}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={4} md={3}>
           <MenSidebar
             filters={filters}
             onFilterChange={handleFilterChange}
             onPriceChange={handlePriceChange}
           />
-        </Grid2>
+        </Grid>
   
-        <Grid2 item xs={12} sm={8} md={9}>
-          <Grid2 container spacing={2}>
+        <Grid item xs={12} sm={8} md={9}>
+          <Grid container spacing={2}>
             {filteredProducts.map((product) => (
-              <Grid2 item key={product.id} xs={12} sm={6} md={4} lg={3}>
+              <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
                 <ProductCard2
                   product={product}
                   name={product.name}
@@ -136,11 +136,11 @@ const MenCategory = () => {
                   url={product.imageUrls[0]}
                   onWishlistClick={handleWishlist}
                 />
-              </Grid2>
+              </Grid>
             ))}
-          </Grid2>
-        </Grid2>
-      </Grid2>
+          </Grid>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
