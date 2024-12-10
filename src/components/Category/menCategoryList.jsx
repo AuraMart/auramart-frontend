@@ -1,7 +1,5 @@
-import React, { useRef, useEffect,useState } from "react";
-import { men } from "./categories";
+import React, {  useEffect,useState } from "react";
 import { Box } from "@mui/material";
-import { Categorycard } from "./CategoryCard";
 import { getAllMenProducts } from "../../Services/mainCategoryServices";
 import { ProductCard } from "../Product/ProductCard";
 
@@ -39,7 +37,7 @@ export const MenCategoryList = () => {
         name={product.name}
         brand={product.brand}
         price={product.price}
-        url={product.imageUrls[0]} // First image URL
+        url={product.imageUrls[0]} 
         id={product.id}
       />
       ))}

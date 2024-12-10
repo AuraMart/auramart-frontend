@@ -1,14 +1,14 @@
-// CartItem.js
 import React from 'react';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 
 const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
   return (
     <div className="grid items-center grid-cols-12 p-4 border-b">
+      {/* Product Image and Details */}
       <div className="flex col-span-4 gap-4">
         <div className="w-20 h-20 overflow-hidden bg-gray-100 rounded-lg">
           <img
-            src={item.imageURL}
+            src={item.imageURL || item.imageUrls[0]}
             alt={item.name}
             className="object-cover w-full h-full"
           />
@@ -20,36 +20,41 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
         </div>
       </div>
 
+      {/* Unit Price */}
       <div className="col-span-2 text-center">
         Rs {item.price.toFixed(2)}
       </div>
 
+      {/* Quantity Control */}
       <div className="flex justify-center col-span-2">
         <div className="flex items-center border rounded">
-          {/* <button 
+          <button 
             onClick={() => onUpdateQuantity(item.id, -1)}
             className="p-1 hover:bg-gray-100"
           >
             <Minus className="w-4 h-4" />
-          </button> */}
+          </button>
           <span className="px-4 py-1 border-x">{item.quantity}</span>
-          {/* <button 
+          <button 
             onClick={() => onUpdateQuantity(item.id, 1)}
             className="p-1 hover:bg-gray-100"
           >
             <Plus className="w-4 h-4" />
-          </button> */}
+          </button>
         </div>
       </div>
 
+      {/* Shipping */}
       <div className="col-span-2 text-center">
         {item.shipping === 'FREE' ? 'FREE' : `Rs ${item.shipping.toFixed(2)}`}
       </div>
 
+      {/* Total Price */}
       <div className="col-span-1 text-center">
         Rs {(item.price * item.quantity).toFixed(2)}
       </div>
 
+      {/* Remove Item */}
       <div className="flex justify-center col-span-1">
         <button 
           onClick={() => onRemove(item.id)}

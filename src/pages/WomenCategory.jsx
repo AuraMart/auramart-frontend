@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WomenSidebar from "../components/Product/WomenSidebar";
 import { Box, Grid } from "@mui/material";
-import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
 import { getAllWomenProducts } from "../Services/mainCategoryServices";
 
@@ -23,8 +22,29 @@ const WomenCategory = () => {
         console.error("Failed to fetch women cloths", error);
       }
     };
+
+    // Load wishlist from localStorage
+    const savedWishlist = localStorage.getItem("wishlist");
+    if (savedWishlist) {
+      setWishlist(JSON.parse(savedWishlist));
+    }
+
     fetchWomenProducts();
   }, []);
+
+  const handleWishlist = (product) => {
+    setWishlist((prevWishlist) => {
+      const exists = prevWishlist.some((item) => item.id === product.id);
+      if (!exists) {
+        const updatedWishlist = [...prevWishlist, product];
+
+        // Save to localStorage
+        localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+        return updatedWishlist;
+      }
+      return prevWishlist;
+    });
+  };
 
   const filters = {
     categories: ["Tops", "T-Shirts", "Pants", "Skirts", "Dresses"],
@@ -93,16 +113,6 @@ const WomenCategory = () => {
     );
   });
 
-  const handleWishlist = (product) => {
-    setWishlist((prevWishlist) => {
-      if (prevWishlist.some((item) => item.id === product.id)) {
-        return prevWishlist;
-      } else {
-        return [...prevWishlist, product];
-      }
-    });
-  };
-
   return (
     <Box sx={{ paddingTop: "50px" }}>
       <Grid container spacing={2}>
@@ -125,7 +135,7 @@ const WomenCategory = () => {
                   color={product.color}
                   size={product.size}
                   url={product.imageUrls[0]}
-                  onWishlistClick={handleWishlist}
+                  onWishlistClick={() => handleWishlist(product)}
                 />
               </Grid>
             ))}

@@ -23,8 +23,29 @@ const MenCategory = () => {
         console.error("Error fetching products:", error);
       }
     };
+
+    // Load wishlist from localStorage
+    const savedWishlist = localStorage.getItem("wishlist");
+    if (savedWishlist) {
+      setWishlist(JSON.parse(savedWishlist));
+    }
+
     fetchProducts();
   }, []);
+
+  const handleWishlist = (product) => {
+    setWishlist((prevWishlist) => {
+      const exists = prevWishlist.some((item) => item.id === product.id);
+      if (!exists) {
+        const updatedWishlist = [...prevWishlist, product];
+
+        // Save to localStorage
+        localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+        return updatedWishlist;
+      }
+      return prevWishlist;
+    });
+  };
 
   const filters = {
     categories: [
@@ -101,16 +122,6 @@ const MenCategory = () => {
     );
   });
 
-  const handleWishlist = (product) => {
-    setWishlist((prevWishlist) => {
-      if (prevWishlist.some((item) => item.id === product.id)) {
-        return prevWishlist;
-      } else {
-        return [...prevWishlist, product];
-      }
-    });
-  };
-
   return (
     <Box sx={{ paddingTop: "50px", paddingX: 1 }}>
       <Grid container spacing={2}>
@@ -134,7 +145,7 @@ const MenCategory = () => {
                   color={product.color}
                   size={product.size}
                   url={product.imageUrls[0]}
-                  onWishlistClick={handleWishlist}
+                  onWishlistClick={() => handleWishlist(product)}
                 />
               </Grid>
             ))}

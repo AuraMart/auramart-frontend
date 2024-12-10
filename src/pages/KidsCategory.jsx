@@ -23,8 +23,29 @@ const KidsCategory = () => {
         console.error("Error fetching products:", error);
       }
     };
+
+    // Load wishlist from localStorage
+    const savedWishlist = localStorage.getItem("kidsWishlist");
+    if (savedWishlist) {
+      setWishlist(JSON.parse(savedWishlist));
+    }
+
     fetchProducts();
   }, []);
+
+  const handleWishlist = (product) => {
+    setWishlist((prevWishlist) => {
+      const exists = prevWishlist.some((item) => item.id === product.id);
+      if (!exists) {
+        const updatedWishlist = [...prevWishlist, product];
+
+        // Save to localStorage
+        localStorage.setItem("kidsWishlist", JSON.stringify(updatedWishlist));
+        return updatedWishlist;
+      }
+      return prevWishlist;
+    });
+  };
 
   const filters = {
     categories: ["Tops", "T-Shirts", "Pants", "Skirts", "Dresses"],
@@ -93,16 +114,6 @@ const KidsCategory = () => {
     );
   });
 
-  const handleWishlist = (product) => {
-    setWishlist((prevWishlist) => {
-      if (prevWishlist.some((item) => item.id === product.id)) {
-        return prevWishlist;
-      } else {
-        return [...prevWishlist, product];
-      }
-    });
-  };
-
   return (
     <Box sx={{ paddingTop: "50px" }}>
       <Grid container spacing={2}>
@@ -113,7 +124,7 @@ const KidsCategory = () => {
             onPriceChange={handlePriceChange}
           />
         </Grid>
-        <Grid item xs={12} sm={8} md={9} >
+        <Grid item xs={12} sm={8} md={9}>
           <Grid container spacing={2}>
             {filteredProducts.map((product) => (
               <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
@@ -125,7 +136,7 @@ const KidsCategory = () => {
                   color={product.color}
                   size={product.size}
                   url={product.imageUrls[0]}
-                  onWishlistClick={handleWishlist}
+                  onWishlistClick={() => handleWishlist(product)}
                 />
               </Grid>
             ))}
