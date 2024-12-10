@@ -6,21 +6,21 @@ import AOS from "aos";
 const products = [
     {
       id: 1,
-      name: "Office Ware Dark Green Shirt",
+      name: "Office Ware Dark Blue Shirt",
       price: 2990.0,
       originalPrice: 4990.0,
       discount: 66,
-      image: "Cloths/shirt2.png",
+      image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576465/shirt3_zsjcs8.jpg",
       inStock: true,
     },
 
     {
       id: 2,
-      name: "Office Ware Shirt",
+      name: "Shirt",
       price: 990.0,
       originalPrice: 2290.0,
       discount: 57,
-      image: "Cloths/men2.jpg",
+      image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576449/men2_hbt2pz.jpg",
       inStock: false,
     },
     {
@@ -29,7 +29,7 @@ const products = [
         price: 1990.0,
         originalPrice: 3490.0,
         discount: 50,
-        image: "Cloths/men1.jpg",
+        image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576454/shirt1_zauayn.jpg",
         inStock: true,
       },
 
@@ -39,7 +39,7 @@ const products = [
       price: 1990.0,
       originalPrice: 2990.0,
       discount: 30,
-      image: "Cloths/shirt3.jpg",
+      image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576442/men1_ts7ucf.jpg",
       inStock: true,
     },
     {
@@ -48,7 +48,7 @@ const products = [
         price: 1470.0,
         originalPrice: 3190.0,
         discount: 54,
-        image: "Cloths/women1.jpg",
+        image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576473/women1_hpd0jj.webp",
         inStock: true,
       },
       {
@@ -57,7 +57,7 @@ const products = [
         price: 1603.0,
         originalPrice: 2290.0,
         discount: 30,
-        image: "Cloths/women2.jpg",
+        image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576479/women2_wwddbb.webp",
         inStock: true,
       },
       {
@@ -66,7 +66,7 @@ const products = [
         price: 3340.0,
         originalPrice: 6690.0,
         discount: 51,
-        image: "Cloths/women3.jpg",
+        image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576485/women3_nxfmdh.webp",
         inStock: true,
       },
       {
@@ -75,16 +75,16 @@ const products = [
         price: 1445.0,
         originalPrice: 2890.0,
         discount: 50,
-        image: "Cloths/women4.jpg",
+        image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576489/women4_ok5jhf.webp",
         inStock: true,
       },
       {
         id: 7,
-        name: "Bow Tie Deep Vneck Green Dress",
+        name: "Crop Top Tshirt",
         price: 3340.0,
         originalPrice: 6690.0,
         discount: 51,
-        image: "Cloths/women5.png",
+        image: "https://res.cloudinary.com/dcaqcian4/image/upload/v1733576496/women5_as09z7.webp",
         inStock: true,
       },
       
