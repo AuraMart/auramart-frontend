@@ -27,7 +27,7 @@ export const getAllMenProducts = async () => {
   export const getAllKidsProducts = async () => {
     try {
       const response = await axios.get(
-       `${API_BASE_URL}/products/3`
+       `${API_BASE_URL}/3`
       );
       return response;
     } catch (error) {

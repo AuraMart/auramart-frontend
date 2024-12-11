@@ -207,7 +207,7 @@ const AdminRoutes = () => {
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-gray-100 mt-[2%]">
+      <div className="flex flex-col min-h-screen bg-gray-100">
         <ScrollToTop />
         <Routes>
         <Route path="/" element={<Home />} />

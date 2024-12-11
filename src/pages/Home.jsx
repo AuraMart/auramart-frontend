@@ -34,7 +34,6 @@ export const Home = () => {
         <Box
           sx={{
             width: "100%",
-            marginTop: "3%",
           }}
         >
           <h1 className="font-abril text-[36px] align-left text-gray-500 ml-[4%] mb-[2%]">
