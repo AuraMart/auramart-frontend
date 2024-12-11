@@ -166,6 +166,7 @@ import Offers from './components/OffersAndSales/Offers';
 import MetricsCard from './components/Admin/MetricsCard';
 import ProductList from './components/Admin/ProductList';
 import Sidebar from './components/Admin/SideBar';
+import OrderDataUser from './pages/OrderDataUser';
 
 // Customer Routes Component
 const CustomerRoutes = () => {
@@ -208,6 +209,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen bg-gray-100 mt-[2%]">
+        <Navbar />
         <ScrollToTop />
         <Routes>
         <Route path="/" element={<Home />} />
@@ -224,7 +226,8 @@ function App() {
           <Route path="/shoes" element={<ShoesCategory />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="payment" element={<Payment />}/>
-          <Route path="/product/:productId" element={<ProductPage />} />  
+          <Route path="/product/:productId" element={<ProductPage />} /> 
+          <Route path="/orderData" element={<OrderDataUser />} /> 
           {/* <Route path="/login" element={<ProductPage />} /> */}
           {/* <Route path="payment" element={<Payment />} />
           <Route path="/contact" element={<ContactUs />} />
@@ -244,7 +247,7 @@ function App() {
           <Route path="/product/:productId" element={<ProductPage />} />       
           <Route path="/offers" element={<Offers />} /> */}
         </Routes>
-        
+        <FooterSection/>
       </div>
     </BrowserRouter>
   );

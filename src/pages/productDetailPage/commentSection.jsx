@@ -13,7 +13,7 @@ const CommentSection = () => {
   const [comments, setComments] = useState([]);
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
-  const userId = 1; 
+  const userId = 2; 
 
   useEffect(() => {
     const fetchComments = async () => {
