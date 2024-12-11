@@ -3,6 +3,7 @@ import MenSidebar from "../components/Product/MenSidebar";
 import { Box, Grid } from "@mui/material";
 import ProductCard2 from "../components/Product/ProductCard2";
 import { getAllMenProducts } from "../Services/mainCategoryServices";
+import { CircularProgress } from "@mui/material";
 
 const MenCategory = () => {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,8 @@ const MenCategory = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [priceRange, setPriceRange] = useState([500, 10000]);
   const [wishlist, setWishlist] = useState([]);
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -21,8 +24,11 @@ const MenCategory = () => {
         setProducts(response.data?.data || []);
       } catch (error) {
         console.error("Error fetching products:", error);
+      }finally{
+        setLoading(false);
       }
     };
+    setLoading(true);
     fetchProducts();
   }, []);
 
@@ -124,7 +130,11 @@ const MenCategory = () => {
   
         <Grid item xs={12} sm={8} md={9}>
           <Grid container spacing={2}>
-            {filteredProducts.map((product) => (
+          {loading ? (
+              <Box sx={{ display: "flex", height: "100vh",marginLeft:"40%",marginTop:"20%" }}>
+              <CircularProgress />
+            </Box>
+            ) : (filteredProducts.map((product) => (
               <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
                 <ProductCard2
                   product={product}
@@ -137,7 +147,8 @@ const MenCategory = () => {
                   onWishlistClick={handleWishlist}
                 />
               </Grid>
-            ))}
+            ))
+          )}
           </Grid>
         </Grid>
       </Grid>
