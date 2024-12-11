@@ -6,7 +6,7 @@ const OrderDataUser = () => {
 
   const API_BASE_URL = "http://localhost:9191/api/v1";
   const [orders, setOrders] = useState([]);
-  const userId = 2;
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     axios.get(`${API_BASE_URL}/${userId}/order`)
