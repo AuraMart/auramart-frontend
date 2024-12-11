@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from "react";
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import MenuList from '@mui/material/MenuList';
@@ -26,11 +26,23 @@ function valuetext(value) {
 
 const WomenSidebar = ({ filters, onFilterChange,onPriceChange }) => {
   const [value, setValue] = React.useState([500, 10000]);
+  const [selectedSizes, setSelectedSizes] = useState([]);
 
   const handlePriceChange = (event, newValue) => {
     setValue(newValue);
     onPriceChange(newValue);
   };
+  const handleSizeClick = (size) => {
+    setSelectedSizes((prevSelected) =>
+      prevSelected.includes(size)
+        ? prevSelected.filter((s) => s !== size) 
+        : [...prevSelected, size] 
+    );
+    onFilterChange({
+      target: { name: "size", value: size, checked: !selectedSizes.includes(size) },
+    });
+  };
+
   return (
     <Box sx={{ width: 250, padding: 2 }}>
       <Paper sx={{ width: 250 }}>
@@ -122,13 +134,22 @@ const WomenSidebar = ({ filters, onFilterChange,onPriceChange }) => {
                 {filters.sizes.map((size, index) => (
                   <Button
                   key={index}
-                  variant="outlined"
+                  variant={selectedSizes.includes(size) ? "contained" : "outlined"}
                   value={size}
-                  onClick={() =>
-                    onFilterChange({
-                      target: { name: 'size', value: size, checked: true },
-                    })
-                  }
+                  onClick={() => handleSizeClick(size)}
+                    sx={{
+                      backgroundColor: selectedSizes.includes(size)
+                        ? "primary.main"
+                        : "transparent",
+                      color: selectedSizes.includes(size)
+                        ? "white"
+                        : "text.primary",
+                    }}
+                  // onClick={() =>
+                  //   onFilterChange({
+                  //     target: { name: 'size', value: size, checked: true },
+                  //   })
+                  // }
                 >
                   {size}
                 </Button>

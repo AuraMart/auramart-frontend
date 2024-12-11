@@ -1,7 +1,5 @@
 
 import React, { useState } from "react";
-
-
 import { CiImageOn } from "react-icons/ci";
 import { createProduct } from "../../Services/api";
 import ImageCropper from "../../components/ImageCropper";
@@ -50,7 +48,7 @@ const AddProduct=()=> {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (galleryImages.length >= 2) {
+    if (galleryImages.length >= 3) {
       alert("You can only upload a maximum of 4 images.");
       return;
     }
@@ -68,7 +66,7 @@ const AddProduct=()=> {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (galleryImages.length !== 2) {
+    if (galleryImages.length !== 3) {
       alert("Please upload exactly 4 images before adding the product.");
       return;
     }
@@ -281,7 +279,7 @@ const AddProduct=()=> {
                   multiple
                   onChange={handleImageUpload}
                   required
-                  disabled={galleryImages.length >= 2}
+                  disabled={galleryImages.length >= 3}
                 />
                 <div className="grid grid-cols-2 gap-4 mt-4 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-4">
                   {galleryImages.map((image, index) => (
@@ -303,7 +301,7 @@ const AddProduct=()=> {
                       </button>
                     </div>
                   ))}
-                  {galleryImages.length < 2 && (
+                  {galleryImages.length < 3 && (
                     <div className="w-[120px] h-[150px] border rounded-md flex items-center justify-center text-gray-400">
                       <CiImageOn size={40} />
                     </div>

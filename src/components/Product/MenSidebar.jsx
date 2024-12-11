@@ -15,10 +15,22 @@ import Divider from "@mui/material/Divider";
 
 const MenSidebar = ({ filters, onFilterChange, onPriceChange }) => {
   const [value, setValue] = useState([500, 10000]);
+  const [selectedSizes, setSelectedSizes] = useState([]);
 
   const handlePriceChange = (event, newValue) => {
     setValue(newValue);
     onPriceChange(newValue);
+  };
+
+  const handleSizeClick = (size) => {
+    setSelectedSizes((prevSelected) =>
+      prevSelected.includes(size)
+        ? prevSelected.filter((s) => s !== size) 
+        : [...prevSelected, size] 
+    );
+    onFilterChange({
+      target: { name: "size", value: size, checked: !selectedSizes.includes(size) },
+    });
   };
 
   return (
@@ -112,13 +124,23 @@ const MenSidebar = ({ filters, onFilterChange, onPriceChange }) => {
                 {filters.sizes.map((size, index) => (
                   <Button
                     key={index}
-                    variant="outlined"
+                    variant={selectedSizes.includes(size) ? "contained" : "outlined"}
                     value={size}
-                    onClick={() =>
-                      onFilterChange({
-                        target: { name: 'size', value: size, checked: true },
-                      })
-                    }
+
+                    onClick={() => handleSizeClick(size)}
+                    sx={{
+                      backgroundColor: selectedSizes.includes(size)
+                        ? "primary.main"
+                        : "transparent",
+                      color: selectedSizes.includes(size)
+                        ? "white"
+                        : "text.primary",
+                    }}
+                    // onClick={() =>
+                    //   onFilterChange({
+                    //     target: { name: 'size', value: size, checked: true },
+                    //   })
+                    // }
                     name="size"
                   >
                     {size}
