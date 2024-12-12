@@ -20,10 +20,10 @@ export const WomenCategoryList = () => {
     fetchWomenProducts();
   }, []);
 
-  const filteredProducts = products.filter(product =>( product.id > 4 && product.id < 9));
+  const filteredProducts = products.slice(-4);
 
   return (
-    <div style={{display:'flex',justifyContent:"stretch",alignContent:'center',marginLeft:"65px",height:"400px"}}>
+    <div style={{display:'flex',justifyContent:"stretch",alignContent:'center',marginLeft:"30px",height:"400px"}}>
     <Box
       sx={{
         display:"flex",
