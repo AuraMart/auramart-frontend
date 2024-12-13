@@ -134,7 +134,7 @@
 //   useEffect(() => {
 //     localStorage.setItem("cart", JSON.stringify(productSelection));
 //   }, [productSelection]);
- 
+
 
 
 
@@ -394,8 +394,8 @@ const ProductDetails = () => {
     productId: productId,
     color: "",
     size: "",
-    quantity:0,
-    imageUrls:""
+    quantity: 0,
+    imageUrls: ""
   });
 
   useEffect(() => {
@@ -404,14 +404,14 @@ const ProductDetails = () => {
         const [productResponse, commentsResponse, cartIdResponse, wishListIdResponse] = await Promise.all([
           axios.get(`${API_BASE_URL}/products/product/${productId}/product`),
           axios.get(`${API_BASE_URL}/comments/product/${productId}`),
-          axios.get(`${API_BASE_URL}/carts/user/${userId}`),
-          axios.get(`${API_BASE_URL}/wishlist-items/user/${userId}`),
+          // axios.get(`${API_BASE_URL}/carts/user/${userId}`),
+          // axios.get(`${API_BASE_URL}/wishlist-items/user/${userId}`),
         ]);
-
+        console.log(productResponse.data?.data);
         setComments(commentsResponse.data);
-        setProduct(productResponse.data.data);
-        setCartId(cartIdResponse.data.id);
-        setWishListId(wishListIdResponse.data);
+        setProduct(productResponse?.data.data);
+        // setCartId(cartIdResponse.data.id);
+        // setWishListId(wishListIdResponse.data);
 
         const totalRating = commentsResponse.data.reduce((acc, comment) => acc + comment.rating, 0);
         const avgRating = totalRating / commentsResponse.data.length;
@@ -445,64 +445,56 @@ const ProductDetails = () => {
     );
   };
 
-  const handleBuyNow = () => {
-    navigate("/payment", {
-      state: {
-        productId: product.id,
-        quantity: quantity,
-      },
-    });
-  };
-
   const handleAddToCart = () => {
     // Create the product details object
     const cartItem = {
-        productId: product.id,
-        color: product.color,
-        size: product.size,
-        quantity: quantity,
-        imageUrl: product.imageUrls[0],
-        name: product.name,
-        price: product.price,
+      productId: product.id,
+      color: product.color,
+      size: product.size,
+      quantity: quantity,
+      imageUrl: product.imageUrls[0],
+      name: product.name,
+      price: product.price,
     };
 
     // Retrieve existing cart items from localStorage
     let existingCart = [];
     try {
-        const storedCart = localStorage.getItem('cart');
-        existingCart = storedCart ? JSON.parse(storedCart) : [];
+      const storedCart = localStorage.getItem('cart');
+      existingCart = storedCart ? JSON.parse(storedCart) : [];
     } catch (error) {
-        console.error('Error parsing cart from localStorage:', error);
+      console.error('Error parsing cart from localStorage:', error);
     }
 
     // Ensure `existingCart` is an array
     if (!Array.isArray(existingCart)) {
-        console.warn('Cart data is not an array, resetting cart.');
-        existingCart = [];
+      console.warn('Cart data is not an array, resetting cart.');
+      existingCart = [];
     }
 
     // Check if product already exists in cart
     const existingProductIndex = existingCart.findIndex(
-        item =>
-            item.productId === product.id &&
-            item.color === product.color &&
-            item.size === product.size
+      item =>
+        item.productId === product.id &&
+        item.color === product.color &&
+        item.size === product.size
     );
 
     if (existingProductIndex > -1) {
-        // If product exists, update its quantity
-        existingCart[existingProductIndex].quantity += quantity;
+      // If product exists, update its quantity
+      existingCart[existingProductIndex].quantity += quantity;
     } else {
-        // If product doesn't exist, add new item
-        existingCart.push(cartItem);
+      // If product doesn't exist, add new item
+      existingCart.push(cartItem);
     }
 
     // Save updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(existingCart));
 
     // Optional: Show a notification or toast
+    setSnackbar({ open: true, message: "Product added to cart successfully!", severity: "success" });
     alert('Product added to cart!');
-};
+  };
 
 
 
@@ -540,6 +532,10 @@ const ProductDetails = () => {
 
   const handleCloseSnackbar = () => {
     setSnackbar({ ...snackbar, open: false });
+  };
+
+  const handleImageClick = (index) => {
+    setSelectedImageIndex(index);
   };
 
   const getColorBackground = (color) => {
@@ -584,19 +580,42 @@ const ProductDetails = () => {
 
   return (
     <div className="px-4 py-4 mx-auto mt-12 max-w-7xl">
-      <div className="flex flex-col gap-8 md:flex-row md:gap-x-16">
+      <div className="flex flex-col gap-8 md:flex-row md:gap-x-16 mb-20">
         <div className="md:w-1/2">
-          <Card className="overflow-hidden">
-            <CardMedia
-              component="img"
-              image={product.imageUrls[0]}
-              alt="Main product view"
-              className="object-cover w-full h-full"
-            />
-          </Card>
+          <div className="flex flex-row gap-4">
+            <div className="flex flex-col gap-2">
+              {product.imageUrls.map((img, index) => (
+                <Card
+                  key={index}
+                  onClick={() => handleImageClick(index)}
+                  className={`w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 transition-all ${selectedImageIndex === index
+                      ? "border-slate-500"
+                      : "border-transparent"
+                    }`}
+                >
+                  <CardMedia
+                    component="img"
+                    image={img}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="object-cover w-full h-full"
+                  />
+                </Card>
+              ))}
+            </div>
+            <div className="flex-grow">
+              <Card className="overflow-hidden">
+                <CardMedia
+                  component="img"
+                  image={product.imageUrls[selectedImageIndex]}
+                  alt={`Product image ${selectedImageIndex + 1}`}
+                  className="w-full h-full object-cover aspect-[3/4]"
+                />
+              </Card>
+            </div>
+          </div>
         </div>
 
-        <div className="md:w-1/2 md:space-y-4">
+        <div className="md:w-1/2 md:space-y-6">
           <Breadcrumbs className="mb-6 text-gray-600" separator=">">
             <Link underline="hover" color="inherit" href="#" className="hover:text-blue-500">
               Shop
@@ -624,7 +643,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="py-2 space-y-2">
-            <div className="flex flex-row items-center gap-10 ">
+            <div className="flex flex-row items-center gap-11 ">
               <Typography variant="h6" className="mb-2 font-semibold">
                 Size:
               </Typography>
@@ -649,7 +668,7 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="pb-4">
+          <div className="pb-5">
             <span className="block mb-2 text-lg">Quantity</span>
             <div className="flex items-center gap-4">
               <Button
@@ -704,15 +723,6 @@ const ProductDetails = () => {
             </Alert>
           </Snackbar>
 
-          <Button
-            variant="outlined"
-            fullWidth
-            className="py-3 mb-8 border border-gray-300 rounded-lg"
-            onClick={handleBuyNow}
-          >
-            Buy it Now
-          </Button>
-
           <Divider />
 
           <div className="grid grid-cols-2 gap-4 mt-6">
@@ -731,6 +741,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <Divider />
     </div>
   );
 };

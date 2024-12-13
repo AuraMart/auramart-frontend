@@ -1,59 +1,81 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Eye, EyeOff } from 'lucide-react';
-import axios from 'axios';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
+import axios from "axios";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/admin/sign-in', {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:9191/api/v1/users/signin",
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      if (response.data === 'Admin signed in successfully') {
-       
-        navigate('/dashboard');  
+      if (response.status === 200) {
+        console.log(response.data);
+
+        // Save token, role, and userId to localStorage
+        const { token, role, userId } = response.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", role);
+        localStorage.setItem("userId", userId);
+        if (response.data.role === "ADMIN") {
+          navigate("/admin");
+        } else {
+          navigate("/customer");
+        }
       } else {
-        setErrorMessage('Invalid login credentials. Please try again.');
+        setErrorMessage("Invalid login credentials. Please try again.");
       }
     } catch (error) {
-      setErrorMessage('Login failed. Please check your credentials or try again later.');
+      setErrorMessage(
+        "Login failed. Please check your credentials or try again later."
+      );
+      console.error("Login error:", error);
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4 bg-gray-50">
       <div className="flex w-full max-w-4xl overflow-hidden shadow-lg bg-gradient-to-b from-indigo-900 via-blue-800 to-blue-600 rounded-xl">
-       
         <div className="flex flex-col hidden w-2/5 p-8 bg-gradient-to-b from-indigo-900 via-blue-800 to-blue-600 md:block">
           <div className="text-white">
             <div className="mb-2">Hello!</div>
-            <h1 className="mb-8 text-4xl font-bold">HAVE A<br />NICE DAY</h1>
+            <h1 className="mb-8 text-4xl font-bold">
+              HAVE A<br />
+              NICE DAY
+            </h1>
           </div>
           <div className="mt-auto">
-            <img 
+            <img
               src="https://res.cloudinary.com/dcn64hytu/image/upload/v1732704859/AuraMart-images/shirt_hu8qib.jpg"
-              alt="Person working" 
+              alt="Person working"
               className="w-full h-auto"
             />
           </div>
         </div>
 
-        
         <div className="flex-1 p-8">
           <div className="flex justify-end mb-4">
             <select className="text-white bg-transparent border-none focus:ring-0">
-              <option className = "text-black">English(UK)</option>
-              <option className = "text-black">English(US)</option>
+              <option className="text-black">English(UK)</option>
+              <option className="text-black">English(US)</option>
             </select>
           </div>
 
@@ -100,8 +122,10 @@ const LoginForm = () => {
               </button>
 
               <div className="text-sm text-center">
-                <span className="text-white"> Do you havn&apos;t account? </span>
-                <a href="#" className="text-white hover:underline">Signup here</a>
+                <span className="text-white">Don&apos;t have an account? </span>
+                <a href="/signup" className="text-white hover:underline">
+                  Signup here
+                </a>
               </div>
             </form>
           </div>

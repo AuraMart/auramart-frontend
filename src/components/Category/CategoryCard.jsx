@@ -7,20 +7,27 @@ import {
   CardActions,
   Button,
   Box,
-  Badge,
   styled,
-  Fab,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useNavigate } from "react-router-dom";
 
-export const Categorycard = ({ title, image }) => {
+export const Categorycard = ({ title, image,gender }) => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/{gender}");
+  };
+
   return (
     <Card sx={{ width: "280px", position: "relative", marginRight: "10px" }}>
       <CardMedia sx={{ height: "310px" }} image={image} title={title}/>
       <CardContent sx={{ padding: "1px", paddingTop: "10px" }}>
         <Box
           sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+          onClick={handleClick}
         >
           <Box sx={{ display: "flex", flexDirection: "column", pl: 1, pb: 1 }}>
             <Typography

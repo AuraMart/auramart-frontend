@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignupForm = () => {
-  const [fullName, setFullName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -34,26 +35,50 @@ const SignupForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/admin/sign-up', {
-        fullName,
+      const response = await axios.post('http://localhost:9191/api/v1/users/signup', {
+        firstName,
+        lastName,
         email,
         password,
       });
 
       if (response.status === 200) {
+        // Destructure token, userId, and role from the response
+        const { token, userId, role } = response.data;
+
+        // Store token, userId, and role in localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('role', role);
+
         setSuccessMessage("Signup successful!");
         setErrorMessage('');
-        setFullName('');
+        
+        // Reset form fields
+        setFirstName('');
+        setLastName('');
         setEmail('');
         setPassword('');
         setConfirmPassword('');
 
-        navigate('/dashboard');
+        // Navigate to home or dashboard
+        navigate('/');
       } else {
         setErrorMessage("Signup failed. Please try again.");
       }
     } catch (error) {
-      setErrorMessage("An error occurred. Please try again.");
+      // Handle specific error scenarios
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        setErrorMessage(error.response.data.message || "Signup failed. Please try again.");
+      } else if (error.request) {
+        // The request was made but no response was received
+        setErrorMessage("No response from server. Please check your connection.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setErrorMessage("An error occurred. Please try again.");
+      }
     }
   };
 
@@ -79,8 +104,8 @@ const SignupForm = () => {
         <div className="flex-1 p-8">
           <div className="flex justify-end mb-4">
             <select className="text-white bg-transparent border-none focus:ring-0">
-              <option className = "text-black">English(UK)</option>
-              <option className = "text-black">English(US)</option>
+              <option className="text-black">English(UK)</option>
+              <option className="text-black">English(US)</option>
             </select>
           </div>
 
@@ -94,10 +119,20 @@ const SignupForm = () => {
               <div>
                 <input
                   type="text"
-                  placeholder="Full Name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  placeholder="First Name"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   required
                 />
               </div>
@@ -145,8 +180,8 @@ const SignupForm = () => {
               </button>
 
               <div className="text-sm text-center">
-                <span className="text-white">Do you have an account?</span>
-                <a href="#" className="text-white hover:underline">Login here</a>
+                <span className="text-white">Do you have an account? </span>
+                <Link to="/login" className="text-white hover:underline">Login here</Link>
               </div>
             </form>
           </div>

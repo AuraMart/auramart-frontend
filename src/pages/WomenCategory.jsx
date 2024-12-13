@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import WomenSidebar from "../components/Product/WomenSidebar";
-import { Box, Grid2 } from "@mui/material";
+import { Box, CircularProgress, Grid } from "@mui/material";
 import axios from "axios";
 import ProductCard2 from "../components/Product/ProductCard2";
+import { getAllWomenProducts } from "../Services/mainCategoryServices";
 
-const getAllWomenItems = async () => {
-  const response = await axios.get(
-    "http://localhost:9191/api/v1/products/category/2"
-  );
-  return response.data?.data || [];
-};
 const WomenCategory = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -18,16 +13,21 @@ const WomenCategory = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [priceRange, setPriceRange] = useState([500, 10000]);
   const [wishlist, setWishlist] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchWomenProducts = async () => {
       try {
-        const data = await getAllWomenItems();
-        setProducts(data);
+        const response = await getAllWomenProducts();
+        setProducts(response.data?.data || []);
       } catch (error) {
         console.error("Failed to fetch women cloths", error);
+      } finally {
+        setLoading(false); // Ensures loading is set to false after the try/catch block
       }
     };
+
+    setLoading(true); // Set loading to true before fetching
     fetchWomenProducts();
   }, []);
 
@@ -110,33 +110,39 @@ const WomenCategory = () => {
 
   return (
     <Box sx={{ paddingTop: "50px" }}>
-      <Grid2 container spacing={2}>
-        <Grid2 item xs={12} sm={4} md={3}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={4} md={3}>
           <WomenSidebar
             filters={filters}
             onFilterChange={handleFilterChange}
             onPriceChange={handlePriceChange}
           />
-        </Grid2>
-        <Grid2 item xs={12} sm={8} md={9}>
-          <Grid2 container spacing={2}>
-            {filteredProducts.map((product) => (
-              <Grid2 item key={product.id} xs={12} sm={6} md={4} lg={3}>
-                <ProductCard2
-                  product={product}
-                  name={product.name}
-                  brand={product.brand}
-                  price={product.price}
-                  color={product.color}
-                  size={product.size}
-                  url={product.imageUrls[0]}
-                  onWishlistClick={handleWishlist}
-                />
-              </Grid2>
-            ))}
-          </Grid2>
-        </Grid2>
-      </Grid2>
+        </Grid>
+        <Grid item xs={12} sm={8} md={9}>
+          <Grid container spacing={2}>
+            {loading ? (
+              <Box sx={{ display: "flex", height: "100vh",marginLeft:"40%",marginTop:"20%" }}>
+              <CircularProgress />
+            </Box>
+            ) : (
+              filteredProducts.map((product) => (
+                <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+                  <ProductCard2
+                    product={product}
+                    name={product.name}
+                    brand={product.brand}
+                    price={product.price}
+                    color={product.color}
+                    size={product.size}
+                    url={product.imageUrls[0]}
+                    onWishlistClick={handleWishlist}
+                  />
+                </Grid>
+              ))
+            )}
+          </Grid>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

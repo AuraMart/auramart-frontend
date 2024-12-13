@@ -4,6 +4,8 @@ import CartTableHeader from '../../components/Cart/CartTableHeader';
 import CartItem from '../../components/Cart/CartItem';
 import CartDiscount from '../../components/Cart/CartDiscount';
 import CartSummary from '../../components/Cart/CartSummary';
+import Navbar from '../../components/Navigation/Navbar';
+import FooterSection from '../../components/Footer/FooterSection';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -62,7 +64,7 @@ const CartPage = () => {
   // If cart is empty, show a message
   if (!Array.isArray(cartItems) || cartItems.length === 0) {
     return (
-      <div className="max-w-6xl p-6 mx-auto text-center">
+      <div className="max-w-6xl p-6 mx-auto text-center mt-[5%]">
         <h2 className="text-2xl font-bold">Your cart is empty</h2>
         <p>Looks like you haven't added any items to your cart yet.</p>
       </div>
@@ -70,7 +72,9 @@ const CartPage = () => {
   }
 
   return (
-    <div className="max-w-6xl p-6 mx-auto">
+    <div>
+      <Navbar/>
+      <div className="max-w-6xl p-6 mx-auto">
       <CartHeader />
       
       <div className="w-full">
@@ -100,6 +104,8 @@ const CartPage = () => {
           total={total}
         />
       </div>
+    </div>
+    <FooterSection/>
     </div>
   );
 };
