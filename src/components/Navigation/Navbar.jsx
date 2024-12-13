@@ -37,6 +37,7 @@
 
 
 import React, { useState, useEffect, useRef } from "react";
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 import { useNavigate } from "react-router-dom";
 
@@ -160,6 +161,10 @@ const Navbar = () => {
             onClick={() => navigate("/cart")}
           >
             🛒
+          </button>
+          <button
+            onClick={() => navigate("/orderData")}>
+            <ShoppingBagIcon />
           </button>
         </div>
       </header>

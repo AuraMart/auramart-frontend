@@ -156,6 +156,7 @@ import Offers from './components/OffersAndSales/Offers';
 import MetricsCard from './components/Admin/MetricsCard';
 import ProductList from './components/Admin/ProductList';
 import Sidebar from './components/Admin/SideBar';
+import OrderDataUser from './pages/OrderDataUser';
 
 
 const CustomerRoutes = () => {
@@ -220,6 +221,21 @@ function App() {
         <ScrollToTop />
         <Navbar handleLogout={handleLogout} isLoggedIn={!!authToken} role={role} />
         <Routes>
+          <Route path="/addproduct" element={<AddProduct />} />
+          <Route path="payment" element={<Payment />}/>
+          <Route path="/product/:productId" element={<ProductPage />} /> 
+          <Route path="/orderData" element={<OrderDataUser />} /> 
+          {/* <Route path="/login" element={<ProductPage />} /> */}
+          {/* <Route path="payment" element={<Payment />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/admin" element={<AdminLayout/>} /> 
+          <Route path="add-product" element={<AddProduct/>}/>
+          <Route path="/dashboard" element={<AdminDashboard/>}/>
+          <Route path="analytics" element={<Analytics/>}/>
+          <Route path="profile" element={<Profile/>}/>
+          <Route path="view-orders" element={<ViewOrders/>}/>
           {/* Public Routes */}
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={authToken ? <Navigate to="/" /> : <LoginPage />} />
