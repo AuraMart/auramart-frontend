@@ -193,8 +193,7 @@ const CustomerRoutes = () => {
 const AdminRoutes = () => {
   return (
     <Routes>
-// <<<<<<< New_admin
-      <Route path="" element={<AdminLayout />}>
+      <Route path="" element={<AdminLayout />} >
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="profile" element={<AdminProfile />} />
@@ -204,16 +203,14 @@ const AdminRoutes = () => {
         <Route path="settings" element={<AdminSettings />} />
         <Route path="help" element={<AdminHelp />} />
         <Route path="*" element={<Navigate to="dashboard" replace />} />
-//       </Route>
-// =======
-//       <Route path="add" element={<AddProduct />} />
-//       <Route path="banner" element={<Banner />} />
-//       <Route path="profile" element={<Profile />} />
-//       <Route path="side" element={<Sidebar />} />
-//       <Route path="view" element={<ViewOrders />} />
-//       <Route path="list" element={<ProductList/>} />
-//       <Route path="*" element={<Navigate to="dashboard" replace />} />
-// >>>>>>> dev-login
+       </Route>
+       {/* <Route path="add" element={<AddProduct />} /> */}
+       {/* <Route path="banner" element={<Banner />} /> */}
+       {/* <Route path="profile" element={<Profile />} /> */}
+       {/* <Route path="side" element={<Sidebar />} /> */}
+       {/* <Route path="view" element={<ViewOrders />} /> */}
+       {/* <Route path="list" element={<ProductList/>} /> */}
+       {/* <Route path="*" element={<Navigate to="dashboard" replace />} /> */}
     </Routes>
   );
 };
@@ -248,7 +245,6 @@ function App() {
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="payment" element={<Payment />}/>
           <Route path="/product/:productId" element={<ProductPage />} /> 
-          <Route path="/orderData" element={<OrderDataUser />} /> 
           {/* <Route path="/login" element={<ProductPage />} /> */}
           {/* <Route path="payment" element={<Payment />} />
           <Route path="/contact" element={<ContactUs />} />
