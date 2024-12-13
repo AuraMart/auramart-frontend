@@ -19,11 +19,10 @@ import { NewArrival } from "../components/NewArrival";
 import Navbar from "../components/Navigation/Navbar";
 import Homelayout from "../components/layout/Homelayout";
 
-export const Home = () => {
+const Home = () => {
   const targetRef = useRef(null);
 
   return (
-    <Homelayout>
       <div className="">
         <Carousel>
           {items.map((item, i) => (
@@ -34,7 +33,6 @@ export const Home = () => {
         <Box
           sx={{
             width: "100%",
-            marginTop: "3%",
           }}
         >
           <h1 className="font-abril text-[36px] align-left text-gray-500 ml-[4%] mb-[2%]">
@@ -154,9 +152,10 @@ export const Home = () => {
           </BlackBox>
         </Box>
       </div>
-    </Homelayout>
   );
 };
+
+export default Home;
 
 const BlackBox = styled(Box)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[300]),
