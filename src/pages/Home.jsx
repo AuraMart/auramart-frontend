@@ -19,11 +19,10 @@ import { NewArrival } from "../components/NewArrival";
 import Navbar from "../components/Navigation/Navbar";
 import Homelayout from "../components/layout/Homelayout";
 
-export const Home = () => {
+const Home = () => {
   const targetRef = useRef(null);
 
   return (
-    <Homelayout>
       <div className="">
         <Carousel>
           {items.map((item, i) => (
@@ -153,9 +152,10 @@ export const Home = () => {
           </BlackBox>
         </Box>
       </div>
-    </Homelayout>
   );
 };
+
+export default Home;
 
 const BlackBox = styled(Box)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[300]),
