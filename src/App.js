@@ -140,12 +140,12 @@ import Navbar from './components/Navigation/Navbar';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 // import AddProduct from './components/Admin/AddProduct';
-import AdminDashboard from './components/Admin/AdminDashboard';
-import Analytics from './components/Admin/Analytics';
-import Banner from './components/Admin/Banner';
-import Profile from './components/Admin/Profile';
-import ViewOrders from './components/Admin/ViewOrders';
-import AdminLayout from './pages/layout/AdminLayout';
+// import AdminDashboard from './components/Admin/AdminDashboard';
+// import Analytics from './components/Admin/Analytics';
+// import Banner from './components/Admin/Banner';
+// import Profile from './components/Admin/Profile';
+// import ViewOrders from './components/Admin/ViewOrders';
+// import AdminLayout from './pages/layout/AdminLayout';
 import CartPage from './pages/CartPage/CartPage';
 import WishlistPage from './pages/WishListPage/WishListPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -153,10 +153,21 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import AddProduct from './pages/Admin/AddProduct';
 import ScrollToTop from './components/ScrollToTop';
 import Offers from './components/OffersAndSales/Offers';
-import MetricsCard from './components/Admin/MetricsCard';
-import ProductList from './components/Admin/ProductList';
-import Sidebar from './components/Admin/SideBar';
-import OrderDataUser from './pages/OrderDataUser';
+
+// sethmi - new - features
+import AdminLayout from './pages/Admin/AdminLayout';
+import Products from './pages/Admin/Products';
+import AdminProfile from './pages/Admin/AdminProfile';
+import AdminAnalytics from './pages/Admin/AdminAnalytics';
+import AdminSettings from './pages/Admin/AdminSettings';
+import AdminHelp from './pages/Admin/AdminHelp';
+import AdminOrders from './pages/Admin/AdminOrders';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+// sethmi - new - features
+// import MetricsCard from './components/Admin/MetricsCard';
+// import ProductList from './components/Admin/ProductList';
+// import Sidebar from './components/Admin/SideBar';
+// import OrderDataUser from './pages/OrderDataUser';
 
 
 const CustomerRoutes = () => {
@@ -176,20 +187,33 @@ const CustomerRoutes = () => {
   );
 };
 
+
+
 // Admin Routes Component
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="dashboard" element={<AdminDashboard/>} />
-      <Route path="add" element={<AddProduct />} />
-      <Route path="analys" element={<Analytics />} />
-      <Route path="banner" element={<Banner />} />
-      <Route path="card" element={<MetricsCard />} />
-      <Route path="profile" element={<Profile />} />
-      <Route path="side" element={<Sidebar />} />
-      <Route path="view" element={<ViewOrders />} />
-      <Route path="list" element={<ProductList/>} />
-      <Route path="*" element={<Navigate to="dashboard" replace />} />
+// <<<<<<< New_admin
+      <Route path="" element={<AdminLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="profile" element={<AdminProfile />} />
+        <Route path="add-product" element={<Products />} />
+        <Route path="orders" element={<AdminOrders />} />
+        <Route path="analytics" element={<AdminAnalytics />} />
+        <Route path="settings" element={<AdminSettings />} />
+        <Route path="help" element={<AdminHelp />} />
+        <Route path="*" element={<Navigate to="dashboard" replace />} />
+//       </Route>
+// =======
+//       <Route path="add" element={<AddProduct />} />
+//       <Route path="banner" element={<Banner />} />
+//       <Route path="profile" element={<Profile />} />
+//       <Route path="side" element={<Sidebar />} />
+//       <Route path="view" element={<ViewOrders />} />
+//       <Route path="list" element={<ProductList/>} />
+//       <Route path="*" element={<Navigate to="dashboard" replace />} />
+// >>>>>>> dev-login
     </Routes>
   );
 };

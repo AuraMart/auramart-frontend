@@ -5,7 +5,7 @@ import ImageCropper from "../../components/ImageCropper";
 
 import axios from "axios";
 
-const AddProduct=()=> {
+const Products=()=> {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [price, setPrice] = useState("");
@@ -48,7 +48,7 @@ const AddProduct=()=> {
     if (!file) return;
 
     if (galleryImages.length >= 2) {
-      alert("You can only upload a maximum of 2 images.");
+      alert("You can only upload a maximum of 4 images.");
       return;
     }
 
@@ -66,7 +66,7 @@ const AddProduct=()=> {
     e.preventDefault();
 
     if (galleryImages.length !== 2) {
-      alert("Please upload exactly 2 images before adding the product.");
+      alert("Please upload exactly 4 images before adding the product.");
       return;
     }
 
@@ -85,11 +85,8 @@ const AddProduct=()=> {
     };
 
     try {
-      // await createProduct(productData);
-      const res= await axios.post("http://localhost:9191/api/v1/products/add",productData)
-
-        console.log(res);
-     resetForm();
+      await createProduct(productData);
+      // resetForm();
       alert("Product added successfully!");
     } catch (error) {
       console.error("Failed to add product:", error);
@@ -199,11 +196,9 @@ const AddProduct=()=> {
                     <option value="default" className="hidden">
                       Select type of Size
                     </option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
                     <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
+                    <option value="M">M</option>
+                    <option value="S">S</option>
                   </select>
                 </div>
               </div>
@@ -230,13 +225,13 @@ const AddProduct=()=> {
                 </div>
                 <div className="mb-4 md:mb-7">
                   <label className="block mb-2 font-medium text-black ">
-                   Quantity :
+                   Quentity :
                   </label>
                   <input
                     type="text"
                     value={quentity}
                     className="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg block w-full xl:p-2 lg:p-2 md:p-2 sm:p-1.5 p-1.5  "
-                    placeholder="Enter quantity"
+                    placeholder="Enter rental price"
                     onChange={(e) => setQuentity(e.target.value)}
                     required
                   />
@@ -344,7 +339,7 @@ const AddProduct=()=> {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1 font-medium text-center text-white bg-pink-300 rounded-lg hover:bg-pink-500 f xl:py-2 xl:px-10 lg:py-2 lg:px-10 md:py-1 md:px-6 sm:py-1 sm:px-4"
+                  className="px-4 py-1 font-medium text-center text-white rounded-lg bg-custom-pink hover:bg-pink-400 f xl:py-2 xl:px-10 lg:py-2 lg:px-10 md:py-1 md:px-6 sm:py-1 sm:px-4"
                 >
                   Add Product
                 </button>
@@ -356,4 +351,4 @@ const AddProduct=()=> {
   );
 }
 
-export default AddProduct;
+export default Products;
