@@ -166,6 +166,7 @@ import Offers from './components/OffersAndSales/Offers';
 import MetricsCard from './components/Admin/MetricsCard';
 import ProductList from './components/Admin/ProductList';
 import Sidebar from './components/Admin/SideBar';
+import SearchResults from './components/SearchResults';
 
 // Customer Routes Component
 const CustomerRoutes = () => {
@@ -180,6 +181,7 @@ const CustomerRoutes = () => {
       <Route path="cart" element={<CartPage />} />
       <Route path="wishlist" element={<WishlistPage />} />
       <Route path="product" element={<ProductPage />} />
+      <Route path="/search" element={<SearchResults />} />
       <Route path="*" element={<Navigate to="dashboard" replace />} />
     </Routes>
   );
@@ -223,6 +225,7 @@ function App() {
           <Route path="/kids" element={<KidsCategory />} />
           <Route path="/shoes" element={<ShoesCategory />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/search" element={<SearchResults />} />
           <Route path="payment" element={<Payment />}/>
           <Route path="/product/:productId" element={<ProductPage />} />  
           {/* <Route path="/login" element={<ProductPage />} /> */}

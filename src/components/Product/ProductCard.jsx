@@ -5,6 +5,7 @@ import { CardMedia, Typography, CardActions, Button, Box } from "@mui/material";
 import { styled } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
+import { data } from "autoprefixer";
 
 export const ProductCard = ({ key, name, brand, price, url,id }) => {
   const navigate = useNavigate();

@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Grid2 } from '@mui/material';
-import ProductCard from './ProductCard';
+import { ProductCard } from './ProductCard';
+
 
 
 const ProductList = ({ products }) => {
